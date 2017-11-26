@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UpkeepXP</string>
+    <string name="et_email">Insira seu e-mail</string>
+    <string name="et_password">Insira sua senha</string>
+    <string name="bt_logar">Logar</string>
+    <string name="tv_forgotpass">Esqueceu a senha?</string>
 </resources>

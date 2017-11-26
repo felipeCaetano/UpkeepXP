@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="UpkeepEditText" parent="Widget.AppCompat.EditText">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:colorControlNormal">@color/editTextColor</item>
+        <item name="android:editTextColor">@color/editTextColor</item>
+        <item name="android:colorBackground">@color/editTextColor</item>
+    </style>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorHint">#FFFFFF</color>
+    <color name="editTextColor">#FFFFFF</color>
 </resources>
