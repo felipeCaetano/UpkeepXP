@@ -4,4 +4,8 @@
     <string name="et_password">Insira sua senha</string>
     <string name="bt_logar">Logar</string>
     <string name="tv_forgotpass">Esqueceu a senha?</string>
+    <string name="connection_failed">Não há conexão com a Internet</string>
+    <string name="url_invalid">Não foi possível obter dados. URL pode ser inválida</string>
+    <string name="campo_vazio">Nenhum campo pode estar vazio!</string>
+    <string name="userPass_failed">Usuário ou Senha inválidos!</string>
 </resources>
