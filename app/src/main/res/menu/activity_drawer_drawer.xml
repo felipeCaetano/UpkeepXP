@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_agenda"
+            android:icon="@drawable/ic_date_range"
+            android:title="@string/nav_agenda_atividades" />
+        <item
+            android:id="@+id/nav_registro"
+            android:icon="@drawable/ic_build"
+            android:title="@string/nav_registro_chamados" />
+        <item
+            android:id="@+id/nav_contatos"
+            android:icon="@drawable/ic_contact_phone"
+            android:title="@string/nav_contatos" />
+        <item
+            android:id="@+id/nav_equipes"
+            android:icon="@drawable/ic_people"
+            android:title="@string/nav_equipes" />
+        <item
+            android:id="@+id/nav_membros"
+            android:icon="@drawable/ic_group_add"
+            android:title="@string/nav_membros" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_sobre"
+                android:title="@string/nav_sobre" />
+            <item
+                android:id="@+id/nav_send"
+                android:title="@string/nav_helpus" />
+        </menu>
+    </item>
+
+</menu>

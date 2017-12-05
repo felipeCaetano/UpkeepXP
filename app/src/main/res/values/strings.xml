@@ -8,4 +8,20 @@
     <string name="url_invalid">Não foi possível obter dados. URL pode ser inválida</string>
     <string name="campo_vazio">Nenhum campo pode estar vazio!</string>
     <string name="userPass_failed">Usuário ou Senha inválidos!</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="user_name">Nome do Usuário</string>
+    <string name="user_mail">user@upkeepxp.com</string>
+    <string name="navhead_description">Imagem do Usuário</string>
+    <string name="nav_agenda_atividades">Agenda de Atividades</string>
+    <string name="nav_registro_chamados">Registro de Chamados</string>
+    <string name="nav_contatos">Contatos</string>
+    <string name="nav_equipes">Equipes</string>
+    <string name="nav_membros">Membros</string>
+    <string name="nav_sobre">Sobre o Upkeep XP</string>
+    <string name="nav_helpus">Ajuda e FeedBack</string>
+    <string name="saudacoes">Seja Bem Vindo ao Upkeep XP</string>
 </resources>

@@ -49,7 +49,7 @@ public class Conexao {
 
             while((linha=bufferedReader.readLine()) != null){
                 resposta.append(linha);
-                resposta.append('\r');
+                resposta.append('\r');          //se comentar essa linha troca-se .contains por .equals??
             }
 
             bufferedReader.close();

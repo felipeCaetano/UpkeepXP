@@ -95,7 +95,9 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String results){
             if(results.contains("login_ok")){
-                Intent autentication = new Intent(LoginActivity.this,TelaInicialActivity.class);
+                //exibir toast apenas para verificar os dados q chegam do servidor
+                //Toast.makeText(LoginActivity.this, results, Toast.LENGTH_LONG).show();
+                Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(autentication);
             }
             else {
