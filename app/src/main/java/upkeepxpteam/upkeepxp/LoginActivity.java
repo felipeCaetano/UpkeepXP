@@ -94,10 +94,26 @@ public class LoginActivity extends AppCompatActivity {
         //exibe os resultados
         @Override
         protected void onPostExecute(String results){
+
+            //Criado para tratar a nova String vinda do Servidor;antes era assim:
+            /*
             if(results.contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
                 //Toast.makeText(LoginActivity.this, results, Toast.LENGTH_LONG).show();
                 Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(autentication);
+             */
+            //Agora ficou assim:
+            String[] resultado = results.split(", ");
+
+            if(resultado[0].contains("login_ok")){
+                //exibir toast apenas para verificar os dados q chegam do servidor
+                //Toast.makeText(LoginActivity.this, results, Toast.LENGTH_LONG).show();
+                Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
+                autentication.putExtra("nome",resultado[1]);
+                autentication.putExtra("snome",resultado[2]);
+                autentication.putExtra("email",resultado[3]);
+                autentication.putExtra("acesso",resultado[4]);
                 startActivity(autentication);
             }
             else {

@@ -1,9 +1,7 @@
 package upkeepxpteam.upkeepxp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,15 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //recupera dados vindos da intent autentication
+        Intent autentication = getIntent();
+        final String nome = autentication.getStringExtra("nome");
+        final String segundoNome = autentication.getStringExtra("snome");
+        final String email = autentication.getStringExtra("email");
+        String acesso = autentication.getStringExtra("acesso");
+
+        //@TODO:Recuperar e exibir a foto do usuário
+
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,7 +44,44 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View hdview = navigationView.getHeaderView(0);
+        ImageView fotoUser = hdview.findViewById(R.id.img_profile);
+        fotoUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent tirarFoto = new Intent(MainActivity.this, TirarFotoActivity.class);
+                tirarFoto.putExtra("nome",nome);
+                tirarFoto.putExtra("snome",segundoNome);
+                tirarFoto.putExtra("email",email);
+                startActivity(tirarFoto);
+            }
+        });
+        setNavUserName(navigationView, nome, segundoNome);
+        setUserEmail(navigationView, email);
+//      setUserProfileImage(navigationView, email);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void setUserProfileImage(String email) {
+
+    }
+
+    private void setUserEmail(NavigationView navView, String email) {
+
+        View headerView = navView.getHeaderView(0);
+        TextView userEmail = headerView.findViewById(R.id.txt_nav_userEmail);
+        userEmail.setText(email);
+        userEmail.setTextColor(getResources().getColor(R.color.textColorPrimary));
+
+    }
+
+    private void setNavUserName(NavigationView navView, String nome, String segundoNome) {
+
+        View headerView = navView.getHeaderView(0);
+        TextView userName = headerView.findViewById(R.id.txt_nav_userName);
+        userName.setText(String.format("%s %s", nome, segundoNome));
+        userName.setTextColor(getResources().getColor(R.color.textColorPrimary));
+
     }
 
     @Override

@@ -30,13 +30,6 @@ public class Conexao {
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            //criar saida
-            /*
-            DataOutputStream dataOutputStream = new DataOutputStream(connection.getOutputStream());
-            dataOutputStream.writeBytes(parametroUsuario);
-            dataOutputStream.flush();
-            dataOutputStream.close();
-            */
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
             outputStreamWriter.write(parametroUsuario);
             outputStreamWriter.flush();

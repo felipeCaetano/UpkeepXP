@@ -24,4 +24,6 @@
     <string name="nav_sobre">Sobre o Upkeep XP</string>
     <string name="nav_helpus">Ajuda e FeedBack</string>
     <string name="saudacoes">Seja Bem Vindo ao Upkeep XP</string>
+    <string name="bt_salvar">Salvar</string>
+    <string name="act_bar_tirarFoto">Selecionar ou Tirar Foto</string>
 </resources>
