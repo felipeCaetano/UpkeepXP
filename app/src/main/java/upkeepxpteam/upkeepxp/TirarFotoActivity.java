@@ -1,7 +1,16 @@
 package upkeepxpteam.upkeepxp;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +18,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+
 public class TirarFotoActivity extends AppCompatActivity {
+
+    private final int GALERY = 1;
+    private final int CAMERA = 0;
+    private final int PERMISSION_REQUEST = 0;
 
     private ImageView imageView;
     private Button btnSalvar;
@@ -17,15 +32,18 @@ public class TirarFotoActivity extends AppCompatActivity {
     private FloatingActionButton fabTirarFoto;
     private TextView txtNome;
     private TextView txtEmail;
+    private Bitmap thumb;
+    private Bitmap btmReduzido;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent tirarFoto = getIntent();
-        String nome = tirarFoto.getStringExtra("nome");
-        String sobrenome = tirarFoto.getStringExtra("snome");
-        String email = tirarFoto.getStringExtra("email");
+        final Intent retornaImageView = getIntent();
+        final String nome = retornaImageView.getStringExtra("nome");
+        final String sobrenome = retornaImageView.getStringExtra("snome");
+        final String email = retornaImageView.getStringExtra("email");
         setContentView(R.layout.activity_tirar_foto);
 
         imageView = findViewById(R.id.img_user);
@@ -35,11 +53,36 @@ public class TirarFotoActivity extends AppCompatActivity {
         txtEmail.setText(email);
 
         fabGaleria = findViewById(R.id.fab_abrirGaleria);
+
+        if(ContextCompat.checkSelfPermission(TirarFotoActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            //não tem permissão: solicitar
+            if(ActivityCompat.shouldShowRequestPermissionRationale(TirarFotoActivity.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+            }else{
+                ActivityCompat.requestPermissions(TirarFotoActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
+            }
+        }
+
+
         //setar listener para chamar a galeria
         fabGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //chamar intent da galeria abreGaleria();
+                //verifica permissão de galeria
+                int permissionCheck = ContextCompat.checkSelfPermission(TirarFotoActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE);
+                //se tiver permissão tira foto
+                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    escolherFoto();
+                }
+                else{
+                    // solicita permissão
+                    ActivityCompat.requestPermissions(TirarFotoActivity.this,new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},GALERY);
+                }
+
             }
         });
 
@@ -53,11 +96,85 @@ public class TirarFotoActivity extends AppCompatActivity {
         });
 
         btnSalvar = findViewById(R.id.btn_salvar);
+        //Salvar tanto persiste a foto quanto retorna no imageview q a chamou.
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Salvar Imagem no banco de dados
+                //REtorna a actitivty chamadora
+
+                Intent retornaImageView = new Intent(TirarFotoActivity.this, MainActivity.class);
+                retornaImageView.putExtra("nome",nome);
+                retornaImageView.putExtra("snome",sobrenome);
+                retornaImageView.putExtra("email",email);
+
+                if(btmReduzido!=null) {
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    btmReduzido.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    byte imagemBytes[] = byteArrayOutputStream.toByteArray();
+                    retornaImageView.putExtra("Bitmap", imagemBytes);
+                }else{
+                    finish();
+                }
+                startActivity(retornaImageView);
+
+                //N pode dar finish antes de persistir no banco.
+                finish();
+
             }
         });
+    }
+
+    private void escolherFoto() {
+        Intent galery =
+                new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galery,GALERY);
+    }
+
+    /*Trata a resposta de permissão do usuário
+    de acordo com as constantes
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
+        //Toast.makeText(TirarFotoActivity.this,"Estu aqui",Toast.LENGTH_SHORT).show();
+        switch (requestCode){
+            case CAMERA:{
+                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    //tirarFoto();
+                    // startActivityForResult(takePictureIntent,0);
+                }
+            }
+            case GALERY:{
+                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    escolherFoto();
+                }
+            }
+        }
+    }
+
+    /*
+    Metodo que responde as Intentes de Tirar Foto e Abrir galeria
+    Caso o requestCode seja GALERY ou CAMERA e coloca o resultado no ImageView
+     */
+    @Override
+    protected  void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode, data);
+        if(requestCode== GALERY && resultCode== RESULT_OK){
+            Uri selectedImage = data.getData();
+            String[] filePath = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePath[0]);
+            String picturePath = c.getString(columnIndex);
+            c.close();
+
+            //Necessario redimensionar a imagem lida
+            if(picturePath==null){
+                thumb = BitmapFactory.decodeResource(getBaseContext().getResources(),R.mipmap.ic_launcher_round);
+            }
+            thumb = (BitmapFactory.decodeFile(picturePath));
+            btmReduzido = Bitmap.createScaledBitmap(thumb,150,150,true);
+            imageView.setImageBitmap(thumb);
+        }
     }
 }

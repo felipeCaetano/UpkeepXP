@@ -1,6 +1,9 @@
 package upkeepxpteam.upkeepxp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,22 +18,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private String nome;
+    private String segundoNome;
+    private String email;
+    private Bitmap foto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bitmap imageUser = null;
+
         //recupera dados vindos da intent autentication
         Intent autentication = getIntent();
-        final String nome = autentication.getStringExtra("nome");
-        final String segundoNome = autentication.getStringExtra("snome");
-        final String email = autentication.getStringExtra("email");
+        nome = autentication.getStringExtra("nome");
+        segundoNome = autentication.getStringExtra("snome");
+        email = autentication.getStringExtra("email");
         String acesso = autentication.getStringExtra("acesso");
 
-        //@TODO:Recuperar e exibir a foto do usuário
+        //recupera dados vindos da intent tirarfotos
+        Intent tirarFotos = getIntent();
+        if(tirarFotos.getExtras()!=null){
+            nome = tirarFotos.getStringExtra("nome");
+            segundoNome = tirarFotos.getStringExtra("snome");
+            email = tirarFotos.getStringExtra("email");
+            byte[] imagemBytes = tirarFotos.getByteArrayExtra("Bitmap");
+            if(imagemBytes!=null){
+                ByteArrayInputStream imageStream = new ByteArrayInputStream(imagemBytes);
+                imageUser = BitmapFactory.decodeStream(imageStream);
+            }
+        }
 
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -46,24 +70,36 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hdview = navigationView.getHeaderView(0);
         ImageView fotoUser = hdview.findViewById(R.id.img_profile);
+
         fotoUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent tirarFoto = new Intent(MainActivity.this, TirarFotoActivity.class);
-                tirarFoto.putExtra("nome",nome);
-                tirarFoto.putExtra("snome",segundoNome);
-                tirarFoto.putExtra("email",email);
+                tirarFoto.putExtra("nome", nome);
+                tirarFoto.putExtra("snome", segundoNome);
+                tirarFoto.putExtra("email", email);
                 startActivity(tirarFoto);
             }
         });
         setNavUserName(navigationView, nome, segundoNome);
         setUserEmail(navigationView, email);
-//      setUserProfileImage(navigationView, email);
+        setUserProfileImage(navigationView, imageUser);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void setUserProfileImage(String email) {
+    private void setUserProfileImage(NavigationView navView, Bitmap image) {
+        if(image!=null){
+            foto = image;
+            View headerView = navView.getHeaderView(0);
+            ImageView imageProfile = headerView.findViewById(R.id.img_profile);
+            imageProfile.setImageBitmap(image);
+        }
+        else{
+            View headerView = navView.getHeaderView(0);
+            ImageView imageProfile = headerView.findViewById(R.id.img_profile);
+            imageProfile.setImageBitmap(foto);
 
+        }
     }
 
     private void setUserEmail(NavigationView navView, String email) {
@@ -72,7 +108,6 @@ public class MainActivity extends AppCompatActivity
         TextView userEmail = headerView.findViewById(R.id.txt_nav_userEmail);
         userEmail.setText(email);
         userEmail.setTextColor(getResources().getColor(R.color.textColorPrimary));
-
     }
 
     private void setNavUserName(NavigationView navView, String nome, String segundoNome) {
@@ -81,7 +116,6 @@ public class MainActivity extends AppCompatActivity
         TextView userName = headerView.findViewById(R.id.txt_nav_userName);
         userName.setText(String.format("%s %s", nome, segundoNome));
         userName.setTextColor(getResources().getColor(R.color.textColorPrimary));
-
     }
 
     @Override
