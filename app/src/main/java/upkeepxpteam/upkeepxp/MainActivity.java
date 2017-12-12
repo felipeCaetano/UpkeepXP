@@ -24,11 +24,9 @@ import java.io.ByteArrayOutputStream;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     private String nome;
     private String segundoNome;
     private String email;
-    private Bitmap foto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setUserProfileImage(NavigationView navView, Bitmap image) {
         if(image!=null){
-            foto = image;
+            Bitmap foto = image;
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
             imageProfile.setImageBitmap(image);
@@ -97,8 +95,8 @@ public class MainActivity extends AppCompatActivity
         else{
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
-            imageProfile.setImageBitmap(foto);
-
+            Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+            imageProfile.setImageBitmap(bm);
         }
     }
 
@@ -171,7 +169,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

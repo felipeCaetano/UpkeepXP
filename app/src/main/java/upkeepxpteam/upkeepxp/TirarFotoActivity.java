@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+
+import upkeepxpteam.hardware.ExternalStorage;
+import upkeepxpteam.hardware.UseCamera;
 
 public class TirarFotoActivity extends AppCompatActivity {
 
@@ -34,6 +40,7 @@ public class TirarFotoActivity extends AppCompatActivity {
     private TextView txtEmail;
     private Bitmap thumb;
     private Bitmap btmReduzido;
+    private File foto = null;
 
 
     @Override
@@ -54,6 +61,7 @@ public class TirarFotoActivity extends AppCompatActivity {
 
         fabGaleria = findViewById(R.id.fab_abrirGaleria);
 
+        // trecho adiciona permissão de ler arquivos
         if(ContextCompat.checkSelfPermission(TirarFotoActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             //não tem permissão: solicitar
@@ -66,6 +74,16 @@ public class TirarFotoActivity extends AppCompatActivity {
             }
         }
 
+        // trecho adiciona permissão de gravar arquivos
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
+            }
+        }
 
         //setar listener para chamar a galeria
         fabGaleria.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +109,18 @@ public class TirarFotoActivity extends AppCompatActivity {
         fabTirarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //chamar intente de tirar foto com tiraFoto();
+                //verifica permissão de camera
+                int permissionCheck = ContextCompat.checkSelfPermission(TirarFotoActivity.this, Manifest.permission.CAMERA);
+                //UseCamera camera = new UseCamera();
+                //se tiver permissão tira foto
+                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    tirarFoto();
+                }
+                else{
+                    // solicita permissão
+                    ActivityCompat.requestPermissions(TirarFotoActivity.this,new String[]{
+                            Manifest.permission.CAMERA},CAMERA);
+                }
             }
         });
 
@@ -114,10 +143,10 @@ public class TirarFotoActivity extends AppCompatActivity {
                     byte imagemBytes[] = byteArrayOutputStream.toByteArray();
                     retornaImageView.putExtra("Bitmap", imagemBytes);
                 }else{
+                    //e se nada for retornado? precisamos setar uma imagem no lugar
                     finish();
                 }
                 startActivity(retornaImageView);
-
                 //N pode dar finish antes de persistir no banco.
                 finish();
 
@@ -131,6 +160,24 @@ public class TirarFotoActivity extends AppCompatActivity {
         startActivityForResult(galery,GALERY);
     }
 
+    private void tirarFoto(){
+        //Intent takePictureIntent = new Intent(TirarFotoActivity.this,UseCamera.class);
+        //startActivityForResult(takePictureIntent,CAMERA);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        try{
+            ExternalStorage externalStorage = new ExternalStorage();
+            foto = externalStorage.criarArquivo();
+        }catch (IOException e) {   // Manipulação em caso de falha de criação do arquivo
+            e.printStackTrace();
+        }
+        if(foto!= null) {
+            Uri photoURI= FileProvider.getUriForFile(getBaseContext(),getBaseContext().getApplicationContext().getPackageName() + ".provider", foto);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+            startActivityForResult(takePictureIntent, CAMERA);
+        }
+    }
+
     /*Trata a resposta de permissão do usuário
     de acordo com as constantes
      */
@@ -140,8 +187,9 @@ public class TirarFotoActivity extends AppCompatActivity {
         switch (requestCode){
             case CAMERA:{
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    //tirarFoto();
-                    // startActivityForResult(takePictureIntent,0);
+                    //UseCamera camera = new UseCamera();
+                    //camera.tirarFoto();
+                    tirarFoto();
                 }
             }
             case GALERY:{
@@ -159,7 +207,7 @@ public class TirarFotoActivity extends AppCompatActivity {
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode, data);
-        if(requestCode== GALERY && resultCode== RESULT_OK){
+        if(requestCode == GALERY && resultCode== RESULT_OK){
             Uri selectedImage = data.getData();
             String[] filePath = {MediaStore.Images.Media.DATA};
             Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
@@ -175,6 +223,20 @@ public class TirarFotoActivity extends AppCompatActivity {
             thumb = (BitmapFactory.decodeFile(picturePath));
             btmReduzido = Bitmap.createScaledBitmap(thumb,150,150,true);
             imageView.setImageBitmap(thumb);
+        }
+        if(requestCode == CAMERA && resultCode== RESULT_OK){
+
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(foto)));
+            //coloca a imagem no ImageView.
+            if(data!=null){
+                Bundle bundle = data.getExtras();
+                if(bundle!=null){
+                    thumb = (Bitmap) bundle.get("data");
+                    btmReduzido = Bitmap.createScaledBitmap(thumb,150,150,true);
+                    //return bitmap criando um metodo de saida
+                    imageView.setImageBitmap(thumb);
+                }
+            }
         }
     }
 }

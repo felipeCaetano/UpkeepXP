@@ -26,4 +26,7 @@
     <string name="saudacoes">Seja Bem Vindo ao Upkeep XP</string>
     <string name="bt_salvar">Salvar</string>
     <string name="act_bar_tirarFoto">Selecionar ou Tirar Foto</string>
+    <string name="senha">Nova Senha</string>
+    <string name="confirm_senha">Confirmar Senha</string>
+    <string name="recuperar_senha">Recuperar Senha</string>
 </resources>

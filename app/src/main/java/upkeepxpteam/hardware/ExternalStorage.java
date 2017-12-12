@@ -30,4 +30,15 @@ public class ExternalStorage {
         File imagem = new File(pasta.getPath() + File.separator + "upkeep_" + timeStamp + ".jpg");
         return imagem;
     }
+
+    public File criarArquivo() throws IOException {
+        /*
+        Cria arquivo de foto chamado upkeep_ acrescido da data e hora da imagem para torna-la unica
+        feito isso o arquivo é salvo na galeria em formato jpg
+         */
+        String timeStamp= new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File pasta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File imagem =  new File(pasta.getPath() + File.separator+ "upkeep_" + timeStamp+ ".jpg");
+        return imagem;
+    }
 }
