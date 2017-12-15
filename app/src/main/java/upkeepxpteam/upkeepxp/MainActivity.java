@@ -21,6 +21,8 @@ import android.widget.Toast;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
+import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -153,10 +155,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent intent;
 
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
         } else if (id == R.id.nav_contatos) {
+            intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_equipes) {
 

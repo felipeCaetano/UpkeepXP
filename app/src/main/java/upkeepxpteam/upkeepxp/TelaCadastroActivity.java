@@ -23,7 +23,7 @@ public class TelaCadastroActivity extends AppCompatActivity {
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(senha.getText().toString().equals(reptSenha.getText().toString()))
+                if(senha.getText().toString().equals(reptSenha.getText().toString()));
                 //chamar metodo para conectar com o servidor e dar update na tabela de login onde o email
                 //de usuário está definido
             }

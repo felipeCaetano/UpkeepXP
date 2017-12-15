@@ -42,6 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".TirarFotoActivity"
             android:label="@string/act_bar_tirarFoto"/>
+        <activity android:name="upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity"/>
     </application>
 
 </manifest>
