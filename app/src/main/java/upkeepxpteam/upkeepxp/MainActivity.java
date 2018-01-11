@@ -3,7 +3,6 @@ package upkeepxpteam.upkeepxp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,11 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 
+import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
+import upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -159,12 +158,16 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
+            intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_contatos) {
             intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
             startActivity(intent);
 
 
         } else if (id == R.id.nav_equipes) {
+            intent = new Intent(MainActivity.this, CadastraAtividadeActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
 

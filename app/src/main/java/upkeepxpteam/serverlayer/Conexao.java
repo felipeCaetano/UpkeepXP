@@ -1,7 +1,6 @@
 package upkeepxpteam.serverlayer;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -14,9 +13,15 @@ import java.net.URL;
 
 public class Conexao {
 
+    private static OutputStreamWriter outputStreamWriter;
+    private static URL url;
+    private static HttpURLConnection connection = null;
+    private static InputStream inputStream;
+    private static BufferedReader bufferedReader;
+    private static String linha;
+    private static StringBuffer resposta;
+
     public static String postDados(String urlUsuario, String parametroUsuario){
-        URL url;
-        HttpURLConnection connection = null;
 
         try{
             url = new URL(urlUsuario);
@@ -30,27 +35,24 @@ public class Conexao {
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+            outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
             outputStreamWriter.write(parametroUsuario);
             outputStreamWriter.flush();
 
             //obter informação
-            InputStream inputStream = connection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            String linha;
-            StringBuffer resposta = new StringBuffer();
+            inputStream = connection.getInputStream();
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            resposta = new StringBuffer();
 
-            while((linha=bufferedReader.readLine()) != null){
+            while((linha= bufferedReader.readLine()) != null){
                 resposta.append(linha);
                 resposta.append('\r');          //se comentar essa linha troca-se .contains por .equals??
             }
-
             bufferedReader.close();
 
             return resposta.toString();
 
         }catch (Exception err){
-
             return  null;
         }finally {
             if (connection != null){
