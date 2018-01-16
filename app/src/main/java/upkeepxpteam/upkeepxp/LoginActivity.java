@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        url = "http://192.168.0.102:8090/upkeepxp/login/logar.php";
+                        url = "http://179.106.9.69:8090/upkeepxp/login/logar.php";
                         parametros = "email=" + emailUser +"&senha=" + senhaUser;
                         new SolicitaDados().execute(url);
                     }
