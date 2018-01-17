@@ -28,4 +28,21 @@
     <string name="confirm_senha">Confirmar Senha</string>
     <string name="recuperar_senha">Recuperar Senha</string>
     <string name="date_picker_title">Data de Nascimento:</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_Nome">Nome</string>
+    <string name="txt_Sobrenome">Sobrenome</string>
+    <string name="txt_Nascimento">Nascimento</string>
+    <string name="txt_Sexo">Sexo</string>
+    <string name="txt_M">M</string>
+    <string name="txt_F">F</string>
+    <string name="txt_Telefone">Telefone</string>
+    <string name="txt_Especialidade">Especialidade</string>
+    <string name="txt_CEP">CEP</string>
+    <string name="txt_Número">Número</string>
+    <string name="txt_UF">UF</string>
+    <string name="txt_Funcao">Função</string>
+    <string name="et_nomeequipe">Nome da Equipe</string>
+    <string name="et_local">Local</string>
+    <string name="et_descrição">Descrição</string>
+    <string name="bt_limpar">Limpar</string>
 </resources>

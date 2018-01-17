@@ -9,4 +9,5 @@
         <item name="android:editTextColor">@color/editTextColor</item>
         <item name="android:colorBackground">@color/editTextColor</item>
     </style>
+
 </resources>

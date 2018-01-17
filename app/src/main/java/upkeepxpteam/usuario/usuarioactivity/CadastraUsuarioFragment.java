@@ -94,6 +94,7 @@ public class CadastraUsuarioFragment extends Fragment {
 
 
                 String email = emailEditText.getText().toString();
+                //chama validação
                 String nome = nomeEditText.getText().toString();
                 String sobrenome = sobrenomeEditText.getText().toString();
                 String nascimento = nascimentoEditText.getText().toString();

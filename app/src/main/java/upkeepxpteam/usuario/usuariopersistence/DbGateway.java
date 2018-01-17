@@ -3,6 +3,8 @@ package upkeepxpteam.usuario.usuariopersistence;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import upkeepxpteam.persistence.UpkeepDbHelper;
+
 /**
  * Created by herma on 11/12/2017.
  */
@@ -13,7 +15,7 @@ public class DbGateway {
     private SQLiteDatabase db;
 
     private DbGateway(Context ctx){
-        DbHelper helper = new DbHelper(ctx);
+        UpkeepDbHelper helper = new UpkeepDbHelper(ctx);
         db = helper.getWritableDatabase();
     }
 
