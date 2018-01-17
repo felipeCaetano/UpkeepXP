@@ -69,12 +69,9 @@ public class Validacao {
         }
         return result;}
 
-    public Boolean validarHora (String hora){
+    public Boolean validarHora (String hora) {
 
-        
-
-        return true;
-
-    }
+        return hora.matches("^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$");
+        }
 
 }
