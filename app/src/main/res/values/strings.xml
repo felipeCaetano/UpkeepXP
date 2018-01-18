@@ -45,4 +45,5 @@
     <string name="et_local">Local</string>
     <string name="et_descrição">Descrição</string>
     <string name="bt_limpar">Limpar</string>
+    <string name="email_incorreto">Formato de e-mail incorreto!</string>
 </resources>

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import upkeepxpteam.infraestrutura.Validacao;
 import upkeepxpteam.serverlayer.Conexao;
 
 public class LoginActivity extends AppCompatActivity {
@@ -63,6 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(emailUser.isEmpty() || senhaUser.isEmpty()){
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
+                    }
+                    else if(!(new Validacao().validarEmail(emailUser))){
+                        Toast.makeText(LoginActivity.this, getString(R.string.email_incorreto), Toast.LENGTH_SHORT).show();
                     }
                     else {
                         url = "http://179.106.9.69:8090/upkeepxp/login/logar.php";
