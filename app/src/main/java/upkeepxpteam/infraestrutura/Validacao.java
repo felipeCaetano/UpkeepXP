@@ -13,7 +13,7 @@ public class Validacao {
     }
     public Boolean validarEmail(String email){
 
-        return email.matches("[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]");
+        return email.matches("^[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]$");
     }
     public Boolean validarSobrenome(String sobreNome){
 
