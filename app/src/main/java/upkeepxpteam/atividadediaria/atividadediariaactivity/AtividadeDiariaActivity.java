@@ -83,11 +83,9 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
 
         });
 
-
         addDummyEvents();
 
         //  gotoToday();
-
 
     }
 
@@ -96,6 +94,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
     }
 
     // Adding dummy events in calendar view for April, may, june 2016
+    //este método é de testes
     private void addDummyEvents() {
 
         addEvents(compactCalendarView, Calendar.APRIL);
@@ -124,7 +123,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         }
     }
 
-
+    //trocar para setHorario??
     private void setToMidnight(Calendar calendar) {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
