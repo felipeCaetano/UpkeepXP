@@ -13,7 +13,7 @@ public class Validacao {
     }
     public Boolean validarEmail(String email){
 
-        return email.matches("[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]");
+        return email.matches("^[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]$");
     }
     public Boolean validarSobrenome(String sobreNome){
 
@@ -24,13 +24,12 @@ public class Validacao {
 
         return Nascimento.matches("^((0[1-9]|[12]\\d)\\/(0[1-9]|1[0-2])|30\\/(0[13-9]|1[0-2])|31\\/(0[13578]|1[02]))\\/\\d{4}$");
     }
-    public Boolean validarSexo(String sexo){
-        boolean result;
-        if (sexo.equals("M") || sexo.equals("F")){
-            result = true;
-        } else result = false;
-        return result;
+
+    public Boolean validarSexo2(String sexo){
+
+        return sexo.matches("^(M|F)$");
     }
+
     public Boolean validarTelefone(String telefone) {
 
         return telefone.matches("^[1-9]{2}\\-[2-9][0-9]{7,8}$");

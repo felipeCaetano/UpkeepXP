@@ -64,11 +64,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(emailUser.isEmpty() || senhaUser.isEmpty()){
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!(new Validacao().validarEmail(emailUser))){
-                        Toast.makeText(LoginActivity.this, getString(R.string.email_incorreto), Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+
+                    } else if (new Validacao().validarEmail(emailUser)) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT);
+
+                    } else {
                         url = "http://179.106.9.69:8090/upkeepxp/login/logar.php";
                         parametros = "email=" + emailUser +"&senha=" + senhaUser;
                         new SolicitaDados().execute(url);
