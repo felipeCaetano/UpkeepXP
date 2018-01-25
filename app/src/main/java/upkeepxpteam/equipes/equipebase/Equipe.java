@@ -2,7 +2,6 @@ package upkeepxpteam.equipes.equipebase;
 
 import java.io.Serializable;
 import java.util.List;
-
 import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class Equipe implements Serializable {
@@ -44,4 +43,6 @@ public class Equipe implements Serializable {
     public String toString(){
         return "" + this.getNome() +" "+ this.getUsuario();
     }
+
+    public String toString2(){ return "" + this.getNome(); }
 }

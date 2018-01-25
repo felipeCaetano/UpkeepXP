@@ -4,14 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import upkeepxpteam.equipes.CadastraEquipeActivity;
 import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
-import upkeepxpteam.usuario.usuariobase.Usuario;
 
 
 public class EquipeDAO {
@@ -35,6 +33,12 @@ public class EquipeDAO {
         dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
+    public EquipeDAO(CadastraEquipeActivity cadastraEquipeActivity) {
+        UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(cadastraEquipeActivity);
+        dbWriter = upkeepDbHelper.getWritableDatabase();
+        dbReader = upkeepDbHelper.getReadableDatabase();
+    }
+
     public static String createMyTable(){
         return SQL_CREATE_ENTRIES;
     }
@@ -52,10 +56,10 @@ public class EquipeDAO {
         String sql = "SELECT * FROM equipe";
         SQLiteDatabase db = dbReader;
         Cursor cursor = db.rawQuery(sql, null);
-        return listarequipe(cursor);
+        return listarEquipe(cursor);
     }
 
-    public List<Equipe> listarequipe(Cursor cursor){
+    public List<Equipe> listarEquipe(Cursor cursor){
         List<Equipe> result = new ArrayList<>();
         while (cursor.moveToNext()){
             Equipe equipe = new Equipe();

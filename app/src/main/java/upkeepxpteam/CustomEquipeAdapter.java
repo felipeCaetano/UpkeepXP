@@ -2,18 +2,16 @@ package upkeepxpteam;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.List;
-
+import upkeepxpteam.equipes.EquipesActivity;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.upkeepxp.R;
 
@@ -47,7 +45,7 @@ public class CustomEquipeAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
 
         if (view == null){
@@ -61,21 +59,23 @@ public class CustomEquipeAdapter extends BaseAdapter {
         }
         final EquipeModel equipeModel = equipeModels.get(i);
 
-        holder.tvEquipe.setText(equipeModel.getEquipe().getNome() +"\n"+ equipeModel.getEquipe().getUsuario());
+        final String nome = equipeModel.getEquipe().getNome();
+        final String operario = equipeModel.getEquipe().getUsuario();
+        holder.tvEquipe.setText(nome +"\n"+ operario);
         holder.tvEquipe.setTextColor(Color.parseColor("#000000"));
 
         holder.btnExcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //EquipeDAO equipeDAO = new EquipeDAO(context);
-                //equipeDAO.excluirEquipe(equipeModel.getEquipe().getNome());
-                System.out.print(equipeModel.getEquipe().getUsuario());
+                EquipeDAO equipeDAO = new EquipeDAO(activity);
+                equipeDAO.excluirEquipe(nome);
+                Intent intent = new Intent(activity, EquipesActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
             }
         });
-
         return view;
     }
-
     class ViewHolder{
         TextView tvEquipe;
         Button btnExcluir;

@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import upkeepxpteam.CustomEquipeAdapter;
 import upkeepxpteam.EquipeModel;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
@@ -24,20 +22,20 @@ public class EquipesActivity extends AppCompatActivity {
         this.setTitle("Equipes");
         ListView lista = (ListView) findViewById(R.id.listview_Equipes);
 
-        final List<EquipeModel> equipeModels = new ArrayList<>();
-        addItensOnEquipeModels(equipeModels);
+        final List<EquipeModel> modeloEquipe = new ArrayList<>();
+        addItensListaModeloEquipe(modeloEquipe);
 
-        final CustomEquipeAdapter adapter = new CustomEquipeAdapter(this, equipeModels);
+        final CustomEquipeAdapter adapter = new CustomEquipeAdapter(this, modeloEquipe);
         lista.setAdapter(adapter);
     }
 
     public void addEquipe(View view){
         Intent intent = new Intent(this, CadastraEquipeActivity.class);
         startActivity(intent);
-        onPause();
+        finish();
     }
 
-    public void addItensOnEquipeModels(List equipeModels) {
+    public void addItensListaModeloEquipe(List equipeModels) {
         EquipeDAO equipeDAO = new EquipeDAO(this);
         List itens = equipeDAO.buscarTodasEquipes();
         int cont = 0;
@@ -47,5 +45,4 @@ public class EquipesActivity extends AppCompatActivity {
             cont += 1;
         }
     }
-
 }
