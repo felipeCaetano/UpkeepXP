@@ -39,7 +39,7 @@ public class EquipesActivity extends AppCompatActivity {
 
     public void addItensOnEquipeModels(List equipeModels) {
         EquipeDAO equipeDAO = new EquipeDAO(this);
-        List itens = equipeDAO.listarequipe();
+        List itens = equipeDAO.buscarTodasEquipes();
         int cont = 0;
         while (cont <= itens.size() - 1) {
             Equipe equipe = (Equipe) itens.get(cont);

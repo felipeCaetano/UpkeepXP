@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,12 +23,14 @@ import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 public class CadastraEquipeActivity extends Activity {
 
     private Button btnSalvar;
+    private EditText edtnomeequipe;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = (ListView) findViewById(R.id.listView_Membros);
         btnSalvar = (Button) findViewById(R.id.btn_confirmar);
+        edtnomeequipe = (EditText) findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
         addItensListaUsuarios(listaUsuarios);
@@ -42,7 +45,7 @@ public class CadastraEquipeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Equipe equipe = new Equipe();
-                equipe.setNome("Equipe 1");
+                equipe.setNome(edtnomeequipe.getText().toString());
                 equipe.setUsers(usersequipe);
                 EquipeDAO equipeDAO = new EquipeDAO(CadastraEquipeActivity.this);
                 equipeDAO.equipeSave(equipe);

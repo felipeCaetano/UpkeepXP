@@ -48,11 +48,15 @@ public class EquipeDAO {
         return dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,null,cv)>0;
     }
 
-    public List<Equipe> listarequipe(){
-        List<Equipe> result = new ArrayList<>();
+    public List<Equipe> buscarTodasEquipes() {
         String sql = "SELECT * FROM equipe";
         SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql,null);
+        Cursor cursor = db.rawQuery(sql, null);
+        return listarequipe(cursor);
+    }
+
+    public List<Equipe> listarequipe(Cursor cursor){
+        List<Equipe> result = new ArrayList<>();
         while (cursor.moveToNext()){
             Equipe equipe = new Equipe();
             String nome = cursor.getString(cursor.getColumnIndex("Nome"));
@@ -60,10 +64,15 @@ public class EquipeDAO {
             String operarios = cursor.getString(cursor.getColumnIndex("Operario"));
             equipe.setUsuario(operarios);
             result.add(equipe);
-
-        } return result;
+        }
+        return result;
     }
 
+    public void excluirEquipe(String nome){
 
+        SQLiteDatabase db = dbReader;
+        db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,"Nome = ?", new String[]{nome});
+
+    }
 
 }
