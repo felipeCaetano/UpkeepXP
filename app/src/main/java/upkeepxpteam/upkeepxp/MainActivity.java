@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
-            intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
-            startActivity(intent);
+            /*intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
+            startActivity(intent);*/
 
 
         } else if (id == R.id.nav_equipes) {
@@ -172,6 +172,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
+            intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_sobre) {
 
