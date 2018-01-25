@@ -13,14 +13,17 @@ public class UserModel {
     }
 
     public boolean isSelected() {
+
         return isSelected;
     }
 
     public void setSelected(boolean selected) {
+
         isSelected = selected;
     }
 
     public Usuario getUsuario() {
+
         return usuario;
     }
 
