@@ -90,7 +90,7 @@
         android:layout_marginTop="8dp"
         android:autoLink="web"
         android:text="@string/tv_forgotpass"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
