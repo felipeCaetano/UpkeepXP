@@ -17,6 +17,7 @@ import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
+import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 public class CadastraEquipeActivity extends Activity {
 
@@ -28,10 +29,10 @@ public class CadastraEquipeActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.listView_Membros);
         btnSalvar = (Button) findViewById(R.id.btn_confirmar);
 
-        final List<UserModel> users = new ArrayList<>();
-        addItensOnUsers(users);
+        final List<UserModel> listaUsuarios = new ArrayList<>();
+        addItensListaUsuarios(listaUsuarios);
 
-        final CustomAdapter adapter = new CustomAdapter(this, users);
+        final CustomAdapter adapter = new CustomAdapter(this, listaUsuarios);
         listView.setAdapter(adapter);
 
         final List<Usuario> usersequipe = new ArrayList<>();
@@ -45,7 +46,7 @@ public class CadastraEquipeActivity extends Activity {
                 equipe.setUsers(usersequipe);
                 EquipeDAO equipeDAO = new EquipeDAO(CadastraEquipeActivity.this);
                 equipeDAO.equipeSave(equipe);
-                Intent intent = new Intent(CadastraEquipeActivity.this, Equipe.class);
+                Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -56,26 +57,26 @@ public class CadastraEquipeActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                UserModel model = users.get(i);
+                UserModel model = listaUsuarios.get(i);
                 if (model.isSelected()) {
                     model.setSelected(false);
-                    usersequipe.remove(users.get(i).getUsuario());
+                    usersequipe.remove(listaUsuarios.get(i).getUsuario());
                 }
                 else {
                     model.setSelected(true);
-                    usersequipe.add(users.get(i).getUsuario());
+                    usersequipe.add(listaUsuarios.get(i).getUsuario());
                 }
-                users.set(i, model);
+                listaUsuarios.set(i, model);
 
-                adapter.updateRecords(users);
+                adapter.updateRecords(listaUsuarios);
 
             }
         });
     }
 
-        public void addItensOnUsers(List users) {
-            EquipeDAO equipeDAO = new EquipeDAO(this);
-            List itens = equipeDAO.listarusuarios();
+        public void addItensListaUsuarios(List users) {
+            UsuarioDAO usuarioDAO = new UsuarioDAO(this);
+            List itens = usuarioDAO.buscarTodosUsuarios();
             int cont = 0;
             while (cont <= itens.size() - 1) {
                 Usuario usuario = (Usuario) itens.get(cont);

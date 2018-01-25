@@ -64,37 +64,6 @@ public class EquipeDAO {
         } return result;
     }
 
-    public List<Usuario> listarusuarios(){
-        List<Usuario> result = new ArrayList<>();
-        String sql = "SELECT * FROM Usuarios";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql,null);
-        while (cursor.moveToNext()){
-            Usuario usuario = new Usuario();
-            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
-            usuario.setNome(nome);
-            String email = cursor.getString(cursor.getColumnIndex("Email"));
-            usuario.setEmail(email);
-            String fone = cursor.getString(cursor.getColumnIndex("Fone"));
-            usuario.setTelefone(fone);
-            String snome = cursor.getString(cursor.getColumnIndex("Sobrenome"));
-            usuario.setSobrenome(snome);
-            String nascimento = cursor.getString(cursor.getColumnIndex("Nascimento"));
-            usuario.setNascimento(nascimento);
-            String sexo = cursor.getString(cursor.getColumnIndex("Sexo"));
-            usuario.setSexo(sexo);
-            String especialidade = cursor.getString(cursor.getColumnIndex("Especialidade"));
-            usuario.setEspecialidade(especialidade);
-            String cep = cursor.getString(cursor.getColumnIndex("CEP"));
-            usuario.setCep(cep);
-            String numero = cursor.getString(cursor.getColumnIndex("Numero"));
-            usuario.setNumero(numero);
-            String uf = cursor.getString(cursor.getColumnIndex("UF"));
-            usuario.setUf(uf);
-            String funcao = cursor.getString(cursor.getColumnIndex("Funcao"));
-            usuario.setFuncao(funcao);
-            result.add(usuario);
-        } return result;
-    }
+
 
 }
