@@ -20,4 +20,10 @@ public final class UpKeepDataBaseContract {
             public static final String COLUMN_NAME_DESCRICAO= "Descricao";
         }
 
+        public static class EquipesTable implements BaseColumns{
+        public static final String TABLE_NAME = "equipe";
+        public static final String COLUMN_NAME_NOME = "Nome";
+        public static final String COLUMN_NAME_USUARIOS = "Operario";
+        }
+
 }

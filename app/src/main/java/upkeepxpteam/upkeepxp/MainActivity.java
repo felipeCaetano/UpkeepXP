@@ -20,6 +20,8 @@ import java.io.ByteArrayInputStream;
 
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
 import upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity;
+import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_equipes) {
-            intent = new Intent(MainActivity.this, CadastraAtividadeActivity.class);
+            intent = new Intent(MainActivity.this, EquipesActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
