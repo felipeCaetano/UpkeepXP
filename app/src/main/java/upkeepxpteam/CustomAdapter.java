@@ -24,7 +24,6 @@ public class CustomAdapter extends BaseAdapter {
     public CustomAdapter(Activity activity, List<UserModel> users) {
         this.activity = activity;
         this.users = users;
-
         inflater = activity.getLayoutInflater();
     }
 
