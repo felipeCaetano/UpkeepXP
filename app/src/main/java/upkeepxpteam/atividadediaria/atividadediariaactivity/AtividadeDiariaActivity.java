@@ -103,24 +103,15 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
             public void onDayClick(Date dateClicked) {
 
                 //colocar aqui o metodo para exibir a listview das atividades
-                //criaListaEventos(dateClicked);
+                criaListaEventos(dateClicked);
                 final List<Event> events = compactCalendarView.getEvents(dateClicked);
-                for (Event ev: events) {
-                    AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
-            /*Esse trecho add uma lista inteira num array list:
-            String[] dados = {atividadeDiaria.getEquipeNome(), atividadeDiaria.getDescricao()};
-            dadosAtividade.addAll(Arrays.asList(dados));
-             */     List<String> dadosAtividade = new ArrayList<>();
-                    dadosAtividade.add(""+atividadeDiaria.getEquipeNome()+"\n"+atividadeDiaria.getDescricao()); //Gambis detected: fazer um adapter customizado
-                    final ArrayAdapter<String> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,dadosAtividade);
-                }
 
                 eventos.setAdapter(adaptadorEvents);
 
                 Log.d("Data Clicada: ", dateClicked.toString());
                 Toast.makeText(AtividadeDiariaActivity.this, "Date : " + dateClicked.toString(), Toast.LENGTH_SHORT).show();
                 currentCalender.setTime(dateClicked);
-                //addEvents(compactCalendarView, currentCalender.get(Calendar.MONTH));
+                addEvents(compactCalendarView, currentCalender.get(Calendar.MONTH));
                 Log.d("Eventos:", ""+ events);
 
             }
