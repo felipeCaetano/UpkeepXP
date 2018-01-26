@@ -12,7 +12,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorHint</item>
-        <item name="android:editTextColor">@color/editTextColor</item>
+        <item name="android:editTextColor">@color/colorEditingText</item>
         <item name="android:colorBackground">@color/editTextColor</item>
     </style>
 

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -94,7 +95,6 @@ public class CadastraUsuarioFragment extends Fragment {
 
 
                 String email = emailEditText.getText().toString();
-                //chama validação
                 String nome = nomeEditText.getText().toString();
                 String sobrenome = sobrenomeEditText.getText().toString();
                 String nascimento = nascimentoEditText.getText().toString();
@@ -106,32 +106,44 @@ public class CadastraUsuarioFragment extends Fragment {
                 String uf = ufSpinner.getSelectedItem().toString();
                 String funcao = funcaoSpinner.getSelectedItem().toString();
 
-                UsuarioDAO dao = new UsuarioDAO(getContext());
-                boolean sucesso = dao.salvar(email, nome, sobrenome, nascimento, sexo, fone,
-                        especialidade, cep, numero, uf, funcao);
+                if (!(email.matches("^(\\w+?@\\w+?\\x2E.+)$"))) {
 
-                if (sucesso) {
-                    emailEditText.setText("");
-                    nomeEditText.setText("");
-                    sobrenomeEditText.setText("");
-                    nascimentoEditText.setText("");
-                    mascRadioButton.setSelected(false);
+                    Toast.makeText(getActivity(), "Email inváldo", Toast.LENGTH_SHORT).show();
 
-                    femRadioButton.setSelected(false);
-                    foneEditText.setText("");
-                    especialidadeEditText.setText("");
-                    cepEditText.setText("");
-                    numeroEditText.setText("");
-                    ufSpinner.setSelection(0);
-                    funcaoSpinner.setSelection(0);
+                } else if (nome.isEmpty() || sobrenome.isEmpty()) {
 
-                    Snackbar.make(v, "Usuário Salvo!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    Toast.makeText(getActivity(), "Campos Nome ou Sobrenome vazios", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Snackbar.make(v, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+
+                    UsuarioDAO dao = new UsuarioDAO(getContext());
+                    boolean sucesso = dao.salvar(email, nome, sobrenome, nascimento, sexo, fone,
+                            especialidade, cep, numero, uf, funcao);
+                    if (sucesso) {
+                        emailEditText.setText("");
+                        nomeEditText.setText("");
+                        sobrenomeEditText.setText("");
+                        nascimentoEditText.setText(" ");
+                        mascRadioButton.setSelected(false);
+
+                        femRadioButton.setSelected(false);
+                        foneEditText.setText("");
+                        especialidadeEditText.setText("");
+                        cepEditText.setText("");
+                        numeroEditText.setText("");
+                        ufSpinner.setSelection(0);
+                        funcaoSpinner.setSelection(0);
+
+                        Snackbar.make(v, "Usuário Salvo!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+
+                    } else {
+                        Snackbar.make(v, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
                 }
+
             }
         });
 
