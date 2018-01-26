@@ -7,15 +7,6 @@
     android:orientation="vertical"
     tools:context="upkeepxpteam.equipes.EquipesActivity">
 
-    <ListView
-        android:id="@+id/listview_Equipes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -23,14 +14,30 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:clickable="true"
+        android:onClick="addEquipe"
+        android:stateListAnimator="@null"
         android:tint="#ffffff"
         app:backgroundTint="@color/colorPrimaryDark"
+        app:elevation="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:elevation="18dp"
-        android:stateListAnimator="@null"
-        android:onClick="addEquipe"
-        />
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ListView
+        android:id="@+id/listview_Equipes"
+        android:layout_width="414dp"
+        android:layout_height="606dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
