@@ -2,9 +2,6 @@ package upkeepxpteam.atividadediaria.atividadediariabase;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.List;
-
-import upkeepxpteam.usuario.usuariobase.Usuario;
 
 /**
  * Created by Felipe on 19/12/2017.
@@ -16,9 +13,19 @@ public class AtividadeDiaria implements Serializable {
     private int id;
     private String nome;
     private String data;
-    private List<Usuario> usuarios;
+    private String equipeNome;
     private String local;
     private String descricao;
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    private String situacao;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public int getId() {
@@ -39,30 +46,19 @@ public class AtividadeDiaria implements Serializable {
 
     public String getData() {
 
-        String date = simpleDateFormat.format(data);
-        return date;
+        return data;
     }
 
     public void setData(String data) {
         this.data = data;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public String getEquipeNome() {
+        return equipeNome;
     }
 
-    public String getUsuariosNomes(){
-        String retorno = "Nomes";
-        if(usuarios != null){
-            for (Usuario usuario:usuarios) {
-                retorno += usuario.getNome()+" "+usuario.getSobrenome()+";";
-            }
-        }
-        return retorno;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setEquipeNome(String nomeEquipe) {
+        this.equipeNome = nomeEquipe;
     }
 
     public String getLocal() {

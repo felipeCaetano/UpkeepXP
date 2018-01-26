@@ -46,7 +46,7 @@ public class Conexao {
 
             while((linha= bufferedReader.readLine()) != null){
                 resposta.append(linha);
-                resposta.append('\r');          //se comentar essa linha troca-se .contains por .equals??
+                resposta.append('\r');
             }
             bufferedReader.close();
 

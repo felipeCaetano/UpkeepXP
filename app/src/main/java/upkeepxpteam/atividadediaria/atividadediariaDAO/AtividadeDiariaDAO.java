@@ -4,10 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import upkeepxpteam.atividadediaria.atividadediariabase.AtividadeDiaria;
@@ -46,23 +45,26 @@ public class AtividadeDiariaDAO {
         return SQL_CREATE_ENTRIES;
     }
 
-    public Boolean saveAtividade(AtividadeDiaria atividadeDiaria){
+    public Boolean salva(AtividadeDiaria atividadeDiaria){
         ContentValues cv = new ContentValues();
 
         cv.put("Nome", atividadeDiaria.getNome());
-        //cv.put("Data", atividadeDiaria.getData());
-        cv.put("Usuarios", atividadeDiaria.getUsuariosNomes());
+        cv.put("Data", atividadeDiaria.getData());
+        cv.put("Equipe", atividadeDiaria.getEquipeNome());
         cv.put("Local", atividadeDiaria.getLocal());
         cv.put("Descricao", atividadeDiaria.getDescricao());
+        //colocar situaçao
 
         return dbWriter.insert(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,cv)>0;
        }
 
-    public void findAtividade(AtividadeDiaria atividadeDiaria){
+    public void buscarAtividade(AtividadeDiaria atividadeDiaria){
 
     }
 
-    public void findAllAtividade(){
+    public void buscarTodasAtividades(){
+        //SELECT * from UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME
+        //retornar lista?
 
     }
 
@@ -74,7 +76,8 @@ public class AtividadeDiariaDAO {
 
     }
 
-    public void destroiAllAtividade(){
+    public void destroiTodasAtividades(){
+        //DROP TABLE UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME;
 
     }
 
@@ -90,19 +93,20 @@ public class AtividadeDiariaDAO {
                 atividadeDiaria.setData(c.getString(c.getColumnIndex("Data")));
                 atividadeDiaria.setLocal(c.getString(c.getColumnIndex("Local")));
                 atividadeDiaria.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                //atividadeDiaria.setUsuarios(c.getInt(c.getColumnIndex("_id")));
+                atividadeDiaria.setEquipeNome(c.getString(c.getColumnIndex("Equipe")));
+                //atividadeDiaria.setSituacao(c.getString(c.getColumnIndex("Situacao")));
             }while (c.moveToNext());
         }
         return atividadeDiarias;
     }
 
-    public List<AtividadeDiaria> selectActivitiesbyDay(Calendar calendar){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public List<AtividadeDiaria> selecionaAtividaPorDia(String date){
 
         try{
-            Cursor c = dbReader.query(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,"data=?",new String[]{simpleDateFormat.format(calendar)},null,null,null);
+            Cursor c = dbReader.query(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,"data='"+date+"'",null,null,null,null);
             return toList(c);
         }finally {
+            Log.w("Banco", "Insucesso");
             dbReader.close();
         }
     }   //em criação

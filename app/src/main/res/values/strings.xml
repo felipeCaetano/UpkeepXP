@@ -41,7 +41,8 @@
     <string name="txt_Número">Número</string>
     <string name="txt_UF">UF</string>
     <string name="txt_Funcao">Função</string>
-    <string name="et_nomeequipe">Nome da Equipe</string>
+    <string name="et_nome_equipe">Nome da Equipe</string>
+    <string name="et_nome_atividade">Nome da Atividade</string>
     <string name="et_local">Local</string>
     <string name="et_descrição">Descrição</string>
     <string name="bt_limpar">Limpar</string>
