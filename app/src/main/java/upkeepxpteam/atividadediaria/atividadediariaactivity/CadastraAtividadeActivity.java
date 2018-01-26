@@ -94,8 +94,10 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         if(result){
             Toast.makeText(CadastraAtividadeActivity.this,"Salvo com Sucesso!",Toast.LENGTH_SHORT).show();
             Log.d("Atividade salva: ", atividade.getNome()+" "+atividade.getData());
+            finish();
         }else{
             Toast.makeText(CadastraAtividadeActivity.this,"Falha",Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

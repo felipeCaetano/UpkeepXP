@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomEquipeAdapter;
 import upkeepxpteam.EquipeModel;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
@@ -19,7 +21,11 @@ public class EquipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipes);
-        this.setTitle("Equipes");
+
+        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.tb_equipes);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Equipes");
+
         ListView lista = (ListView) findViewById(R.id.listview_Equipes);
 
         final List<EquipeModel> modeloEquipe = new ArrayList<>();
