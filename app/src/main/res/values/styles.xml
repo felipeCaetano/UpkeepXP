@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -18,7 +18,7 @@
 
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorHint">#FFFFFF</color>
-    <color name="editTextColor">#FFFFFF</color>
+    <color name="editTextColor">#000000</color>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
