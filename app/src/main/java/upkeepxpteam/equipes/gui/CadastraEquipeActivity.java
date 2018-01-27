@@ -8,8 +8,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
 import upkeepxpteam.equipes.equipebase.Equipe;

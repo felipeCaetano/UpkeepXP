@@ -29,7 +29,7 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
     private EditText descricao;
     private Spinner spnEquipe;
     private EditText edtData;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
 
 
@@ -54,11 +54,11 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         Em Andamento - Amarelo
          */
 
-        btnSave = findViewById(R.id.btn_salvar);
-        btnClear = findViewById(R.id.btn_limpar);
+        Button btnSave = findViewById(R.id.btn_salvar);
+        Button btnClear = findViewById(R.id.btn_limpar);
         edtEquipeNome = findViewById(R.id.edt_atv_name);
         edtLocal = findViewById(R.id.edt_local);
-        edtHora = findViewById(R.id.edt_horario);
+        EditText edtHora = findViewById(R.id.edt_horario);
         descricao = findViewById(R.id.edt_descricao);
         spnEquipe = findViewById(R.id.spn_equipes);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(context,R.array.Equipes, android.R.layout.simple_spinner_item);

@@ -82,7 +82,7 @@ public class AtividadeDiariaDAO {
     }
 
     private List<AtividadeDiaria> toList(Cursor c){
-        List<AtividadeDiaria> atividadeDiarias = new ArrayList<AtividadeDiaria>();
+        List<AtividadeDiaria> atividadeDiarias = new ArrayList<>();
         if(c.moveToFirst()){
             do{
                 AtividadeDiaria atividadeDiaria = new AtividadeDiaria();

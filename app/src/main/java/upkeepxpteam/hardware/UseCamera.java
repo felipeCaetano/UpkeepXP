@@ -12,22 +12,25 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+
 import java.io.File;
 import java.io.IOException;
-
 
 public class UseCamera extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
     private static final int PERMISSAO_REQUEST = 4; //pode ser >=0
     private ImageView imageView;
-    private Bitmap bitmap;
     private File foto = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+        //imageView = findViewById(R.id.imagem);
+        //ImageButton b = findViewById(R.id.brAbrirCamera);
+
         // trecho adiciona permissão de gravar arquivos
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -38,7 +41,26 @@ public class UseCamera extends AppCompatActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSAO_REQUEST);
             }
         }
+        //fim do trecho da permissão
+/*
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //verifica permissão de camera
+                int permissionCheck = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA);
+                //se tiver permissão tira foto
+                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    tirarFoto();
+                }
 
+                else{
+                    // solicita permissão
+                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{
+                            Manifest.permission.CAMERA},MY_PERMISSIONS_REQUEST_CAMERA);
+                }
+            }
+        });
+        */
     }
 
     @Override
@@ -47,10 +69,9 @@ public class UseCamera extends AppCompatActivity {
             case MY_PERMISSIONS_REQUEST_CAMERA:{
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     tirarFoto();
-
+                    // startActivityForResult(takePictureIntent,0);
                 }
             }
-
         }
     }
 
@@ -89,7 +110,7 @@ public class UseCamera extends AppCompatActivity {
         if(data!=null){
             Bundle bundle = data.getExtras();
             if(bundle!=null){
-                bitmap = (Bitmap) bundle.get("data");
+                Bitmap bitmap = (Bitmap) bundle.get("data");
                 //return bitmap criando um metodo de saida
                 imageView.setImageBitmap(bitmap);
             }

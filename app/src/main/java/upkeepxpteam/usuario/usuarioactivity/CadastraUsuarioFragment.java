@@ -13,14 +13,18 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import java.util.Date;
+
 import upkeepxpteam.infraestrutura.DatePickerFragment;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
+/**
+ * Created by herma on 18/12/2017.
+ */
 
 public class CadastraUsuarioFragment extends Fragment {
-
     private static final int REQUEST_DATE = 0;
     private static final String DIALOG_DATE = "DialogDate";
 
@@ -48,6 +52,18 @@ public class CadastraUsuarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_cadastra_usuario, container, false);
 
+ /*       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+*/
         nascimentoEditText = view.findViewById(R.id.nascimentoEditText);
         nascimentoEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +87,12 @@ public class CadastraUsuarioFragment extends Fragment {
         ufSpinner = view.findViewById(R.id.ufSpinner);
         funcaoSpinner = view.findViewById(R.id.funcaoSpinner);
         femRadioButton = view.findViewById(R.id.femRadioButton);
-        btnConfirmar = view.findViewById(R.id.confirmarButton);
 
+        Button btnConfirmar = view.findViewById(R.id.confirmarButton);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 String email = emailEditText.getText().toString();
                 String nome = nomeEditText.getText().toString();
@@ -89,58 +106,47 @@ public class CadastraUsuarioFragment extends Fragment {
                 String uf = ufSpinner.getSelectedItem().toString();
                 String funcao = funcaoSpinner.getSelectedItem().toString();
 
-                if (validarEntrada(email, nome, sobrenome) == true){
+                if (!(email.matches("^(\\w+?@\\w+?\\x2E.+)$"))) {
+
+                    Toast.makeText(getActivity(), "Email inváldo", Toast.LENGTH_SHORT).show();
+
+                } else if (nome.isEmpty() || sobrenome.isEmpty()) {
+
+                    Toast.makeText(getActivity(), "Campos Nome ou Sobrenome vazios", Toast.LENGTH_SHORT).show();
+
+                } else {
+
                     UsuarioDAO dao = new UsuarioDAO(getContext());
                     boolean sucesso = dao.salvar(email, nome, sobrenome, nascimento, sexo, fone,
                             especialidade, cep, numero, uf, funcao);
                     if (sucesso) {
+                        emailEditText.setText("");
+                        nomeEditText.setText("");
+                        sobrenomeEditText.setText("");
+                        nascimentoEditText.setText(" ");
+                        mascRadioButton.setSelected(false);
 
-                        limparCampos();
+                        femRadioButton.setSelected(false);
+                        foneEditText.setText("");
+                        especialidadeEditText.setText("");
+                        cepEditText.setText("");
+                        numeroEditText.setText("");
+                        ufSpinner.setSelection(0);
+                        funcaoSpinner.setSelection(0);
+
+                        Snackbar.make(v, "Usuário Salvo!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
 
                     } else {
-
-                        Toast.makeText(getActivity(), "Erro ao salvar, consulte os logs!", Toast.LENGTH_SHORT).show();
-
+                        Snackbar.make(v, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                     }
+
                 }
 
             }
         });
 
         return view;
-    }
-
-    public boolean validarEntrada(String email, String nome, String sobrenome){
-        if (!(email.matches("^(\\w+?@\\w+?\\x2E.+)$"))) {
-
-            Toast.makeText(getActivity(), "Email inváldo", Toast.LENGTH_SHORT).show();
-            return false;
-
-        }
-        else if (nome.isEmpty() || sobrenome.isEmpty()) {
-
-            Toast.makeText(getActivity(), "Campos Nome ou Sobrenome vazios", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-    public void limparCampos(){
-
-        emailEditText.setText("");
-        nomeEditText.setText("");
-        sobrenomeEditText.setText("");
-        nascimentoEditText.setText(" ");
-        mascRadioButton.setSelected(false);
-        femRadioButton.setSelected(false);
-        foneEditText.setText("");
-        especialidadeEditText.setText("");
-        cepEditText.setText("");
-        numeroEditText.setText("");
-        ufSpinner.setSelection(0);
-        funcaoSpinner.setSelection(0);
-
-        Toast.makeText(getActivity(), "Usuário Salvo", Toast.LENGTH_SHORT).show();
-
     }
 }

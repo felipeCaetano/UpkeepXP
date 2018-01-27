@@ -48,10 +48,10 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         Context context = this.getApplicationContext();
         atividadeDiariaDAO = new AtividadeDiariaDAO(context);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        compactCalendarView = findViewById(R.id.compactcalendar_view);
+        compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendarView.shouldDrawIndicatorsBelowSelectedDays(true);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
 
