@@ -8,8 +8,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
@@ -26,9 +28,9 @@ public class CadastraEquipeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
-        ListView listView = (ListView) findViewById(R.id.listView_Membros);
-        btnSalvar = (Button) findViewById(R.id.btn_confirmar);
-        edtnomeequipe = (EditText) findViewById(R.id.editText_nome_equipe);
+        ListView listView = findViewById(R.id.listView_Membros);
+        Button btnSalvar = findViewById(R.id.btn_confirmar);
+        edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
         addItensListaUsuarios(listaUsuarios);

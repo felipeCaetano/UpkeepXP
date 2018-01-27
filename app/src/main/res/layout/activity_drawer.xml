@@ -19,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/upkeepxp_logo2"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:contentDescription="@string/contentDescription_perfil" />
 
         <TextView
             android:layout_width="350dp"

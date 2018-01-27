@@ -50,4 +50,18 @@
     <string name="app_about">Upkeep Xp é um app para gestão da manutenção, desenvolvido pelo UpKeepXp Team para as disciplinas de Fundamento de Engenharia de Software<br/>
     e Modelagem e Programação Orientada a Objetos do curso de Bacharelado em sistemas de Informação da Universidade Federal Rural de Pernambuco</string>
     <string name="confirmar">CONFIRMAR</string>
+    <string name="perfil_content_description">Campo reservado para foto de perfil</string>
+    <string name="contentDescription_logo">Logo tipo da app</string>
+    <string name="contentDescription_perfil">Campo reservado para foto de perfil</string>
+    <string name="contentDescription_checkBox">checkBox</string>
+    <string name="exemplo_telefone">9999–9999</string>
+    <string name="exemplo_horario">00:00:00</string>
+    <string name="nome_da_equipe">Nome da Equipe</string>
+    <string name="exemplo_data">01/01/1950</string>
+    <string name="exemplo_cep">55555–555</string>
+    <string name="equipe_nome">Nome da Equipe</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_excluir">Excluir</string>
+    <string name="usuario_nome">Nome de Usuário</string>
+    <string name="nome_proprio">%1$s %2$s</string>
 </resources>

@@ -64,7 +64,7 @@ public class CadastraUsuarioFragment extends Fragment {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 */
-        nascimentoEditText = (EditText) view.findViewById(R.id.nascimentoEditText);
+        nascimentoEditText = view.findViewById(R.id.nascimentoEditText);
         nascimentoEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,19 +76,19 @@ public class CadastraUsuarioFragment extends Fragment {
             }
         });
 
-        emailEditText = (EditText) view.findViewById(R.id.emailEditText);
-        nomeEditText = (EditText) view.findViewById(R.id.nomeEditText);
-        sobrenomeEditText = (EditText) view.findViewById(R.id.sobrenomeEditText);
-        mascRadioButton = (RadioButton) view.findViewById(R.id.mascRadioButton);
-        foneEditText = (EditText) view.findViewById(R.id.foneEditText);
-        especialidadeEditText = (EditText) view.findViewById(R.id.especialidadeEditText);
-        cepEditText = (EditText) view.findViewById(R.id.cepEditText);
-        numeroEditText = (EditText) view.findViewById(R.id.numeroEditText);
-        ufSpinner = (Spinner) view.findViewById(R.id.ufSpinner);
-        funcaoSpinner = (Spinner) view.findViewById(R.id.funcaoSpinner);
-        femRadioButton = (RadioButton) view.findViewById(R.id.femRadioButton);
+        emailEditText = view.findViewById(R.id.emailEditText);
+        nomeEditText = view.findViewById(R.id.nomeEditText);
+        sobrenomeEditText = view.findViewById(R.id.sobrenomeEditText);
+        mascRadioButton = view.findViewById(R.id.mascRadioButton);
+        foneEditText = view.findViewById(R.id.foneEditText);
+        especialidadeEditText = view.findViewById(R.id.especialidadeEditText);
+        cepEditText = view.findViewById(R.id.cepEditText);
+        numeroEditText = view.findViewById(R.id.numeroEditText);
+        ufSpinner = view.findViewById(R.id.ufSpinner);
+        funcaoSpinner = view.findViewById(R.id.funcaoSpinner);
+        femRadioButton = view.findViewById(R.id.femRadioButton);
 
-        btnConfirmar = (Button) view.findViewById(R.id.confirmarButton);
+        Button btnConfirmar = view.findViewById(R.id.confirmarButton);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

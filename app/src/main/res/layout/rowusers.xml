@@ -11,7 +11,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/check" />
+        android:background="@drawable/check"
+        android:contentDescription="@string/contentDescription_checkBox" />
 
     <TextView
         android:id="@+id/textView_NomeUsuario"
@@ -19,7 +20,7 @@
         android:layout_height="33dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:text="TextView"
+        android:text="@string/usuario_nome"
         android:layout_marginLeft="20dp"
         android:textColor="@color/editTextColor"/>
 

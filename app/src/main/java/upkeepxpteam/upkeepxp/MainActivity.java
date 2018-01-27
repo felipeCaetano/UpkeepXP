@@ -19,9 +19,7 @@ import android.widget.TextView;
 import java.io.ByteArrayInputStream;
 
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
-import upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity;
 import upkeepxpteam.equipes.EquipesActivity;
-import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -58,17 +56,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         View hdview = navigationView.getHeaderView(0);
         ImageView fotoUser = hdview.findViewById(R.id.img_profile);
 
@@ -90,7 +88,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setUserProfileImage(NavigationView navView, Bitmap image) {
         if(image!=null){
-            Bitmap foto = image;
+            //Bitmap foto = image;
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
             imageProfile.setImageBitmap(image);
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -182,11 +180,8 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void setActionBar(int toolbar) {
     }
 }

@@ -20,11 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
-    private TextView esqueceuSenha;
-    private Button logar;
-
-    //necessarios para conexão com a classe Conexao
-    private String url = "";
+    private String url = "";//necessarios para conexão com a classe Conexao
     private String parametros = "";
 
     @Override
@@ -34,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.edt_email);
         senha = findViewById(R.id.edt_password);
-        logar = findViewById(R.id.btn_logar);
-        esqueceuSenha = findViewById(R.id.txt_forgotpass);
+        Button logar = findViewById(R.id.btn_logar);
+        TextView esqueceuSenha = findViewById(R.id.txt_forgotpass);
 
         //Para recuperar a senha
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {

@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.equipes.CadastraEquipeActivity;
 import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.persistence.UpKeepDataBaseContract;
@@ -47,7 +49,7 @@ public class EquipeDAO {
         ContentValues cv = new ContentValues();
 
         cv.put("Nome", equipe.getNome());
-        cv.put("Operario", equipe.getUsuariosNomes());
+        cv.put("Operario", equipe.getUsers());
 
         return dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,null,cv)>0;
     }

@@ -4,8 +4,8 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class UserModel {
 
-    boolean isSelected;
-    Usuario usuario;
+    private boolean isSelected;
+    private Usuario usuario;
 
     public UserModel(boolean isSelected, Usuario usuario) {
         this.isSelected = isSelected;
