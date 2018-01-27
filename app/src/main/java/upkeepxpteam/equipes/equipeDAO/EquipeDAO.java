@@ -49,15 +49,14 @@ public class EquipeDAO {
         ContentValues cv = new ContentValues();
 
         cv.put("Nome", equipe.getNome());
-        cv.put("Operario", equipe.getUsers());
+        //cv.put("Operario", equipe.getUsers());
 
         return dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,null,cv)>0;
     }
 
     public List<Equipe> buscarTodasEquipes() {
         String sql = "SELECT * FROM equipe";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = dbReader.rawQuery(sql, null);
         return listarEquipe(cursor);
     }
 
@@ -76,8 +75,7 @@ public class EquipeDAO {
 
     public void excluirEquipe(String nome){
 
-        SQLiteDatabase db = dbReader;
-        db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,"Nome = ?", new String[]{nome});
+        dbReader.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,"Nome = ?", new String[]{nome});
 
     }
 
