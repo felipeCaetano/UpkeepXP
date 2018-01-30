@@ -47,7 +47,7 @@ public class UseCamera extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //verifica permissão de camera
-                int permissionCheck = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA);
+                int permissionCheck = ContextCompat.checkSelfPermission(BuscarEquipActivity.this, Manifest.permission.CAMERA);
                 //se tiver permissão tira foto
                 if(permissionCheck == PackageManager.PERMISSION_GRANTED){
                     tirarFoto();
@@ -55,7 +55,7 @@ public class UseCamera extends AppCompatActivity {
 
                 else{
                     // solicita permissão
-                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{
+                    ActivityCompat.requestPermissions(BuscarEquipActivity.this,new String[]{
                             Manifest.permission.CAMERA},MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             }

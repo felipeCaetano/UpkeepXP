@@ -22,7 +22,7 @@ import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActiv
 import upkeepxpteam.equipes.EquipesActivity;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
-public class MainActivity extends AppCompatActivity
+public class BuscarEquipActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private String nome;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         fotoUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tirarFoto = new Intent(MainActivity.this, TirarFotoActivity.class);
+                Intent tirarFoto = new Intent(BuscarEquipActivity.this, TirarFotoActivity.class);
                 tirarFoto.putExtra("nome", nome);
                 tirarFoto.putExtra("snome", segundoNome);
                 tirarFoto.putExtra("email", email);
@@ -158,18 +158,18 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
-            intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
+            intent = new Intent(BuscarEquipActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
 
 
 
         } else if (id == R.id.nav_equipes) {
-            intent = new Intent(MainActivity.this, EquipesActivity.class);
+            intent = new Intent(BuscarEquipActivity.this, EquipesActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
-            intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
+            intent =  new Intent(BuscarEquipActivity.this, CadastraUsuarioActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_sobre) {

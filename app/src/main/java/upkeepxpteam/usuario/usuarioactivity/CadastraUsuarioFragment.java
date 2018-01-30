@@ -117,7 +117,7 @@ public class CadastraUsuarioFragment extends Fragment {
                 } else {
 
                     UsuarioDAO dao = new UsuarioDAO(getContext());
-                    boolean sucesso = dao.salvar(email, nome, sobrenome, nascimento, sexo, fone,
+                    boolean sucesso = dao.salva(email, nome, sobrenome, nascimento, sexo, fone,
                             especialidade, cep, numero, uf, funcao);
                     if (sucesso) {
                         emailEditText.setText("");
@@ -138,7 +138,7 @@ public class CadastraUsuarioFragment extends Fragment {
                                 .setAction("Action", null).show();
 
                     } else {
-                        Snackbar.make(v, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
+                        Snackbar.make(v, "Erro ao salva, consulte os logs!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
