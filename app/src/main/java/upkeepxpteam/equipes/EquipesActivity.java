@@ -26,7 +26,7 @@ public class EquipesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Equipes");
 
-        ListView lista = (ListView) findViewById(R.id.listview_Equipes);
+        ListView lista = findViewById(R.id.listview_Equipes);
 
         final List<EquipeModel> modeloEquipe = new ArrayList<>();
         addItensListaModeloEquipe(modeloEquipe);

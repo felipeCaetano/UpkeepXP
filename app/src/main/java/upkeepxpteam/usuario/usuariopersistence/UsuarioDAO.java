@@ -4,11 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import upkeepxpteam.persistence.UpkeepDbHelper;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 
@@ -18,7 +15,7 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class UsuarioDAO {
 
-    private final String TABLE_USUARIOS = "Usuarios";
+    private static final String TABLE_USUARIOS = "Usuarios";
     private final SQLiteDatabase dbWriter;
     private final SQLiteDatabase dbReader;
 

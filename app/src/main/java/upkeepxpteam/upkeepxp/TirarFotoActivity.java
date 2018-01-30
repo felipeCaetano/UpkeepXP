@@ -18,13 +18,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-
 import upkeepxpteam.hardware.ExternalStorage;
-import upkeepxpteam.hardware.UseCamera;
+
 
 public class TirarFotoActivity extends AppCompatActivity {
 
@@ -184,8 +182,8 @@ public class TirarFotoActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
         //Toast.makeText(TirarFotoActivity.this,"Estu aqui",Toast.LENGTH_SHORT).show();
-        switch (requestCode){
-            case CAMERA:{
+        switch (requestCode) {
+            case CAMERA: {
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     //UseCamera camera = new UseCamera();
                     //camera.tirarFoto();

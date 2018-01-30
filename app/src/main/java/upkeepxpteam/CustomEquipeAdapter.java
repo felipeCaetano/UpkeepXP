@@ -51,8 +51,8 @@ public class CustomEquipeAdapter extends BaseAdapter {
         if (view == null){
             view = inflater.inflate(R.layout.rowequipe,viewGroup,false);
             holder = new ViewHolder();
-            holder.tvEquipe = (TextView) view.findViewById(R.id.textView_Equipe);
-            holder.btnExcluir = (Button) view.findViewById(R.id.btn_excluir);
+            holder.tvEquipe = view.findViewById(R.id.textView_Equipe);
+            holder.btnExcluir = view.findViewById(R.id.btn_excluir);
             view.setTag(holder);
         }else {
             holder = (ViewHolder) view.getTag();
@@ -76,7 +76,7 @@ public class CustomEquipeAdapter extends BaseAdapter {
         });
         return view;
     }
-    class ViewHolder{
+    static class ViewHolder{
         TextView tvEquipe;
         Button btnExcluir;
     }

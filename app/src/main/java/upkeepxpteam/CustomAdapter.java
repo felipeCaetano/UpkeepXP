@@ -45,19 +45,19 @@ public class CustomAdapter extends BaseAdapter {
         if (view == null){
             view = inflater.inflate(R.layout.rowusers, viewGroup, false);
             holder = new ViewHolder();
-            holder.tvUserName = (TextView) view.findViewById(R.id.textView_NomeUsuario);
-            holder.ivCheckBox = (ImageView) view.findViewById(R.id.checkBox_AddMembro);
+            holder.tvUserName = view.findViewById(R.id.textView_NomeUsuario);
+            holder.ivCheckBox = view.findViewById(R.id.checkBox_AddMembro);
 
             view.setTag(holder);
-        }else
+        } else
             holder = (ViewHolder) view.getTag();
-        UserModel model = users.get(i);
+            UserModel model = users.get(i);
 
-        holder.tvUserName.setText(""+model.getUsuario().getNome()+" "+model.getUsuario().getSobrenome());
+            holder.tvUserName.setText("" + model.getUsuario().getNome() + " " + model.getUsuario().getSobrenome());
 
         if (model.isSelected()){
             holder.ivCheckBox.setBackgroundResource(R.drawable.checked);
-        }else
+        } else
             holder.ivCheckBox.setBackgroundResource(R.drawable.check);
         return view;
     }
@@ -68,7 +68,7 @@ public class CustomAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    class ViewHolder{
+    static class ViewHolder{
         TextView tvUserName;
         ImageView ivCheckBox;
     }

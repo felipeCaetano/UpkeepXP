@@ -15,7 +15,7 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "upkeepxp.db";
     private static final int DATABASE_VERSION = 2;
-    private final String CREATE_TABLE = "CREATE TABLE Usuarios (Email TEXT PRIMARY KEY, Nome TEXT NOT NULL, Sobrenome TEXT NOT NULL, " +
+    private static final String CREATE_TABLE = "CREATE TABLE Usuarios (Email TEXT PRIMARY KEY, Nome TEXT NOT NULL, Sobrenome TEXT NOT NULL, " +
             "Nascimento TEXT, Sexo TEXT, Fone TEXT, Especialidade TEXT, CEP TEXT, Numero TEXT, UF TEXT NOT NULL, Funcao TEXT);";
     String createTable;
     String createTableEquipe;

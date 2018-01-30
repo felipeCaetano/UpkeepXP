@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: "$project.rootDir/tools/script-pmd.gradle"
 
 android {
     compileSdkVersion 26

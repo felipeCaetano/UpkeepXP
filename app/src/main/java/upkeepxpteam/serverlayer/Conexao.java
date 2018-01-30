@@ -21,15 +21,16 @@ public class Conexao {
     private static String linha;
     private static StringBuffer resposta;
 
-    public static String postDados(String urlUsuario, String parametroUsuario){
+    public static String postDados(String urlUsuario, String parametroUsuario) {
 
-        try{
-            url = new URL(urlUsuario);
+        try
+        {   url = new URL(urlUsuario);
             connection = (HttpURLConnection) url.openConnection();
             //configurar conexão
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-type","application/x-www-form-urlencoded");
-            connection.setRequestProperty("Content-Length","" + Integer.toString(parametroUsuario.getBytes().length));
+            connection.setRequestProperty("Content-Length","" +
+                    Integer.toString(parametroUsuario.getBytes().length));
             connection.setRequestProperty("Content-Language","pt-BR");
             connection.setUseCaches(false);
             connection.setDoInput(true);
@@ -44,7 +45,7 @@ public class Conexao {
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             resposta = new StringBuffer();
 
-            while((linha= bufferedReader.readLine()) != null){
+            while ((linha = bufferedReader.readLine()) != null) {
                 resposta.append(linha);
                 resposta.append('\r');
             }
@@ -52,10 +53,10 @@ public class Conexao {
 
             return resposta.toString();
 
-        }catch (Exception err){
-            return  null;
-        }finally {
-            if (connection != null){
+        } catch (Exception err) {
+            return  err.getMessage();
+        } finally {
+            if (connection != null) {
                 connection.disconnect();
             }
         }
