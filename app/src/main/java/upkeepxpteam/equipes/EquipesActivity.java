@@ -21,12 +21,8 @@ public class EquipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipes);
-
-        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.tb_equipes);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Equipes");
-
-        ListView lista = (ListView) findViewById(R.id.listview_Equipes);
+        this.setTitle("Equipes");
+        ListView lista = findViewById(R.id.listview_Equipes);
 
         final List<EquipeModel> modeloEquipe = new ArrayList<>();
         addItensListaModeloEquipe(modeloEquipe);

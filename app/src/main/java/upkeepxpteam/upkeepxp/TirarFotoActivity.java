@@ -132,7 +132,7 @@ public class TirarFotoActivity extends AppCompatActivity {
                 //Salvar Imagem no banco de dados
                 //REtorna a actitivty chamadora
 
-                Intent retornaImageView = new Intent(TirarFotoActivity.this, MainActivity.class);
+                Intent retornaImageView = new Intent(TirarFotoActivity.this, BuscarEquipActivity.class);
                 retornaImageView.putExtra("nome",nome);
                 retornaImageView.putExtra("snome",sobrenome);
                 retornaImageView.putExtra("email",email);
@@ -161,8 +161,7 @@ public class TirarFotoActivity extends AppCompatActivity {
     }
 
     private void tirarFoto(){
-        //Intent takePictureIntent = new Intent(TirarFotoActivity.this,UseCamera.class);
-        //startActivityForResult(takePictureIntent,CAMERA);
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         try{
@@ -183,12 +182,10 @@ public class TirarFotoActivity extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
-        //Toast.makeText(TirarFotoActivity.this,"Estu aqui",Toast.LENGTH_SHORT).show();
+
         switch (requestCode){
             case CAMERA:{
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    //UseCamera camera = new UseCamera();
-                    //camera.tirarFoto();
                     tirarFoto();
                 }
             }

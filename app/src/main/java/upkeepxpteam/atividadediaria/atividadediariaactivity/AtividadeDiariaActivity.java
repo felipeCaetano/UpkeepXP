@@ -72,7 +72,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         }
         for (Event ev: events) {
             AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
-            /*Esse trecho add uma lista inteira num array list:
+            /*Esse trecho add uma lista inteira codigo array list:
             String[] dados = {atividadeDiaria.getEquipeNome(), atividadeDiaria.getDescricao()};
             dadosAtividade.addAll(Arrays.asList(dados));
              */

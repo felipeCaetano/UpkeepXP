@@ -7,10 +7,8 @@
     <string name="connection_failed">Não há conexão com a Internet</string>
     <string name="campo_vazio">Nenhum campo pode estar vazio!</string>
     <string name="userPass_failed">Usuário ou Senha inválidos!</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="user_name">Nome do Usuário</string>
     <string name="user_mail">user@upkeepxp.com</string>
@@ -64,4 +62,18 @@
     <string name="btn_excluir">Excluir</string>
     <string name="usuario_nome">Nome de Usuário</string>
     <string name="nome_proprio">%1$s %2$s</string>
+    <string name="codigo">Codigo</string>
+    <string name="tipo">Tipo</string>
+    <string name="defeito">Defeito</string>
+    <string name="equipamento">Equipamento</string>
+    <string name="modelo">Modelo</string>
+    <string name="descricao">Descrição</string>
+    <string name="salvo">Salvo com Sucesso!</string>
+    <string name="title_activity_buscar_equip">Buscar Equipamentos</string>
+    <string name="deseja_Del">Deseja Apagar?</string>
+    <string name="delete_title">Apagar Registro:</string>
+    <string name="sim">Sim</string>
+    <string name="delete_sucess">Apagado com sucesso!</string>
+    <string name="cancel">Cancela</string>
+    <string name="edit_sucess">Editado com sucesso!</string>
 </resources>

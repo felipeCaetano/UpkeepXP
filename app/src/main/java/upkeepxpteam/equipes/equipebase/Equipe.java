@@ -7,7 +7,6 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class Equipe implements Serializable {
 
-    //private int id;
     private String nome;
     private List<Usuario> users;
     private String usuarios;
