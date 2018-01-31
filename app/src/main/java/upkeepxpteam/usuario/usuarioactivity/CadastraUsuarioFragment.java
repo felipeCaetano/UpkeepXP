@@ -2,7 +2,6 @@ package upkeepxpteam.usuario.usuarioactivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import java.util.Date;
 
 import upkeepxpteam.infraestrutura.DatePickerFragment;
 import upkeepxpteam.upkeepxp.R;
+import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 /**
@@ -42,6 +42,8 @@ public class CadastraUsuarioFragment extends Fragment {
     private RadioButton femRadioButton;
     private Button btnConfirmar;
 
+    UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class CadastraUsuarioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_cadastra_usuario, container, false);
+
+
 
  /*       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -92,20 +96,9 @@ public class CadastraUsuarioFragment extends Fragment {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                salvaUsuario();
 
-
-                String email = emailEditText.getText().toString();
-                String nome = nomeEditText.getText().toString();
-                String sobrenome = sobrenomeEditText.getText().toString();
-                String nascimento = nascimentoEditText.getText().toString();
-                String sexo = mascRadioButton.isSelected() ? "M" : "F";
-                String fone = foneEditText.getText().toString();
-                String especialidade = especialidadeEditText.getText().toString();
-                String cep = cepEditText.getText().toString();
-                String numero = numeroEditText.getText().toString();
-                String uf = ufSpinner.getSelectedItem().toString();
-                String funcao = funcaoSpinner.getSelectedItem().toString();
-
+                /*REGRAS DE VALIDAÇÃO para negocios?
                 if (!(email.matches("^(\\w+?@\\w+?\\x2E.+)$"))) {
 
                     Toast.makeText(getActivity(), "Email inváldo", Toast.LENGTH_SHORT).show();
@@ -115,38 +108,51 @@ public class CadastraUsuarioFragment extends Fragment {
                     Toast.makeText(getActivity(), "Campos Nome ou Sobrenome vazios", Toast.LENGTH_SHORT).show();
 
                 } else {
-
-                    UsuarioDAO dao = new UsuarioDAO(getContext());
-                    boolean sucesso = dao.salva(email, nome, sobrenome, nascimento, sexo, fone,
-                            especialidade, cep, numero, uf, funcao);
-                    if (sucesso) {
-                        emailEditText.setText("");
-                        nomeEditText.setText("");
-                        sobrenomeEditText.setText("");
-                        nascimentoEditText.setText(" ");
-                        mascRadioButton.setSelected(false);
-
-                        femRadioButton.setSelected(false);
-                        foneEditText.setText("");
-                        especialidadeEditText.setText("");
-                        cepEditText.setText("");
-                        numeroEditText.setText("");
-                        ufSpinner.setSelection(0);
-                        funcaoSpinner.setSelection(0);
-
-                        Snackbar.make(v, "Usuário Salvo!", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-
-                    } else {
-                        Snackbar.make(v, "Erro ao salva, consulte os logs!", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    }
-
-                }
-
+                 }*/
             }
         });
 
         return view;
+    }
+
+    private void salvaUsuario() {
+        Usuario usuario = new Usuario();
+        usuario.setEmail(emailEditText.getText().toString());
+        usuario.setNome(nomeEditText.getText().toString());
+        usuario.setSobrenome(sobrenomeEditText.getText().toString());
+        usuario.setNascimento(nascimentoEditText.getText().toString());
+        usuario.setSexo(mascRadioButton.isSelected() ? "M" : "F");
+        usuario.setTelefone(foneEditText.getText().toString());
+        usuario.setEspecialidade(especialidadeEditText.getText().toString());
+        usuario.setCep(cepEditText.getText().toString());
+        usuario.setNumero(numeroEditText.getText().toString());
+        usuario.setUf(ufSpinner.getSelectedItem().toString());
+        usuario.setFuncao(funcaoSpinner.getSelectedItem().toString());
+
+        Boolean sucesso = usuarioDAO.salva(usuario);
+        if(sucesso){
+            if (sucesso) {
+                limparCampos();
+                Toast.makeText(getContext(), R.string.salvo, Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(getContext(), R.string.falha, Toast.LENGTH_LONG).show();
+            }
+        }
+     }
+
+    private void limparCampos() {
+        emailEditText.setHint(emailEditText.getHint());
+        nomeEditText.setHint(nomeEditText.getHint());
+        sobrenomeEditText.setHint(sobrenomeEditText.getHint());
+        nascimentoEditText.setHint(nascimentoEditText.getHint());
+        mascRadioButton.setSelected(false);
+
+        femRadioButton.setSelected(false);
+        foneEditText.setText("");
+        especialidadeEditText.setText("");
+        cepEditText.setText("");
+        numeroEditText.setText("");
+        ufSpinner.setSelection(0);
+        funcaoSpinner.setSelection(0);
     }
 }

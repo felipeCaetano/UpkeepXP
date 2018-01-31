@@ -132,7 +132,7 @@ public class TirarFotoActivity extends AppCompatActivity {
                 //Salvar Imagem no banco de dados
                 //REtorna a actitivty chamadora
 
-                Intent retornaImageView = new Intent(TirarFotoActivity.this, BuscarEquipActivity.class);
+                Intent retornaImageView = new Intent(TirarFotoActivity.this, MainActivity.class);
                 retornaImageView.putExtra("nome",nome);
                 retornaImageView.putExtra("snome",sobrenome);
                 retornaImageView.putExtra("email",email);
