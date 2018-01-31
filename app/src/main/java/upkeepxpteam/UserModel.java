@@ -4,8 +4,18 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class UserModel {
 
+<<<<<<< Updated upstream
     private boolean isSelected;
     private Usuario usuario;
+=======
+<<<<<<< HEAD
+    boolean estaSelecionado;
+    Usuario usuario;
+=======
+    private boolean isSelected;
+    private Usuario usuario;
+>>>>>>> Dev
+>>>>>>> Stashed changes
 
     public UserModel(boolean isSelected, Usuario usuario) {
         this.isSelected = isSelected;

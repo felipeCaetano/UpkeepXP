@@ -12,12 +12,24 @@ import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 
+<<<<<<<HEAD
+        =======
+        >>>>>>>Dev
+
 /**
  * Created by herma on 11/12/2017.
  */
 
 public class UsuarioDAO {
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    private static final String TABLE_USUARIOS = "Usuarios";
+    private final SQLiteDatabase dbWriter;
+    private final SQLiteDatabase dbReader;
+=======
+>>>>>>> Stashed changes
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private SQLiteDatabase dbWriter;
@@ -38,6 +50,10 @@ public class UsuarioDAO {
             UpKeepDataBaseContract.UsuariosTable.COLUMN_NAME_NUMERO + TEXT_TYPE +  
             UpKeepDataBaseContract.UsuariosTable.COLUMN_NAME_UF + TEXT_TYPE +  
             UpKeepDataBaseContract.UsuariosTable.COLUMN_NAME_FUNCAO + TEXT_TYPE + " )";
+<<<<<<< Updated upstream
+=======
+>>>>>>> Dev
+>>>>>>> Stashed changes
 
 
     public UsuarioDAO(Context ctx) {

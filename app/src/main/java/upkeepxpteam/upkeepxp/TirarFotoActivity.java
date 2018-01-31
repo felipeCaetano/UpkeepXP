@@ -26,6 +26,14 @@ import java.io.IOException;
 
 import upkeepxpteam.hardware.ExternalStorage;
 
+<<<<<<<Updated upstream
+        =======
+        <<<<<<<HEAD
+
+        =======
+        >>>>>>>Dev
+        >>>>>>>Stashed changes
+
 public class TirarFotoActivity extends AppCompatActivity {
 
     private final int GALERY = 1;
@@ -182,9 +190,21 @@ public class TirarFotoActivity extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
+<<<<<<< Updated upstream
 
         switch (requestCode){
             case CAMERA:{
+=======
+<<<<<<< HEAD
+        //Toast.makeText(TirarFotoActivity.this,"Estu aqui",Toast.LENGTH_SHORT).show();
+        switch (requestCode) {
+            case CAMERA: {
+=======
+
+        switch (requestCode){
+            case CAMERA:{
+>>>>>>> Dev
+>>>>>>> Stashed changes
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     tirarFoto();
                 }

@@ -30,13 +30,13 @@ import upkeepxpteam.upkeepxp.R;
 
 public class AtividadeDiariaActivity extends AppCompatActivity {
 
-    //private Toolbar toolbar;
+    private Toolbar toolbar;
     private CompactCalendarView compactCalendarView;
     private ListView eventos;
-    private final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-    private final Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
-    private AtividadeDiariaDAO atividadeDiariaDAO; //singleton??
+    private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
+    private AtividadeDiariaDAO atividadeDiariaDAO;
 
 
     @Override
@@ -48,7 +48,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         Context context = this.getApplicationContext();
         atividadeDiariaDAO = new AtividadeDiariaDAO(context);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         compactCalendarView = findViewById(R.id.compactcalendar_view);
@@ -72,7 +72,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         }
         for (Event ev: events) {
             AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
-            /*Esse trecho add uma lista inteira codigo array list:
+            /*Esse trecho add uma lista inteira num array list:
             String[] dados = {atividadeDiaria.getEquipeNome(), atividadeDiaria.getDescricao()};
             dadosAtividade.addAll(Arrays.asList(dados));
              */
