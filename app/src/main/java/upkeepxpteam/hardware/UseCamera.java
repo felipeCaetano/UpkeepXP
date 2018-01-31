@@ -16,6 +16,12 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.IOException;
 
+<<<<<<<Updated upstream
+        =======
+        <<<<<<<HEAD
+        =======
+        >>>>>>>Dev
+        >>>>>>>Stashed changes
 public class UseCamera extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;

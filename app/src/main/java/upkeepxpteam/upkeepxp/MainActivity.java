@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         nome = autentication.getStringExtra("nome");
         segundoNome = autentication.getStringExtra("snome");
         email = autentication.getStringExtra("email");
-        String acesso = autentication.getStringExtra("acesso");
+
 
         //recupera dados vindos da intent tirarfotos
         Intent tirarFotos = getIntent();
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setUserProfileImage(NavigationView navView, Bitmap image) {
         if(image!=null){
-            //Bitmap foto = image;
+
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
             imageProfile.setImageBitmap(image);
@@ -157,6 +157,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Intent intent;
 
+        escolheItemMenu(id);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void escolheItemMenu(int id) {
+        Intent intent;
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
             intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
@@ -181,12 +190,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

@@ -29,7 +29,7 @@ public class CadastraEquipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = findViewById(R.id.listView_Membros);
-        Button btnSalvar = findViewById(R.id.btn_confirmar);
+        btnSalvar = findViewById(R.id.btn_confirmar);
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();

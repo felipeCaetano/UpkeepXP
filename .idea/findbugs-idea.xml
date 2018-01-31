@@ -7,7 +7,7 @@
     </plugins>
 =======
     <excludeFilterFiles>
-      <filter file="$APPLICATION_CONFIG_DIR$/inspection/findbugs-android-exclude.xml" enabled="true" />
+      <filter file="$PROJECT_DIR$/../findbugs-android-exclude.xml" enabled="true" />
     </excludeFilterFiles>
 >>>>>>> 88604c5... Corrigido bugs em Equipamentos
   </component>

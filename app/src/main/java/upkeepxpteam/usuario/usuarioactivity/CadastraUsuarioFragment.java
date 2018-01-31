@@ -92,6 +92,7 @@ public class CadastraUsuarioFragment extends Fragment {
         funcaoSpinner = view.findViewById(R.id.funcaoSpinner);
         femRadioButton = view.findViewById(R.id.femRadioButton);
 
+
         Button btnConfirmar = view.findViewById(R.id.confirmarButton);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override

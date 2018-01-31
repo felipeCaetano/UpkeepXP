@@ -1,8 +1,18 @@
 package upkeepxpteam.hardware;
 
+<<<<<<< Updated upstream
 import android.content.ContentProvider;
 import android.os.Environment;
 
+=======
+<<<<<<< HEAD
+import android.os.Environment;
+=======
+import android.content.ContentProvider;
+import android.os.Environment;
+
+>>>>>>> Dev
+>>>>>>> Stashed changes
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,6 +25,11 @@ import java.util.Date;
 
 public class ExternalStorage {
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
     private File arquivoFoto = null;
     private ContentProvider contentResolver;
 
@@ -23,6 +38,10 @@ public class ExternalStorage {
         File pasta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         return new File(pasta.getPath() + File.separator + "upkeep_" + timeStamp + ".jpg");
     }
+<<<<<<< Updated upstream
+=======
+>>>>>>> Dev
+>>>>>>> Stashed changes
 
     public File criarArquivo() throws IOException {
         /*

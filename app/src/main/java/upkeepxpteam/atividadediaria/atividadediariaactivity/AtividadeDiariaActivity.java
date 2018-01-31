@@ -48,10 +48,10 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         Context context = this.getApplicationContext();
         atividadeDiariaDAO = new AtividadeDiariaDAO(context);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendarView = findViewById(R.id.compactcalendar_view);
         compactCalendarView.shouldDrawIndicatorsBelowSelectedDays(true);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
 
@@ -72,7 +72,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         }
         for (Event ev: events) {
             AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
-            /*Esse trecho add uma lista inteira codigo array list:
+            /*Esse trecho add uma lista inteira num array list:
             String[] dados = {atividadeDiaria.getEquipeNome(), atividadeDiaria.getDescricao()};
             dadosAtividade.addAll(Arrays.asList(dados));
              */

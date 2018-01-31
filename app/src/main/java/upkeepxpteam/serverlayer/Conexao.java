@@ -13,18 +13,22 @@ import java.net.URL;
 
 public class Conexao {
 
-    private static OutputStreamWriter outputStreamWriter;
-    private static URL url;
     private static HttpURLConnection connection = null;
-    private static InputStream inputStream;
-    private static BufferedReader bufferedReader;
-    private static String linha;
-    private static StringBuffer resposta;
 
     public static String postDados(String urlUsuario, String parametroUsuario){
 
+<<<<<<< Updated upstream
         try{
-            url = new URL(urlUsuario);
+            URL url = new URL(urlUsuario);
+=======
+<<<<<<< HEAD
+        try
+        {   url = new URL(urlUsuario);
+=======
+        try{
+            URL url = new URL(urlUsuario);
+>>>>>>> Dev
+>>>>>>> Stashed changes
             connection = (HttpURLConnection) url.openConnection();
             //configurar conexão
             connection.setRequestMethod("POST");
@@ -35,16 +39,26 @@ public class Conexao {
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
             outputStreamWriter.write(parametroUsuario);
             outputStreamWriter.flush();
 
             //obter informação
-            inputStream = connection.getInputStream();
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            resposta = new StringBuffer();
+            InputStream inputStream = connection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            StringBuffer resposta = new StringBuffer();
 
-            while((linha= bufferedReader.readLine()) != null){
+<<<<<<< Updated upstream
+            String linha;
+            while((linha = bufferedReader.readLine()) != null){
+=======
+<<<<<<< HEAD
+            while ((linha = bufferedReader.readLine()) != null) {
+=======
+            String linha;
+            while((linha = bufferedReader.readLine()) != null){
+>>>>>>> Dev
+>>>>>>> Stashed changes
                 resposta.append(linha);
                 resposta.append('\r');
             }
