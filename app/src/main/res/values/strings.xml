@@ -49,7 +49,7 @@
     e Modelagem e Programação Orientada a Objetos do curso de Bacharelado em sistemas de Informação da Universidade Federal Rural de Pernambuco</string>
     <string name="confirmar">CONFIRMAR</string>
     <string name="perfil_content_description">Campo reservado para foto de perfil</string>
-    <string name="contentDescription_logo">Logo tipo da app</string>
+    <string name="contentDescription_logo">Logotipo da Aplicação</string>
     <string name="contentDescription_perfil">Campo reservado para foto de perfil</string>
     <string name="contentDescription_checkBox">checkBox</string>
     <string name="exemplo_telefone">9999–9999</string>
@@ -76,4 +76,5 @@
     <string name="delete_sucess">Apagado com sucesso!</string>
     <string name="cancel">Cancela</string>
     <string name="edit_sucess">Editado com sucesso!</string>
+    <string name="falha">Falha</string>
 </resources>

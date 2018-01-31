@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                Intent autentication = new Intent(LoginActivity.this,BuscarEquipActivity.class);
+                Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
                 autentication.putExtra("nome",resultado[1]);
                 autentication.putExtra("snome",resultado[2]);
                 autentication.putExtra("email",resultado[3]);
