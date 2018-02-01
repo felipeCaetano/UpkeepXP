@@ -1,11 +1,10 @@
-package upkeepxpteam.equipes;
+package upkeepxpteam.equipes.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import upkeepxpteam.CustomEquipeAdapter;
 import upkeepxpteam.EquipeModel;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
+import upkeepxpteam.equipes.gui.CadastraEquipeActivity;
 import upkeepxpteam.upkeepxp.R;
 
 public class EquipesActivity extends AppCompatActivity {
