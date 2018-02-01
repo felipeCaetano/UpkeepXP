@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
-import upkeepxpteam.equipes.CadastraEquipeActivity;
+import upkeepxpteam.equipes.gui.CadastraEquipeActivity;
 import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
