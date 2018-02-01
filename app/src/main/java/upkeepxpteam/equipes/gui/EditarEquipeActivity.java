@@ -1,7 +1,8 @@
 package upkeepxpteam.equipes.gui;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,16 +19,20 @@ import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
-public class CadastraEquipeActivity extends Activity {
+public class EditarEquipeActivity extends AppCompatActivity {
 
+    private Button btnEditar;
     private EditText edtnomeequipe;
     Equipe equipe;
 
-    protected void onCreate(Bundle savedInstanceState){
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastra_equipe);
+        setContentView(R.layout.activity_editar_equipe);
+
         ListView listView = findViewById(R.id.listView_Membros);
-        Button btnSalvar = findViewById(R.id.btn_confirmar);
+        btnEditar = findViewById(R.id.btn_confirmar);
+        btnEditar.setText("EDITAR");
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
@@ -38,14 +43,16 @@ public class CadastraEquipeActivity extends Activity {
 
         final List<Usuario> usersequipe = new ArrayList<>();
 
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
+        btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences userDetails = EditarEquipeActivity.this.getSharedPreferences("idEquipePreference", MODE_PRIVATE);
+                int idEquipeEdit = userDetails.getInt("idEquipePreferences", 0);
                 equipe = montarObjetoEquipe();
                 equipe.setUsers(usersequipe);
-                EquipeNegocio equipeNegocio = new EquipeNegocio(CadastraEquipeActivity.this);
-                equipeNegocio.salvarEquipe(equipe);
-                chamaEquipesActivity();
+                EquipeNegocio equipeNegocio = new EquipeNegocio(EditarEquipeActivity.this);
+                equipeNegocio.editarEquipe(equipe,idEquipeEdit);
+                chamarEquipesActivity();
             }
         });
 
@@ -71,35 +78,34 @@ public class CadastraEquipeActivity extends Activity {
         });
     }
 
-        public void addItensListaUsuarios(List users) {
-            UsuarioDAO usuarioDAO = new UsuarioDAO(this);
-            List itens = usuarioDAO.buscarTodosUsuarios();
-            int cont = 0;
-            while (cont <= itens.size() - 1) {
-                Usuario usuario = (Usuario) itens.get(cont);
-                users.add(new UserModel(false, usuario));
-                cont += 1;
-            }
+    public void addItensListaUsuarios(List users) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO(this);
+        List itens = usuarioDAO.buscarTodosUsuarios();
+        int cont = 0;
+        while (cont <= itens.size() - 1) {
+            Usuario usuario = (Usuario) itens.get(cont);
+            users.add(new UserModel(false, usuario));
+            cont += 1;
         }
+    }
 
-        public Equipe montarObjetoEquipe(){
+    public Equipe montarObjetoEquipe(){
 
-            String nomeequipe = edtnomeequipe.getText().toString();
-            Equipe equipe = new Equipe();
-            equipe.setNome(nomeequipe);
-            return  equipe;
+        String nomeequipe = edtnomeequipe.getText().toString();
+        Equipe equipe = new Equipe();
+        equipe.setNome(nomeequipe);
+        return equipe;
 
-        }
+    }
 
-        public void chamaEquipesActivity(){
+    public void chamarEquipesActivity(){
 
-            Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
-            startActivity(intent);
-            finish();
+        Intent intent = new Intent(EditarEquipeActivity.this, EquipesActivity.class);
+        startActivity(intent);
+        finish();
 
-        }
+    }
+
 }
-
-
 
 

@@ -57,13 +57,11 @@ public class EquipeDAO {
         }
     }
 
-    public void equipeEditar(Equipe equipe, int id){
-
+    public void equipeEditar(Equipe equipe, int idEquipeEdit){
+        dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(idEquipeEdit)});
         ContentValues cv = new ContentValues();
         cv.put("Nome", equipe.getNome());
-        dbWriter.update(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,cv,"_id = ?", new String[]{String.valueOf(id)});
-        id = getIdEquipe(equipe.getNome());
-        dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(id)});
+        dbWriter.update(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,cv,"_id = ?", new String[]{String.valueOf(idEquipeEdit)});
         for (Usuario usuario : equipe.getUsers()) {
             ContentValues contentValues = new ContentValues();
             int idEquipe = getIdEquipe(equipe.getNome());
@@ -110,7 +108,7 @@ public class EquipeDAO {
     }
 
     public int listarIdEquipe(Cursor cursor) {
-        int id = 0;
+        int id = -1;
         while (cursor.moveToNext()) {
             int idUsuario = cursor.getInt(cursor.getColumnIndex("_id"));
             id = idUsuario;
