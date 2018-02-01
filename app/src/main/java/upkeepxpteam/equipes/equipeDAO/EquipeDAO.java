@@ -28,7 +28,7 @@ public class EquipeDAO {
     private final SQLiteDatabase dbWriter;
     private final SQLiteDatabase dbReader;
 
-    public EquipeDAO(Context ctx){
+    public EquipeDAO(Context ctx) {
         UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
         dbWriter = upkeepDbHelper.getWritableDatabase();
         dbReader = upkeepDbHelper.getReadableDatabase();
@@ -40,20 +40,20 @@ public class EquipeDAO {
         dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
-    public static String createMyTable(){
+    public static String createMyTable() {
         return SQL_CREATE_ENTRIES;
     }
 
-    public void equipeSave(Equipe equipe){
+    public void equipeSave(Equipe equipe) {
         ContentValues cv = new ContentValues();
         cv.put("Nome", equipe.getNome());
-        dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,null,cv);
-        for (Usuario usuario: equipe.getUsers()){
+        dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME, null, cv);
+        for (Usuario usuario : equipe.getUsers()) {
             ContentValues contentValues = new ContentValues();
             int idEquipe = getIdEquipe(equipe.getNome());
-            contentValues.put("idEquipe",idEquipe);
-            contentValues.put("idUsuario",usuario.getId());
-            dbWriter.insert(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME,null,contentValues);
+            contentValues.put("idEquipe", idEquipe);
+            contentValues.put("idUsuario", usuario.getId());
+            dbWriter.insert(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, null, contentValues);
         }
     }
 
@@ -64,9 +64,9 @@ public class EquipeDAO {
         return listarEquipe(cursor);
     }
 
-    public List<Equipe> listarEquipe(Cursor cursor){
+    public List<Equipe> listarEquipe(Cursor cursor) {
         List<Equipe> result = new ArrayList<>();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Equipe equipe = new Equipe();
             String nome = cursor.getString(cursor.getColumnIndex("Nome"));
             equipe.setNome(nome);
@@ -77,12 +77,12 @@ public class EquipeDAO {
         return result;
     }
 
-    public void excluirEquipe(String nome){
+    public void excluirEquipe(String nome) {
 
         SQLiteDatabase db = dbReader;
-        db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,"Nome = ?", new String[]{nome});
         int id = getIdEquipe(nome);
-        db.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME,"idEquipe = ?", new String[]{String.valueOf(id)});
+        db.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(id)});
+        db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME, "Nome = ?", new String[]{nome});
 
     }
 
@@ -93,12 +93,12 @@ public class EquipeDAO {
         return listarIdEquipe(cursor);
     }
 
-    public int listarIdEquipe(Cursor cursor){
+    public int listarIdEquipe(Cursor cursor) {
         int id = 0;
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int idUsuario = cursor.getInt(cursor.getColumnIndex("_id"));
             id = idUsuario;
-        }return id;
+        }
+        return id;
     }
-
 }
