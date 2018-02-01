@@ -27,4 +27,10 @@ public final class UpKeepDataBaseContract {
         public static final String COLUMN_NAME_USUARIOS = "Operario";
         }
 
+        public static class EquipesTableID implements BaseColumns{
+            public static final String TABLE_NAME = "equipeid";
+            public static final String COLUMN_NAME_ID_EQUIPE = "idEquipe";
+            public static final String COLUMN_NAME_ID_USUARIO = "idUsuario";
+        }
+
 }

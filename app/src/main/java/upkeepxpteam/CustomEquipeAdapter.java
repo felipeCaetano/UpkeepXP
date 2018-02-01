@@ -14,6 +14,8 @@ import java.util.List;
 import upkeepxpteam.equipes.EquipesActivity;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.upkeepxp.R;
+import upkeepxpteam.usuario.usuariobase.Usuario;
+import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 public class CustomEquipeAdapter extends BaseAdapter {
 
@@ -60,8 +62,8 @@ public class CustomEquipeAdapter extends BaseAdapter {
         final EquipeModel equipeModel = equipeModels.get(i);
 
         final String nome = equipeModel.getEquipe().getNome();
-        final String operario = equipeModel.getEquipe().getUsuario();
-        holder.tvEquipe.setText(nome +"\n"+ operario);
+        int id = equipeModel.getEquipe().getId();
+        holder.tvEquipe.setText(nome+" "+id);
         holder.tvEquipe.setTextColor(Color.parseColor("#000000"));
 
         holder.btnExcluir.setOnClickListener(new View.OnClickListener() {
