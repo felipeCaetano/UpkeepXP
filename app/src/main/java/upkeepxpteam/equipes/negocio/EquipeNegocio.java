@@ -2,7 +2,6 @@ package upkeepxpteam.equipes.negocio;
 
 
 import android.content.Context;
-
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
 
@@ -15,12 +14,16 @@ public class EquipeNegocio {
         equipeDAO = new EquipeDAO(context);
     }
 
-    public void salvarEquipe(Equipe equipe){
-        equipeDAO.equipeSave(equipe);
+    public void salvarEquipe(Equipe equipe) {
+        if (existeEquipe(equipe.getNome()) == false) {
+            equipeDAO.equipeSave(equipe);
+        }
     }
 
-    public void existeEquipe(String nomeEquipe){
-        equipeDAO.getIdEquipe(nomeEquipe);
+    public boolean existeEquipe(String nomeEquipe){
+        if (equipeDAO.getIdEquipe(nomeEquipe) == -1){
+            return false;
+        }
+        return true;
     }
-
 }

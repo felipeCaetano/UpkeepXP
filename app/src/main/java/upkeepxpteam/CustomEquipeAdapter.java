@@ -99,7 +99,7 @@ public class CustomEquipeAdapter extends BaseAdapter {
                 SharedPreferences userDetails = activity.getSharedPreferences("idEquipePreference", MODE_PRIVATE);
                 SharedPreferences.Editor edit = userDetails.edit();
                 edit.clear();
-                edit.putInt("idEquipePreference", equipeModel.getEquipe().getId());
+                edit.putInt("idEquipePreferences", equipeModel.getEquipe().getId());
                 edit.commit();
                 Intent intent = new Intent(activity, EditarEquipeActivity.class);
                 activity.startActivity(intent);

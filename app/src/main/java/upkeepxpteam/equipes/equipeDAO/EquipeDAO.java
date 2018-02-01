@@ -108,7 +108,7 @@ public class EquipeDAO {
     }
 
     public int listarIdEquipe(Cursor cursor) {
-        int id = 0;
+        int id = -1;
         while (cursor.moveToNext()) {
             int idUsuario = cursor.getInt(cursor.getColumnIndex("_id"));
             id = idUsuario;

@@ -47,8 +47,8 @@ public class EditarEquipeActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences userDetails = EditarEquipeActivity.this.getSharedPreferences("userdetails", MODE_PRIVATE);
-                int idEquipeEdit = userDetails.getInt("idEquipePreference", 1);
+                SharedPreferences userDetails = EditarEquipeActivity.this.getSharedPreferences("idEquipePreference", MODE_PRIVATE);
+                int idEquipeEdit = userDetails.getInt("idEquipePreferences", 0);
                 String nomeequipe = edtnomeequipe.getText().toString();
                 Equipe equipe = new Equipe();
                 equipe.setNome(nomeequipe);
