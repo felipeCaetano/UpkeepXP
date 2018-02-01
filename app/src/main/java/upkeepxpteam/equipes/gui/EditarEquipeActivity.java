@@ -9,14 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
-import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
+import upkeepxpteam.equipes.negocio.EquipeNegocio;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
@@ -25,6 +23,7 @@ public class EditarEquipeActivity extends AppCompatActivity {
 
     private Button btnEditar;
     private EditText edtnomeequipe;
+    Equipe equipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +48,11 @@ public class EditarEquipeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences userDetails = EditarEquipeActivity.this.getSharedPreferences("idEquipePreference", MODE_PRIVATE);
                 int idEquipeEdit = userDetails.getInt("idEquipePreferences", 0);
-                String nomeequipe = edtnomeequipe.getText().toString();
-                Equipe equipe = new Equipe();
-                equipe.setNome(nomeequipe);
+                equipe = montarObjetoEquipe();
                 equipe.setUsers(usersequipe);
-                EquipeDAO equipeDAO = new EquipeDAO(EditarEquipeActivity.this);
-                equipeDAO.equipeEditar(equipe, idEquipeEdit);
-                Intent intent = new Intent(EditarEquipeActivity.this, EquipesActivity.class);
-                startActivity(intent);
-                finish();
+                EquipeNegocio equipeNegocio = new EquipeNegocio(EditarEquipeActivity.this);
+                equipeNegocio.editarEquipe(equipe,idEquipeEdit);
+                chamarEquipesActivity();
             }
         });
 
@@ -92,6 +87,23 @@ public class EditarEquipeActivity extends AppCompatActivity {
             users.add(new UserModel(false, usuario));
             cont += 1;
         }
+    }
+
+    public Equipe montarObjetoEquipe(){
+
+        String nomeequipe = edtnomeequipe.getText().toString();
+        Equipe equipe = new Equipe();
+        equipe.setNome(nomeequipe);
+        return equipe;
+
+    }
+
+    public void chamarEquipesActivity(){
+
+        Intent intent = new Intent(EditarEquipeActivity.this, EquipesActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
 }

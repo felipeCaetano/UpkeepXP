@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
-import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.equipes.negocio.EquipeNegocio;
 import upkeepxpteam.upkeepxp.R;
@@ -21,7 +20,6 @@ import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 public class CadastraEquipeActivity extends Activity {
 
-    private Button btnSalvar;
     private EditText edtnomeequipe;
     Equipe equipe;
 
@@ -29,7 +27,7 @@ public class CadastraEquipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = findViewById(R.id.listView_Membros);
-        btnSalvar = findViewById(R.id.btn_confirmar);
+        Button btnSalvar = findViewById(R.id.btn_confirmar);
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();

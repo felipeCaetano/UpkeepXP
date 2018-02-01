@@ -1,13 +1,12 @@
 package upkeepxpteam.equipes.negocio;
 
-
 import android.content.Context;
+import java.util.List;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
 
 public class EquipeNegocio {
 
-    Equipe equipe;
     EquipeDAO equipeDAO;
 
     public EquipeNegocio(Context context){
@@ -25,5 +24,17 @@ public class EquipeNegocio {
             return false;
         }
         return true;
+    }
+
+    public void editarEquipe(Equipe equipe, int idEquipeAntiga){
+
+        equipeDAO.equipeEditar(equipe,idEquipeAntiga);
+
+    }
+
+    public List<Equipe> buscarTodasEquipes(){
+
+        return equipeDAO.buscarTodasEquipes();
+
     }
 }
