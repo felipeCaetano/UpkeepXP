@@ -44,19 +44,21 @@
             android:name=".TirarFotoActivity"
             android:label="@string/act_bar_tirarFoto" />
         <activity android:name="upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity" />
-        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity" >
-        <intent-filter>
-            <category android:name="android.intent.category.LAUNCHER" />
+        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
 
-            <action android:name="android.intent.action.MAIN" />
-        </intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
-        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity"/>
-        <activity android:name="upkeepxpteam.equipes.gui.EquipesActivity"
-            android:label="Equipes"/>
-        <activity android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity"
-            android:label="@string/app_name">
-        </activity>
+        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity" />
+        <activity
+            android:name="upkeepxpteam.equipes.gui.EquipesActivity"
+            android:label="Equipes" />
+        <activity
+            android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity"
+            android:label="@string/app_name"></activity>
+        <activity android:name="upkeepxpteam.equipes.gui.EditarEquipeActivity"></activity>
     </application>
 
 </manifest>

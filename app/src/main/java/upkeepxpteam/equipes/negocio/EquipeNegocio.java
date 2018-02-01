@@ -15,6 +15,12 @@ public class EquipeNegocio {
         equipeDAO = new EquipeDAO(context);
     }
 
+    public void salvarEquipe(Equipe equipe){
+        equipeDAO.equipeSave(equipe);
+    }
 
+    public void existeEquipe(String nomeEquipe){
+        equipeDAO.getIdEquipe(nomeEquipe);
+    }
 
 }
