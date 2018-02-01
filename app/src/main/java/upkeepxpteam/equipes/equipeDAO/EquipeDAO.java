@@ -57,6 +57,22 @@ public class EquipeDAO {
         }
     }
 
+    public void equipeEditar(Equipe equipe, int id){
+
+        ContentValues cv = new ContentValues();
+        cv.put("Nome", equipe.getNome());
+        dbWriter.update(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,cv,"_id = ?", new String[]{String.valueOf(id)});
+        id = getIdEquipe(equipe.getNome());
+        dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(id)});
+        for (Usuario usuario : equipe.getUsers()) {
+            ContentValues contentValues = new ContentValues();
+            int idEquipe = getIdEquipe(equipe.getNome());
+            contentValues.put("idEquipe", idEquipe);
+            contentValues.put("idUsuario", usuario.getId());
+            dbWriter.insert(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, null, contentValues);
+        }
+    }
+
     public List<Equipe> buscarTodasEquipes() {
         String sql = "SELECT * FROM equipe";
         SQLiteDatabase db = dbReader;
