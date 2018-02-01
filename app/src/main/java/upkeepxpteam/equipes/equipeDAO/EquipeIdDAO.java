@@ -1,14 +1,10 @@
 package upkeepxpteam.equipes.equipeDAO;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.equipes.equipebase.EquipeId;
 import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
@@ -39,15 +35,8 @@ public class EquipeIdDAO {
         return SQL_CREATE_ENTRIES;
     }
 
-    public void equipeSave(EquipeId equipeId){
-        ContentValues cv = new ContentValues();
-        cv.put("Nome", equipeId.getIdEquipe());
-        cv.put("Operario", equipeId.getIdUsuario());
-        dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,null,cv);
-    }
-
-    public List<EquipeId> buscarTodasEquipes() {
-        String sql = "SELECT * FROM equipeid";
+    public List<EquipeId> buscarTodasEquipesId(int idBusca) {
+        String sql = "SELECT * FROM equipeid WHERE idEquipe = '" + idBusca + "'";
         SQLiteDatabase db = dbReader;
         Cursor cursor = db.rawQuery(sql, null);
         return listarEquipeId(cursor);

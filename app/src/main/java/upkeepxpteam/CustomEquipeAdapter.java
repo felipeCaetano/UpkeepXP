@@ -1,7 +1,6 @@
 package upkeepxpteam;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 import upkeepxpteam.equipes.EquipesActivity;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
+import upkeepxpteam.equipes.equipeDAO.EquipeIdDAO;
+import upkeepxpteam.equipes.equipebase.EquipeId;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
@@ -22,7 +23,6 @@ public class CustomEquipeAdapter extends BaseAdapter {
     Activity activity;
     List<EquipeModel> equipeModels;
     LayoutInflater inflater;
-    Context context;
 
     public CustomEquipeAdapter(Activity activity, List<EquipeModel> equipeModels){
         this.activity = activity;
@@ -63,7 +63,16 @@ public class CustomEquipeAdapter extends BaseAdapter {
 
         final String nome = equipeModel.getEquipe().getNome();
         int id = equipeModel.getEquipe().getId();
-        holder.tvEquipe.setText(nome+" "+id);
+        EquipeIdDAO equipeIdDAO = new EquipeIdDAO(activity);
+        List<EquipeId> equipeIdList = equipeIdDAO.buscarTodasEquipesId(id);
+        String operarios = "";
+        for (EquipeId equipeId: equipeIdList){
+            int userid = equipeId.getIdUsuario();
+            UsuarioDAO usuarioDAO = new UsuarioDAO(activity);
+            List<Usuario> usuarioList = usuarioDAO.getUsuarioPorId(userid);
+            operarios += usuarioList.get(0).toString()+"\n";
+        }
+        holder.tvEquipe.setText("Equipe: "+nome+"\n"+"Operarios: "+operarios);
         holder.tvEquipe.setTextColor(Color.parseColor("#000000"));
 
         holder.btnExcluir.setOnClickListener(new View.OnClickListener() {

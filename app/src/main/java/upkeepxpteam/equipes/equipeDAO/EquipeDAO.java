@@ -81,6 +81,8 @@ public class EquipeDAO {
 
         SQLiteDatabase db = dbReader;
         db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,"Nome = ?", new String[]{nome});
+        int id = getIdEquipe(nome);
+        db.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME,"idEquipe = ?", new String[]{String.valueOf(id)});
 
     }
 
@@ -92,7 +94,7 @@ public class EquipeDAO {
     }
 
     public int listarIdEquipe(Cursor cursor){
-        int id = 1;
+        int id = 0;
         while (cursor.moveToNext()){
             int idUsuario = cursor.getInt(cursor.getColumnIndex("_id"));
             id = idUsuario;
