@@ -52,9 +52,9 @@
         </intent-filter>
         </activity>
         <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity"/>
-        <activity android:name="upkeepxpteam.equipes.EquipesActivity"
+        <activity android:name="upkeepxpteam.equipes.gui.EquipesActivity"
             android:label="Equipes"/>
-        <activity android:name="upkeepxpteam.equipes.CadastraEquipeActivity"
+        <activity android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity"
             android:label="@string/app_name">
         </activity>
     </application>

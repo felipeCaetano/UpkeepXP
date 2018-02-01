@@ -1,4 +1,4 @@
-package upkeepxpteam.equipes;
+package upkeepxpteam.equipes.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import upkeepxpteam.CustomEquipeAdapter;
 import upkeepxpteam.EquipeModel;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
+import upkeepxpteam.equipes.gui.CadastraEquipeActivity;
 import upkeepxpteam.upkeepxp.R;
 
 public class EquipesActivity extends AppCompatActivity {
