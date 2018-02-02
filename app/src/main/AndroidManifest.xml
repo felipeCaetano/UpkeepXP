@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -43,18 +44,17 @@
             android:name=".TirarFotoActivity"
             android:label="@string/act_bar_tirarFoto" />
         <activity android:name="upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity" />
-        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity" >
-        <intent-filter>
-            <category android:name="android.intent.category.LAUNCHER" />
-
-            <action android:name="android.intent.action.MAIN" />
-        </intent-filter>
-        </activity>
+        <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity" />
         <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity"/>
         <activity android:name="upkeepxpteam.equipes.EquipesActivity" />
         <activity android:name="upkeepxpteam.equipes.CadastraEquipeActivity"
             android:label="@string/app_name">
         </activity>
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipActivity" />
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.CadastrarEquipamentos"
+            android:label="@string/cadastrar_equipamento"/>
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.EditarCadastro"/>
+        <activity android:name="upkeepxpteam.hardware.UseCamera"/>
     </application>
 
 </manifest>

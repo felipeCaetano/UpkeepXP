@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else if (new Validacao().validarEmail(emailUser)) {
-                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT);
+                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else {
                         url = "http://179.106.9.69:8090/upkeepxp/login/logar.php";

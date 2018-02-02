@@ -77,4 +77,6 @@
     <string name="cancel">Cancela</string>
     <string name="edit_sucess">Editado com sucesso!</string>
     <string name="falha">Falha</string>
+    <string name="cadastrar_equipamento">Cadastrar Equipamento</string>
+    <string name="edit_fail">Falha ao editar!</string>
 </resources>

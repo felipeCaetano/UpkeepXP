@@ -17,18 +17,9 @@ public class Conexao {
 
     public static String postDados(String urlUsuario, String parametroUsuario){
 
-<<<<<<< Updated upstream
         try{
             URL url = new URL(urlUsuario);
-=======
-<<<<<<< HEAD
-        try
-        {   url = new URL(urlUsuario);
-=======
-        try{
-            URL url = new URL(urlUsuario);
->>>>>>> Dev
->>>>>>> Stashed changes
+
             connection = (HttpURLConnection) url.openConnection();
             //configurar conexão
             connection.setRequestMethod("POST");
@@ -48,17 +39,9 @@ public class Conexao {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             StringBuffer resposta = new StringBuffer();
 
-<<<<<<< Updated upstream
             String linha;
             while((linha = bufferedReader.readLine()) != null){
-=======
-<<<<<<< HEAD
-            while ((linha = bufferedReader.readLine()) != null) {
-=======
-            String linha;
-            while((linha = bufferedReader.readLine()) != null){
->>>>>>> Dev
->>>>>>> Stashed changes
+
                 resposta.append(linha);
                 resposta.append('\r');
             }

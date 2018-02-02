@@ -42,7 +42,7 @@ public class CadastraUsuarioFragment extends Fragment {
     private RadioButton femRadioButton;
     private Button btnConfirmar;
 
-    UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+    private final UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,14 +132,12 @@ public class CadastraUsuarioFragment extends Fragment {
 
         Boolean sucesso = usuarioDAO.salva(usuario);
         if(sucesso){
-            if (sucesso) {
                 limparCampos();
                 Toast.makeText(getContext(), R.string.salvo, Toast.LENGTH_LONG).show();
             }else {
                 Toast.makeText(getContext(), R.string.falha, Toast.LENGTH_LONG).show();
             }
         }
-     }
 
     private void limparCampos() {
         emailEditText.setHint(emailEditText.getHint());

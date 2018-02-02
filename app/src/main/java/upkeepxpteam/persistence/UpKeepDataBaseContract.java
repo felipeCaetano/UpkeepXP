@@ -49,7 +49,7 @@ public final class UpKeepDataBaseContract {
             public static final String COLUMN_NAME_MODELO = "Modelo";
             public static final String COLUMN_NAME_TIPO = "Tipo";
             public static final String COLUMN_NAME_FABRICANTE = "Fabricante";
-            public static final String COLUMN_NAME_DESCRICAO = "Descrição";
+            public static final String COLUMN_NAME_DESCRICAO = "Descricao";
             public static final String COLUMN_NAME_DEFEITO = "Defeito";
             public static final String COLUMN_NAME_STATUS = "Status";
         }

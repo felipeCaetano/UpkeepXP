@@ -42,8 +42,8 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
         toolbar.setTitle(getString(R.string.title_activity_buscar_equip));
         setSupportActionBar(toolbar);
 
-        EquipamentoDAO db = new EquipamentoDAO(this);
-        final List<Equipamento> lista = db.findAll();
+        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
+        final List<Equipamento> lista = equipamentoDAO.findAll();
 
         EditText pesquisar = findViewById(R.id.busca);
 
@@ -84,7 +84,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
             @Override
             public void onClick(View view) {
                 //chamar a intent que vai habilitar o cadastro no BD
-                Intent it = new Intent(BuscarEquipActivity.this, cadastrarEquipamentos.class);
+                Intent it = new Intent(BuscarEquipActivity.this, CadastrarEquipamentos.class);
                 startActivity(it);
             }
         });
@@ -92,7 +92,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-    drawer.setDrawerListener(toggle);
+    drawer.addDrawerListener(toggle);
     toggle.syncState();
 
     NavigationView navigationView = findViewById(R.id.nav_view);
@@ -141,6 +141,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
 
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
+            //Descobrir a activity correta
             intent = new Intent(BuscarEquipActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
@@ -156,8 +157,6 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
             startActivity(intent);
 
         } else if (id == R.id.nav_sobre) {
-
-        } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_send) {
 

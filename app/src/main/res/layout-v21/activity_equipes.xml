@@ -15,6 +15,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:onClick="addEquipe"
+        android:stateListAnimator="@null"
         android:tint="#ffffff"
         app:backgroundTint="@color/colorPrimaryDark"
         app:elevation="18dp"
