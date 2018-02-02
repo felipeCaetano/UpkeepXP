@@ -19,6 +19,8 @@ public class Usuario implements Serializable {
     private String numero;
     private String uf;
     private String funcao;
+    private int id;
+
 
     public String getEmail() {
         return email;
@@ -106,5 +108,17 @@ public class Usuario implements Serializable {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String toString(){
+        return this.nome;
     }
 }

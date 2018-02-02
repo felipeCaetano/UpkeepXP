@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
+
+import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 
@@ -81,9 +83,19 @@ public class UsuarioDAO {
                 usuario.setUf(uf);
                 String funcao = cursor.getString(cursor.getColumnIndex("Funcao"));
                 usuario.setFuncao(funcao);
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                usuario.setId(id);
                 result.add(usuario);
             }while (cursor.moveToNext());
         }
         return result;
+    }
+
+    public List<Usuario> getUsuarioPorId(int idbusca) {
+        String busca = String.valueOf(idbusca);
+        String sql = "SELECT * FROM Usuarios WHERE id = '" + busca + "'";
+        SQLiteDatabase db = dbReader;
+        Cursor cursor = db.rawQuery(sql, null);
+        return listarUsuarios(cursor);
     }
 }

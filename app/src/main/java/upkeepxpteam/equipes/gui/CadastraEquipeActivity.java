@@ -1,4 +1,4 @@
-package upkeepxpteam.equipes;
+package upkeepxpteam.equipes.gui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,22 +12,22 @@ import java.util.ArrayList;
 import java.util.List;
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
-import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
+import upkeepxpteam.equipes.negocio.EquipeNegocio;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 public class CadastraEquipeActivity extends Activity {
 
-    private Button btnSalvar;
     private EditText edtnomeequipe;
+    Equipe equipe;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = findViewById(R.id.listView_Membros);
-        btnSalvar = findViewById(R.id.btn_confirmar);
+        Button btnSalvar = findViewById(R.id.btn_confirmar);
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
@@ -41,15 +41,11 @@ public class CadastraEquipeActivity extends Activity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nomeequipe = edtnomeequipe.getText().toString();
-                Equipe equipe = new Equipe();
-                equipe.setNome(nomeequipe);
+                equipe = montarObjetoEquipe();
                 equipe.setUsers(usersequipe);
-                EquipeDAO equipeDAO = new EquipeDAO(CadastraEquipeActivity.this);
-                equipeDAO.equipeSave(equipe);
-                Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
-                startActivity(intent);
-                finish();
+                EquipeNegocio equipeNegocio = new EquipeNegocio(CadastraEquipeActivity.this);
+                equipeNegocio.salvarEquipe(equipe);
+                chamaEquipesActivity();
             }
         });
 
@@ -86,7 +82,23 @@ public class CadastraEquipeActivity extends Activity {
             }
         }
 
-    }
+        public Equipe montarObjetoEquipe(){
+
+            String nomeequipe = edtnomeequipe.getText().toString();
+            Equipe equipe = new Equipe();
+            equipe.setNome(nomeequipe);
+            return  equipe;
+
+        }
+
+        public void chamaEquipesActivity(){
+
+            Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+}
 
 
 

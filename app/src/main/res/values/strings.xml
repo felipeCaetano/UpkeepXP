@@ -47,7 +47,8 @@
     <string name="et_descrição">Descrição</string>
     <string name="bt_limpar">Limpar</string>
     <string name="email_incorreto">Formato de e-mail incorreto!</string>
-    <string name="app_about">Upkeep Xp é um app para gestão da manutenção, desenvolvido pelo UpKeepXp Team para as disciplinas de Fundamento de Engenharia de Software<br/>
+    <string name="app_about">Upkeep Xp é um app para gestão da manutenção, desenvolvido pelo UpKeepXp Team para as disciplinas de Fundamento de Engenharia de Software<br />
     e Modelagem e Programação Orientada a Objetos do curso de Bacharelado em sistemas de Informação da Universidade Federal Rural de Pernambuco</string>
     <string name="confirmar">CONFIRMAR</string>
+    <string name="editar">editar</string>
 </resources>
