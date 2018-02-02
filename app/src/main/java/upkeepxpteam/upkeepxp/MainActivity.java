@@ -19,8 +19,9 @@ import android.widget.TextView;
 import java.io.ByteArrayInputStream;
 
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
-import upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipActivity;
-import upkeepxpteam.equipes.gui.EquipesActivity;
+import upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity;
+import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.equipebase.Equipe;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         nome = autentication.getStringExtra("nome");
         segundoNome = autentication.getStringExtra("snome");
         email = autentication.getStringExtra("email");
-
+        String acesso = autentication.getStringExtra("acesso");
 
         //recupera dados vindos da intent tirarfotos
         Intent tirarFotos = getIntent();
@@ -57,17 +58,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hdview = navigationView.getHeaderView(0);
         ImageView fotoUser = hdview.findViewById(R.id.img_profile);
 
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setUserProfileImage(NavigationView navView, Bitmap image) {
         if(image!=null){
-
+            Bitmap foto = image;
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
             imageProfile.setImageBitmap(image);
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -157,15 +158,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Intent intent;
 
-        escolheItemMenu(id);
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    private void escolheItemMenu(int id) {
-        Intent intent;
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
             intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
@@ -182,17 +174,19 @@ public class MainActivity extends AppCompatActivity
             intent =  new Intent(MainActivity.this, CadastraUsuarioActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_registro) {
-            intent =  new Intent(MainActivity.this, BuscarEquipActivity.class);
-            startActivity(intent);
-
         } else if (id == R.id.nav_sobre) {
+
+        } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_send) {
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void setActionBar(int toolbar) {
     }
 }

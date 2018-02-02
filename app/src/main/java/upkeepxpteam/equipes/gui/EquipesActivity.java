@@ -1,18 +1,18 @@
-package upkeepxpteam.equipes.gui;
+package upkeepxpteam.equipes;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomEquipeAdapter;
 import upkeepxpteam.EquipeModel;
+import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipebase.Equipe;
-import upkeepxpteam.equipes.negocio.EquipeNegocio;
 import upkeepxpteam.upkeepxp.R;
 
 public class EquipesActivity extends AppCompatActivity {
@@ -21,10 +21,12 @@ public class EquipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipes);
-        FloatingActionButton button = findViewById(R.id.floatingActionButton);
-        button.bringToFront();
 
-        ListView lista = findViewById(R.id.listview_Equipes);
+        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.tb_equipes);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Equipes");
+
+        ListView lista = (ListView) findViewById(R.id.listview_Equipes);
 
         final List<EquipeModel> modeloEquipe = new ArrayList<>();
         addItensListaModeloEquipe(modeloEquipe);
@@ -40,8 +42,8 @@ public class EquipesActivity extends AppCompatActivity {
     }
 
     public void addItensListaModeloEquipe(List equipeModels) {
-        EquipeNegocio equipeNegocio = new EquipeNegocio(this);
-        List itens = equipeNegocio.buscarTodasEquipes();
+        EquipeDAO equipeDAO = new EquipeDAO(this);
+        List itens = equipeDAO.buscarTodasEquipes();
         int cont = 0;
         while (cont <= itens.size() - 1) {
             Equipe equipe = (Equipe) itens.get(cont);

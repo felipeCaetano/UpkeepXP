@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="upkeepxpteam.equipes.gui.EquipesActivity">
-
+    tools:context="upkeepxpteam.equipes.EquipesActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginRight="16dp"
         android:clickable="true"
         android:onClick="addEquipe"
+        android:stateListAnimator="@null"
         android:tint="#ffffff"
-        android:elevation="18dp"
         app:backgroundTint="@color/colorPrimaryDark"
+        app:elevation="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:focusable="true" />
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_equipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <ListView
         android:id="@+id/listview_Equipes"
@@ -32,9 +37,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent" />
 
-</android.widget.RelativeLayout>
+</android.support.constraint.ConstraintLayout>

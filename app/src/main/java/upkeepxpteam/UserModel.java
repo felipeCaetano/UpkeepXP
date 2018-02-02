@@ -4,22 +4,22 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class UserModel {
 
-    boolean estaSelecionado;
+    boolean isSelected;
     Usuario usuario;
 
-    public UserModel(boolean estaSelecionado, Usuario usuario) {
-        this.estaSelecionado = estaSelecionado;
+    public UserModel(boolean isSelected, Usuario usuario) {
+        this.isSelected = isSelected;
         this.usuario = usuario;
     }
 
     public boolean isSelected() {
 
-        return estaSelecionado;
+        return isSelected;
     }
 
     public void setSelected(boolean selected) {
 
-        estaSelecionado = selected;
+        isSelected = selected;
     }
 
     public Usuario getUsuario() {

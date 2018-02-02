@@ -140,7 +140,11 @@ public class EditarCadastro extends AppCompatActivity {
         equip.setFabricante(edtfabricante.getText().toString());
         equip.setDefeito(edtfalha.getText().toString());
         equip.setTipo(edttipo.getText().toString());
+<<<<<<< HEAD
         //equip.setStatus(spstatus.getText().toString()); //precisa ser preenchido o spinner
+=======
+        equip.setStatus(spstatus.getText().toString());
+>>>>>>> origin/Dev
         equip.setDescricao(edtobservacao.getText().toString());
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         Boolean salvou = equipamentoDAO.salva(equip);
