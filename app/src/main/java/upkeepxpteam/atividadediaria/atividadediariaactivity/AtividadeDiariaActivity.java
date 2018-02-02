@@ -33,9 +33,9 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CompactCalendarView compactCalendarView;
     private ListView eventos;
-    private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-    private Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
+    private final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private final Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
     private AtividadeDiariaDAO atividadeDiariaDAO;
 
 

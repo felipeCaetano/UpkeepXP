@@ -13,7 +13,7 @@ import upkeepxpteam.equipamento.equipamentobase.Equipamento;
 import upkeepxpteam.equipamento.equipamentodao.EquipamentoDAO;
 import upkeepxpteam.upkeepxp.R;
 
-public class cadastrarEquipamentos extends AppCompatActivity {
+public class CadastrarEquipamentos extends AppCompatActivity {
 
     private EditText nome;
     private EditText modelo;
@@ -21,6 +21,7 @@ public class cadastrarEquipamentos extends AppCompatActivity {
     private EditText numero;
     private EditText descricao;
     private EditText fabricante;
+    private EditText tipo;
     private Button btnSalvar;
     private Button btnDelete;
 
@@ -61,11 +62,14 @@ public class cadastrarEquipamentos extends AppCompatActivity {
         modelo = findViewById(R.id.edt_modelo);
         equipamento.setModelo(modelo.getText().toString());
 
+        tipo = findViewById(R.id.edt_tipo);
+        equipamento.setTipo(tipo.getText().toString());
+
         falha = findViewById(R.id.edt_defeito);
         equipamento.setDefeito(falha.getText().toString());
 
         fabricante = findViewById(R.id.edt_fabricante);
-        equipamento.setStatus(fabricante.getText().toString());
+        equipamento.setFabricante(fabricante.getText().toString());
 
         descricao = findViewById(R.id.edt_descricao);
         equipamento.setDescricao(descricao.getText().toString());

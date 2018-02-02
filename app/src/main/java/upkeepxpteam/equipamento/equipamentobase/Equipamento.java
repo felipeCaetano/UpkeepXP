@@ -23,7 +23,7 @@ public class Equipamento implements Parcelable {
     @Override
     public String toString(){
 
-        return this.getNome()+ '\t' + '\t' + this.getCodigo()+ '\t' + this.getTipo();
+        return this.getNome()+ '\t' + this.getCodigo()+ '\t' + this.getDefeito();
     }
 
     @Override

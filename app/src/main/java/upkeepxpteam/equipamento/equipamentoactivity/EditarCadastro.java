@@ -28,8 +28,7 @@ public class EditarCadastro extends AppCompatActivity {
     private Button btnSalvar;
     private Button btndelete;
 
-    private Equipamento equip = new Equipamento();
-    private EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
+    private Equipamento equip;
     private static final String TAG = "sql";
     private EditarCadastro activity;
     private Long id;
@@ -43,7 +42,7 @@ public class EditarCadastro extends AppCompatActivity {
         btndelete.setVisibility(View.VISIBLE);
 
         Bundle args =getIntent().getExtras();   //recupera os arguementos passados
-
+        equip = new Equipamento();
         equip = args.getParcelable("Equipamento");
 
         //recuperar todas as edit texts:
@@ -111,9 +110,9 @@ public class EditarCadastro extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.deseja_Del).setTitle(R.string.delete_title);
         builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-            EquipamentoDAO db = new EquipamentoDAO(EditarCadastro.this);
+            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastro.this);
             public void onClick(DialogInterface dialog, int id) {
-                db.delete(equip);
+                equipamentoDAO.delete(equip);
                 Toast.makeText(EditarCadastro.this,R.string.delete_sucess, Toast.LENGTH_SHORT).show();
                 returnActivity();
             }
@@ -143,9 +142,13 @@ public class EditarCadastro extends AppCompatActivity {
         equip.setTipo(edttipo.getText().toString());
         equip.setStatus(spstatus.getText().toString());
         equip.setDescricao(edtobservacao.getText().toString());
-        equipamentoDAO.salva(equip);
-        Toast.makeText(EditarCadastro.this,R.string.edit_sucess, Toast.LENGTH_SHORT).show();
-
+        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
+        Boolean salvou = equipamentoDAO.salva(equip);
+        if (salvou){
+            Toast.makeText(EditarCadastro.this,R.string.edit_sucess, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(EditarCadastro.this,R.string.edit_fail, Toast.LENGTH_SHORT).show();
+        }
         returnActivity();
     }
 }

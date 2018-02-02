@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class EquipamentoDAO {
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_MODELO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_TIPO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_FABRICANTE + TEXT_TYPE + COMMA_SEP +
-                    UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DESCRICAO + TEXT_TYPE+
+                    UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DESCRICAO + TEXT_TYPE+ COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DEFEITO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_STATUS + TEXT_TYPE + " )";
 
@@ -48,35 +49,36 @@ public class EquipamentoDAO {
     }
 
     //metodo de inserção ou atualização:
-    public long salva(Equipamento equipamento){
+    public Boolean salva(Equipamento equipamento){
         long id = equipamento.getId();
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
             ContentValues values = new ContentValues();
-            values.put("nome", equipamento.getNome());
-            values.put("codigo", equipamento.getCodigo());
-            values.put("modelo", equipamento.getModelo());
-            values.put("unidade", equipamento.getFabricante());
-            values.put("defeito", equipamento.getDefeito());
-            values.put("tipo", equipamento.getTipo());
-            values.put("status", equipamento.getStatus());
-            values.put("descricao", equipamento.getDescricao());
+            values.put("Equipamento", equipamento.getNome());
+            values.put("Codigo", equipamento.getCodigo());
+            values.put("Modelo", equipamento.getModelo());
+            values.put("Fabricante", equipamento.getFabricante());
+            values.put("Defeito", equipamento.getDefeito());
+            values.put("Tipo", equipamento.getTipo());
+            values.put("Status", equipamento.getStatus());
+            values.put("Descricao", equipamento.getDescricao());
             if (id!=0){
                 String _id = String.valueOf(id);
                 String[] whereArgs = new String[]{_id};
-                return (long) dbWriter.update("equipamentos", values, "_id=?", whereArgs);
+                return dbWriter.update(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME, values, "_id=?", whereArgs)>0;
             }else{
-                return dbWriter.insert("equipamentos","",values);
+                Log.w("Banco", "Sucesso");
+                return dbWriter.insert(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,"",values)>0;
             }
         }finally {
             dbWriter.close();
         }
     }
 
-    public int delete(Equipamento equipamento){
+    public Boolean delete(Equipamento equipamento){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
-            return dbWriter.delete("equipamentos", "_id=?", new String[]{String.valueOf(equipamento.getId())});
+            return dbWriter.delete("equipamentos", "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
         }finally {
             dbWriter.close();
         }
@@ -85,7 +87,7 @@ public class EquipamentoDAO {
     public List<Equipamento> findAll(){
         dbReader = upkeepDbHelper.getReadableDatabase();
         try{
-            Cursor cursor = dbReader.query("equipamentos",null,null,null,null,null,null);
+            Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,null,null,null,null,null,null);
             return toList(cursor);
         }finally {
             dbReader.close();
@@ -99,14 +101,14 @@ public class EquipamentoDAO {
                 Equipamento equipamento = new Equipamento();
                 equipamentos.add(equipamento);
                 equipamento.setId(c.getLong(c.getColumnIndex("_id")));
-                equipamento.setNome(c.getString(c.getColumnIndex("nome")));
-                equipamento.setCodigo(c.getString(c.getColumnIndex("codigo")));
-                equipamento.setModelo(c.getString(c.getColumnIndex("modelo")));
-                equipamento.setFabricante(c.getString(c.getColumnIndex("unidade")));
-                equipamento.setDefeito(c.getString(c.getColumnIndex("defeito")));
-                equipamento.setTipo(c.getString(c.getColumnIndex("tipo")));
-                equipamento.setStatus(c.getString(c.getColumnIndex("status")));
-                equipamento.setDescricao(c.getString(c.getColumnIndex("descricao")));
+                equipamento.setNome(c.getString(c.getColumnIndex("Equipamento")));
+                equipamento.setCodigo(c.getString(c.getColumnIndex("Codigo")));
+                equipamento.setModelo(c.getString(c.getColumnIndex("Modelo")));
+                equipamento.setFabricante(c.getString(c.getColumnIndex("Fabricante")));
+                equipamento.setDefeito(c.getString(c.getColumnIndex("Defeito")));
+                equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
+                equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
+                equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
             }while(c.moveToNext());
         }
         return equipamentos;

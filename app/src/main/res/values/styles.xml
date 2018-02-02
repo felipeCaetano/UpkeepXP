@@ -9,7 +9,12 @@
     </style>
 
     <style name="UpkeepEditText" parent="Widget.AppCompat.EditText">
-        <!-- Customize your theme here. -->
+
+        @color/textColorPrimary
+        @color/textColorHint
+        @color/editTextColor
+        @color/editTextColor
+
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorHint</item>
         <item name="android:editTextColor">@color/editTextColor</item>
