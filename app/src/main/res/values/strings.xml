@@ -51,4 +51,29 @@
     e Modelagem e Programação Orientada a Objetos do curso de Bacharelado em sistemas de Informação da Universidade Federal Rural de Pernambuco</string>
     <string name="confirmar">CONFIRMAR</string>
     <string name="editar">editar</string>
+    <string name="exemplo_horario">00:00:00</string>
+    <string name="nome_da_equipe">Nome da Equipe</string>
+    <string name="equipamento">Equipamento</string>
+    <string name="codigo">Codigo</string>
+    <string name="modelo">Modelo</string>
+    <string name="tipo">Tipo</string>
+    <string name="defeito">Defeito</string>
+    <string name="descricao">Descrição</string>
+    <string name="btn_excluir">Excluir</string>
+    <string name="contentDescription_perfil">Imagem do Perfil</string>
+    <string name="equipe_nome">Nome da Equipe</string>
+    <string name="btn_editar">Editar</string>
+    <string name="contentDescription_checkBox">CheckBox</string>
+    <string name="usuario_nome">Nome</string>
+    <string name="salvo">Salvo com Sucesso!</string>
+    <string name="falha">Falha ao Salvar!</string>
+    <string name="title_activity_buscar_equip">Buscar Equipamentos</string>
+    <string name="delete_title">Deletar:</string>
+    <string name="deseja_Del">Deseja Apagar?</string>
+    <string name="sim">Sim</string>
+    <string name="delete_sucess">Apagado com Sucesso</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit_sucess">Editado com Sucesso</string>
+    <string name="edit_fail">Falha ao Editar</string>
+    <string name="nome_proprio">%s %s</string>
 </resources>

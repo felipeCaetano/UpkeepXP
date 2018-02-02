@@ -23,6 +23,8 @@ import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 public class CadastraEquipeActivity extends Activity {
 
     private EditText edtnomeequipe;
+    private Button btnSalvar;
+
     Equipe equipe;
 
     protected void onCreate(Bundle savedInstanceState){

@@ -20,7 +20,7 @@ import java.io.ByteArrayInputStream;
 
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
 import upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipActivity;
-import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 public class MainActivity extends AppCompatActivity

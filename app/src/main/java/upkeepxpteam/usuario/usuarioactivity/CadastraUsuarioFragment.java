@@ -1,5 +1,6 @@
 package upkeepxpteam.usuario.usuarioactivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,11 +43,13 @@ public class CadastraUsuarioFragment extends Fragment {
     private RadioButton femRadioButton;
     private Button btnConfirmar;
 
-    private final UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+    private UsuarioDAO usuarioDAO;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Context context = getContext();
+        usuarioDAO = new UsuarioDAO(context);
     }
 
     @Nullable

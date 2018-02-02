@@ -17,7 +17,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="21dp"
         android:clickable="true"
-        android:focusable="true"
         android:onClick="addEquipe"
         android:tint="#ffffff"
         android:elevation="18dp"

@@ -24,7 +24,7 @@ import java.util.List;
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
 import upkeepxpteam.equipamento.equipamentobase.Equipamento;
 import upkeepxpteam.equipamento.equipamentodao.EquipamentoDAO;
-import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 

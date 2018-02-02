@@ -35,7 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".TelaCadastroActivity" />
-        <activity android:name=".TelaInicialActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -59,6 +58,9 @@
             android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity"
             android:label="@string/app_name"></activity>
         <activity android:name="upkeepxpteam.equipes.gui.EditarEquipeActivity"></activity>
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.EditarCadastro"/>
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipActivity"/>
+        <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.CadastrarEquipamentos"/>
     </application>
 
 </manifest>
