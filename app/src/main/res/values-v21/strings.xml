@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="editar">editar</string>
     <string name="app_name">UpkeepXP</string>
     <string name="et_email">Insira seu e-mail</string>
     <string name="et_password">Insira sua senha</string>

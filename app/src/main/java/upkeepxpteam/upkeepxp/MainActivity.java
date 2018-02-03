@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.io.ByteArrayInputStream;
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
+import upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipActivity;
+import upkeepxpteam.equipamento.equipamentobase.Equipamento;
 import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
@@ -167,9 +169,10 @@ public class MainActivity extends AppCompatActivity
             // Handle the agenda action
             intent = new Intent(MainActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_contatos) {
+        } else if (id == R.id.nav_registro) {
 
-
+            intent = new Intent(MainActivity.this, BuscarEquipActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_equipes) {
             intent = new Intent(MainActivity.this, EquipesActivity.class);
