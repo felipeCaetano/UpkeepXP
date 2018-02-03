@@ -84,8 +84,8 @@ public class EquipeDAO {
             Equipe equipe = new Equipe();
             String nome = cursor.getString(cursor.getColumnIndex("Nome"));
             equipe.setNome(nome);
-            int idUsuario = getIdEquipe(nome);
-            equipe.setId(idUsuario);
+            int idEquipe = getIdEquipe(nome);
+            equipe.setId(idEquipe);
             result.add(equipe);
         }
         return result;
