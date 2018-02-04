@@ -1,7 +1,7 @@
 package upkeepxpteam.upkeepxp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +10,6 @@ public class TelaCadastroActivity extends AppCompatActivity {
 
     private EditText senha;
     private EditText reptSenha;
-    private Button btSalvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +18,7 @@ public class TelaCadastroActivity extends AppCompatActivity {
 
         senha = findViewById(R.id.edt_senha);
         reptSenha = findViewById(R.id.edt_senharepet);
-        btSalvar = findViewById(R.id.btn_confirmar);
+        Button btSalvar = findViewById(R.id.btn_confirmar);
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

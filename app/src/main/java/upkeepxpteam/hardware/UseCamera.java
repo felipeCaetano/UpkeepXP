@@ -11,22 +11,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 import java.io.File;
 import java.io.IOException;
-
-import upkeepxpteam.upkeepxp.MainActivity;
-import upkeepxpteam.upkeepxp.R;
 
 public class UseCamera extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
     private static final int PERMISSAO_REQUEST = 4; //pode ser >=0
     private ImageView imageView;
-    private Bitmap bitmap;
     private File foto = null;
 
 
@@ -116,7 +110,7 @@ public class UseCamera extends AppCompatActivity {
         if(data!=null){
             Bundle bundle = data.getExtras();
             if(bundle!=null){
-                bitmap = (Bitmap) bundle.get("data");
+                Bitmap bitmap = (Bitmap) bundle.get("data");
                 //return bitmap criando um metodo de saida
                 imageView.setImageBitmap(bitmap);
             }

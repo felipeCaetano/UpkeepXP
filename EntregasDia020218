@@ -1,0 +1,16 @@
+Próxima Entrega para o dia 02/02/2018 para o professor Gabriel:
+
+- Refatorar estrutura do codigo
+    Usando o modelo disponibilizado na aula de 25/01/2018
+    Retirar trechos de codigo comentado no código
+
+- Refatorar Layouts
+    Layouts precisam ser modernizados e melhorados, usar estrutura de lista vertical quando for possível
+
+- Utilizar Parse .json
+    No login enviar um .json para o servidor e receber um .json como resposta e não como String
+
+- Melhorar relaciomanento entre os objetos
+    No codigo relacionar os objetos com as tabelas através do id
+    Passar objetos para outros objetos e não Strings representativas
+    Não deixar os objetos separados

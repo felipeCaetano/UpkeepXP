@@ -15,9 +15,16 @@ public final class UpKeepDataBaseContract {
             public static final String TABLE_NAME = "atividadiaria";
             public static final String COLUMN_NAME_NOME = "Nome";
             public static final String COLUMN_NAME_DATA = "Data";
-            public static final String COLUMN_NAME_USUARIOS= "Usuarios";
+            public static final String COLUMN_NAME_USUARIOS = "Equipe";
             public static final String COLUMN_NAME_LOCAL= "Local";
             public static final String COLUMN_NAME_DESCRICAO= "Descricao";
+            public static final String COLUMN_NAME_SITUACAO= "Situacao";
+        }
+
+        public static class EquipesTable implements BaseColumns{
+        public static final String TABLE_NAME = "equipe";
+        public static final String COLUMN_NAME_NOME = "Nome";
+        public static final String COLUMN_NAME_USUARIOS = "Operario";
         }
 
 }

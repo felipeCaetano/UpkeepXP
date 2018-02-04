@@ -7,10 +7,8 @@
     <string name="connection_failed">Não há conexão com a Internet</string>
     <string name="campo_vazio">Nenhum campo pode estar vazio!</string>
     <string name="userPass_failed">Usuário ou Senha inválidos!</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="user_name">Nome do Usuário</string>
     <string name="user_mail">user@upkeepxp.com</string>
@@ -41,9 +39,45 @@
     <string name="txt_Número">Número</string>
     <string name="txt_UF">UF</string>
     <string name="txt_Funcao">Função</string>
-    <string name="et_nomeequipe">Nome da Equipe</string>
+    <string name="et_nome_equipe">Nome da Equipe</string>
+    <string name="et_nome_atividade">Nome da Atividade</string>
     <string name="et_local">Local</string>
     <string name="et_descrição">Descrição</string>
     <string name="bt_limpar">Limpar</string>
     <string name="email_incorreto">Formato de e-mail incorreto!</string>
+    <string name="app_about">Upkeep Xp é um app para gestão da manutenção, desenvolvido pelo UpKeepXp Team para as disciplinas de Fundamento de Engenharia de Software<br/>
+    e Modelagem e Programação Orientada a Objetos do curso de Bacharelado em sistemas de Informação da Universidade Federal Rural de Pernambuco</string>
+    <string name="confirmar">CONFIRMAR</string>
+    <string name="perfil_content_description">Campo reservado para foto de perfil</string>
+    <string name="contentDescription_logo">Logotipo da Aplicação</string>
+    <string name="contentDescription_perfil">Campo reservado para foto de perfil</string>
+    <string name="contentDescription_checkBox">checkBox</string>
+    <string name="exemplo_telefone">9999–9999</string>
+    <string name="exemplo_horario">00:00:00</string>
+    <string name="nome_da_equipe">Nome da Equipe</string>
+    <string name="exemplo_data">01/01/1950</string>
+    <string name="exemplo_cep">55555–555</string>
+    <string name="equipe_nome">Nome da Equipe</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_excluir">Excluir</string>
+    <string name="usuario_nome">Nome de Usuário</string>
+    <string name="nome_proprio">%1$s %2$s</string>
+    <string name="codigo">Codigo</string>
+    <string name="tipo">Tipo</string>
+    <string name="defeito">Defeito</string>
+    <string name="equipamento">Equipamento</string>
+    <string name="modelo">Modelo</string>
+    <string name="descricao">Descrição</string>
+    <string name="salvo">Salvo com Sucesso!</string>
+    <string name="title_activity_buscar_equip">Buscar Equipamentos</string>
+    <string name="deseja_Del">Deseja Apagar?</string>
+    <string name="delete_title">Apagar Registro:</string>
+    <string name="sim">Sim</string>
+    <string name="delete_sucess">Apagado com sucesso!</string>
+    <string name="cancel">Cancela</string>
+    <string name="edit_sucess">Editado com sucesso!</string>
+    <string name="falha">Falha</string>
+    <string name="editar">editar</string>
+    <string name="edit_fail">Falha</string>
+
 </resources>

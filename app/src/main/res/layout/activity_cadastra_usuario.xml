@@ -129,7 +129,6 @@
 
     <EditText
         android:id="@+id/nascimentoEditText"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="85dp"
         android:layout_height="42dp"
         android:layout_marginBottom="8dp"
@@ -216,7 +215,6 @@
 
     <EditText
         android:id="@+id/foneEditText"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="76dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -227,6 +225,7 @@
         android:hint="9999-9999"
         android:inputType="phone"
         android:theme="@style/UpkeepEditText"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.283"
@@ -236,7 +235,6 @@
 
     <EditText
         android:id="@+id/especialidadeEditText"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -244,6 +242,7 @@
         android:ems="10"
         android:inputType="text"
         android:theme="@style/UpkeepEditText"
+        android:textSize="14dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/cepEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.927"
@@ -298,7 +297,6 @@
 
     <EditText
         android:id="@+id/cepEditText"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="76dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -307,6 +305,7 @@
         android:hint="55555-555"
         android:inputType="textPostalAddress"
         android:theme="@style/UpkeepEditText"
+        android:textSize="14dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/cepTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.283"
@@ -314,7 +313,6 @@
 
     <EditText
         android:id="@+id/numeroEditText"
-        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="80dp"
         android:layout_height="37dp"
         android:layout_marginEnd="8dp"
@@ -322,6 +320,7 @@
         android:ems="10"
         android:inputType="number"
         android:theme="@style/UpkeepEditText"
+        android:textSize="14dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/numeroTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.318"

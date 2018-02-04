@@ -3,17 +3,18 @@ package upkeepxpteam.upkeepxp;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,21 +25,13 @@ import java.io.File;
 import java.io.IOException;
 
 import upkeepxpteam.hardware.ExternalStorage;
-import upkeepxpteam.hardware.UseCamera;
 
 public class TirarFotoActivity extends AppCompatActivity {
 
     private final int GALERY = 1;
     private final int CAMERA = 0;
-    private final int PERMISSION_REQUEST = 0;
 
     private ImageView imageView;
-    private Button btnSalvar;
-    private FloatingActionButton fabGaleria;
-    private FloatingActionButton fabTirarFoto;
-    private TextView txtNome;
-    private TextView txtEmail;
-    private Bitmap thumb;
     private Bitmap btmReduzido;
     private File foto = null;
 
@@ -54,14 +47,21 @@ public class TirarFotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tirar_foto);
 
         imageView = findViewById(R.id.img_user);
-        txtNome = findViewById(R.id.txt_foto_userName);
-        txtNome.setText(nome + " " + sobrenome);
-        txtEmail = findViewById(R.id.txt_foto_userMail);
+        TextView txtNome = findViewById(R.id.txt_foto_userName);
+        /*usado formatação de recurso de String para correta aplicação ao setText()
+        cria-se uma string no arquivo de string, captura-se a string e passamos
+         os parametros necessários
+         */
+        Resources resources = getResources();
+        String text = String.format(resources.getString(R.string.nome_proprio),nome,sobrenome);
+        txtNome.setText(text);
+        TextView txtEmail = findViewById(R.id.txt_foto_userMail);
         txtEmail.setText(email);
 
-        fabGaleria = findViewById(R.id.fab_abrirGaleria);
+        FloatingActionButton fabGaleria = findViewById(R.id.fab_abrirGaleria);
 
         // trecho adiciona permissão de ler arquivos
+        int PERMISSION_REQUEST = 0;
         if(ContextCompat.checkSelfPermission(TirarFotoActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             //não tem permissão: solicitar
@@ -104,7 +104,7 @@ public class TirarFotoActivity extends AppCompatActivity {
             }
         });
 
-        fabTirarFoto = findViewById(R.id.fab_tirarFoto);
+        FloatingActionButton fabTirarFoto = findViewById(R.id.fab_tirarFoto);
         //setar listener para tirar foto
         fabTirarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +124,7 @@ public class TirarFotoActivity extends AppCompatActivity {
             }
         });
 
-        btnSalvar = findViewById(R.id.btn_salvar);
+        Button btnSalvar = findViewById(R.id.btn_salvar);
         //Salvar tanto persiste a foto quanto retorna no imageview q a chamou.
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,8 +161,7 @@ public class TirarFotoActivity extends AppCompatActivity {
     }
 
     private void tirarFoto(){
-        //Intent takePictureIntent = new Intent(TirarFotoActivity.this,UseCamera.class);
-        //startActivityForResult(takePictureIntent,CAMERA);
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         try{
@@ -183,12 +182,10 @@ public class TirarFotoActivity extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
-        //Toast.makeText(TirarFotoActivity.this,"Estu aqui",Toast.LENGTH_SHORT).show();
+
         switch (requestCode){
             case CAMERA:{
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    //UseCamera camera = new UseCamera();
-                    //camera.tirarFoto();
                     tirarFoto();
                 }
             }
@@ -206,14 +203,18 @@ public class TirarFotoActivity extends AppCompatActivity {
      */
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data){
+        String picturePath = null;
         super.onActivityResult(requestCode,resultCode, data);
+        Bitmap thumb;
         if(requestCode == GALERY && resultCode== RESULT_OK){
             Uri selectedImage = data.getData();
             String[] filePath = {MediaStore.Images.Media.DATA};
             Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
-            c.moveToFirst();
-            int columnIndex = c.getColumnIndex(filePath[0]);
-            String picturePath = c.getString(columnIndex);
+            if(c.moveToFirst()){
+                int columnIndex = c.getColumnIndex(filePath[0]);
+                picturePath = c.getString(columnIndex);
+            }
+
             c.close();
 
             //Necessario redimensionar a imagem lida

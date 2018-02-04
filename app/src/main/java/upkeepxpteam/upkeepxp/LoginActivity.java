@@ -20,11 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
-    private TextView esqueceuSenha;
-    private Button logar;
-
-    //necessarios para conexão com a classe Conexao
-    private String url = "";
+    private String url = "";//necessarios para conexão com a classe Conexao
     private String parametros = "";
 
     @Override
@@ -34,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.edt_email);
         senha = findViewById(R.id.edt_password);
-        logar = findViewById(R.id.btn_logar);
-        esqueceuSenha = findViewById(R.id.txt_forgotpass);
+        Button logar = findViewById(R.id.btn_logar);
+        TextView esqueceuSenha = findViewById(R.id.txt_forgotpass);
 
         //Para recuperar a senha
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
@@ -64,11 +60,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(emailUser.isEmpty() || senhaUser.isEmpty()){
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!(new Validacao().validarEmail(emailUser))){
-                        Toast.makeText(LoginActivity.this, getString(R.string.email_incorreto), Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+
+                    } else if (new Validacao().validarEmail(emailUser)) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
+
+                    } else {
                         url = "http://179.106.9.69:8090/upkeepxp/login/logar.php";
                         parametros = "email=" + emailUser +"&senha=" + senhaUser;
                         new SolicitaDados().execute(url);
@@ -97,20 +93,12 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String results){
 
-            //Criado para tratar a nova String vinda do Servidor;antes era assim:
-            /*
-            if(results.contains("login_ok")){
-                //exibir toast apenas para verificar os dados q chegam do servidor
-                //Toast.makeText(LoginActivity.this, results, Toast.LENGTH_LONG).show();
-                Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(autentication);
-             */
-            //Agora ficou assim:
+            //Criado para tratar a nova String vinda do Servidor;
+
             String[] resultado = results.split(", ");
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                //Toast.makeText(LoginActivity.this, results, Toast.LENGTH_LONG).show();
                 Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
                 autentication.putExtra("nome",resultado[1]);
                 autentication.putExtra("snome",resultado[2]);

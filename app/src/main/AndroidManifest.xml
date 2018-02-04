@@ -52,6 +52,10 @@
         </intent-filter>
         </activity>
         <activity android:name="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity"/>
+        <activity android:name="upkeepxpteam.equipes.EquipesActivity"
+            android:label="Equipes"/>
+        <activity android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity">
+        </activity>
     </application>
 
 </manifest>
