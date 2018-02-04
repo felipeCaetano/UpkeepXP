@@ -9,6 +9,7 @@ import java.net.URL;
 
 /**
  * Created by Felipe on 26/11/2017.
+ * cria conexão ao servidor externo
  */
 
 public class Conexao {

@@ -4,6 +4,7 @@ import android.provider.BaseColumns;
 
 /**
  * Created by Felipe on 20/12/2017.
+ * Classe contendo as tabelas do banco de dados
  */
 
 public final class UpKeepDataBaseContract {

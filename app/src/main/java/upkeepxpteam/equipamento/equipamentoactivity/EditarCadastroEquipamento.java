@@ -25,8 +25,6 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
     private EditText edttipo;
     private EditText edtobservacao;
     private EditText spstatus;
-    private Button btnSalvar;
-    private Button btndelete;
 
     private Equipamento equip;
     private static final String TAG = "sql";
@@ -38,7 +36,7 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_equipamentos);
 
-        btndelete = findViewById(R.id.btn_excluir);
+        Button btndelete = findViewById(R.id.btn_excluir);
         btndelete.setVisibility(View.VISIBLE);
 
         Bundle args =getIntent().getExtras();   //recupera os arguementos passados
@@ -84,7 +82,7 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
             edtobservacao.setText(obs);
         }
 
-        btnSalvar = findViewById(R.id.btn_salvar);
+        Button btnSalvar = findViewById(R.id.btn_salvar);
         btnSalvar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

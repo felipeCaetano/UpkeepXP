@@ -18,6 +18,7 @@ import java.util.Date;
 
 import upkeepxpteam.infraestrutura.DatePickerFragment;
 import upkeepxpteam.upkeepxp.R;
+import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 /**
@@ -40,7 +41,6 @@ public class CadastraUsuarioFragment extends Fragment {
     private Spinner funcaoSpinner;
     private EditText nascimentoEditText;
     private RadioButton femRadioButton;
-    private Button btnConfirmar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class CadastraUsuarioFragment extends Fragment {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 */
-        nascimentoEditText = (EditText) view.findViewById(R.id.nascimentoEditText);
+        nascimentoEditText =  view.findViewById(R.id.nascimentoEditText);
         nascimentoEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,19 +76,19 @@ public class CadastraUsuarioFragment extends Fragment {
             }
         });
 
-        emailEditText = (EditText) view.findViewById(R.id.emailEditText);
-        nomeEditText = (EditText) view.findViewById(R.id.nomeEditText);
-        sobrenomeEditText = (EditText) view.findViewById(R.id.sobrenomeEditText);
-        mascRadioButton = (RadioButton) view.findViewById(R.id.mascRadioButton);
-        foneEditText = (EditText) view.findViewById(R.id.foneEditText);
-        especialidadeEditText = (EditText) view.findViewById(R.id.especialidadeEditText);
-        cepEditText = (EditText) view.findViewById(R.id.cepEditText);
-        numeroEditText = (EditText) view.findViewById(R.id.numeroEditText);
-        ufSpinner = (Spinner) view.findViewById(R.id.ufSpinner);
-        funcaoSpinner = (Spinner) view.findViewById(R.id.funcaoSpinner);
-        femRadioButton = (RadioButton) view.findViewById(R.id.femRadioButton);
+        emailEditText = view.findViewById(R.id.emailEditText);
+        nomeEditText = view.findViewById(R.id.nomeEditText);
+        sobrenomeEditText = view.findViewById(R.id.sobrenomeEditText);
+        mascRadioButton = view.findViewById(R.id.mascRadioButton);
+        foneEditText = view.findViewById(R.id.foneEditText);
+        especialidadeEditText = view.findViewById(R.id.especialidadeEditText);
+        cepEditText = view.findViewById(R.id.cepEditText);
+        numeroEditText = view.findViewById(R.id.numeroEditText);
+        ufSpinner = view.findViewById(R.id.ufSpinner);
+        funcaoSpinner = view.findViewById(R.id.funcaoSpinner);
+        femRadioButton = view.findViewById(R.id.femRadioButton);
 
-        btnConfirmar = (Button) view.findViewById(R.id.confirmarButton);
+        Button btnConfirmar = view.findViewById(R.id.confirmarButton);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,15 +117,25 @@ public class CadastraUsuarioFragment extends Fragment {
                 } else {
 
                     UsuarioDAO dao = new UsuarioDAO(getContext());
-                    boolean sucesso = dao.salvar(email, nome, sobrenome, nascimento, sexo, fone,
-                            especialidade, cep, numero, uf, funcao);
+                    Usuario usuario = new Usuario();
+                    usuario.setEmail(email);
+                    usuario.setNome(nome);
+                    usuario.setSobrenome(sobrenome);
+                    usuario.setNascimento(nascimento);
+                    usuario.setSexo(sexo);
+                    usuario.setTelefone(fone);
+                    usuario.setEspecialidade(especialidade);
+                    usuario.setCep(cep);
+                    usuario.setNumero(numero);
+                    usuario.setUf(uf);
+                    usuario.setFuncao(funcao);
+                    boolean sucesso = dao.salvar(usuario);
                     if (sucesso) {
                         emailEditText.setText("");
                         nomeEditText.setText("");
                         sobrenomeEditText.setText("");
                         nascimentoEditText.setText(" ");
                         mascRadioButton.setSelected(false);
-
                         femRadioButton.setSelected(false);
                         foneEditText.setText("");
                         especialidadeEditText.setText("");
@@ -136,14 +146,11 @@ public class CadastraUsuarioFragment extends Fragment {
 
                         Snackbar.make(v, "Usuário Salvo!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-
                     } else {
                         Snackbar.make(v, "Erro ao salvar, consulte os logs!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
-
                 }
-
             }
         });
 

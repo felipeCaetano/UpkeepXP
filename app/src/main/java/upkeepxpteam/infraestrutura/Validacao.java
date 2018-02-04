@@ -2,6 +2,8 @@ package upkeepxpteam.infraestrutura;
 
 /**
  * Created by Felipe on 19/12/2017.
+ *
+ * Classe de validações
  */
 
 public class Validacao {

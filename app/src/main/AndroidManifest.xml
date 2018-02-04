@@ -54,6 +54,7 @@
         <activity android:name="upkeepxpteam.equipes.gui.CadastraEquipeActivity"/>
         <activity android:name="upkeepxpteam.equipes.gui.EquipesActivity"
             android:label="Equipes"/>
+        <activity android:name="upkeepxpteam.equipes.gui.EditarEquipeActivity"/>
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.CadastrarEquipamentos"/>
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipamentoActivity"/>
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.EditarCadastroEquipamento"/>

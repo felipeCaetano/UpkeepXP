@@ -18,8 +18,8 @@ import java.io.IOException;
 
 public class UseCamera extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
-    private static final int PERMISSAO_REQUEST = 4; //pode ser >=0
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
+    private static final int PERMISSAO_REQUEST = 4; //pode ser >0
     private ImageView imageView;
     private File foto = null;
 
@@ -65,15 +65,13 @@ public class UseCamera extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
-        switch (requestCode){
-            case MY_PERMISSIONS_REQUEST_CAMERA:{
-                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    tirarFoto();
-                    // startActivityForResult(takePictureIntent,0);
+        if (requestCode>0){
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                tirarFoto();
+                // startActivityForResult(takePictureIntent,0);
                 }
             }
         }
-    }
 
     public void tirarFoto() {
 

@@ -64,23 +64,37 @@ public class AtividadeDiariaDAO {
 
     }
 
-    public void buscarTodasAtividades(){
-        //SELECT * from UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME
-        //retornar lista?
-
+    public List<AtividadeDiaria> buscarTodasAtividades(){
+        dbReader = upkeepDbHelper.getReadableDatabase();
+        try{
+            Cursor cursor = dbReader.query
+                    (UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,
+                            null,null,null,null,null,null);
+            return toList(cursor);
+        }finally {
+            dbReader.close();
+        }
     }
 
     public void atualizaAtividade(AtividadeDiaria atividadeDiaria){
 
     }
 
-    public void destroiAtividade(AtividadeDiaria atividadeDiaria){
+    public Boolean destroiAtividade(AtividadeDiaria atividadeDiaria){
+        dbWriter = upkeepDbHelper.getWritableDatabase();
+        try{
+            return dbWriter.delete
+                    (UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,
+                            "_id=?", new String[]{String.valueOf(atividadeDiaria.getId())})>0;
+        }finally {
+            dbWriter.close();
+        }
 
     }
 
     public void destroiTodasAtividades(){
         //DROP TABLE UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME;
-
+        dbWriter.execSQL(SQL_DELETE_ENTRIES);
     }
 
     private List<AtividadeDiaria> toList(Cursor c){

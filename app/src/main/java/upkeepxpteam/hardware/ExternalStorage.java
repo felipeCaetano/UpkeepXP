@@ -1,6 +1,5 @@
 package upkeepxpteam.hardware;
 
-import android.content.ContentProvider;
 import android.os.Environment;
 
 import java.io.File;
@@ -14,9 +13,6 @@ import java.util.Date;
  */
 
 public class ExternalStorage {
-
-    private File arquivoFoto = null;
-    private ContentProvider contentResolver;
 
     public File criarImagem() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

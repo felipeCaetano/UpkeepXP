@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by Felipe on 28/05/2017.
+ * classe de dominio: Equipamento
  */
 public class Equipamento implements Parcelable {
 

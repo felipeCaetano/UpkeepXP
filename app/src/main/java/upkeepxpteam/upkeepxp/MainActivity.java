@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         nome = autentication.getStringExtra("nome");
         segundoNome = autentication.getStringExtra("snome");
         email = autentication.getStringExtra("email");
-        String acesso = autentication.getStringExtra("acesso");
+        //String acesso = autentication.getStringExtra("acesso"); //Esta string será usada para definir nivel de acesso do usuário
 
         //recupera dados vindos da intent tirarfotos
         Intent tirarFotos = getIntent();
@@ -57,17 +57,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         View hdview = navigationView.getHeaderView(0);
         ImageView fotoUser = hdview.findViewById(R.id.img_profile);
 
@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity
 
     private void setUserProfileImage(NavigationView navView, Bitmap image) {
         if(image!=null){
-            Bitmap foto = image;
             View headerView = navView.getHeaderView(0);
             ImageView imageProfile = headerView.findViewById(R.id.img_profile);
             imageProfile.setImageBitmap(image);
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -150,7 +149,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -182,11 +180,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void setActionBar(int toolbar) {
     }
 }

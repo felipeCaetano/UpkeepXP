@@ -25,7 +25,7 @@ public class CadastraEquipeActivity extends AppCompatActivity {
     private EditText edtnomeequipe;
     private Button btnSalvar;
 
-    Equipe equipe;
+    private Equipe equipe;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

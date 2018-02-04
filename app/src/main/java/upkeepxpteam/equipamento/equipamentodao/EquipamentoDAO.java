@@ -15,6 +15,7 @@ import upkeepxpteam.persistence.UpkeepDbHelper;
 
 /**
  * Created by Felipe on 27/05/2017.
+ * DAO da classe Equipamento
  */
 
 public class EquipamentoDAO {
@@ -78,7 +79,7 @@ public class EquipamentoDAO {
     public Boolean delete(Equipamento equipamento){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
-            return dbWriter.delete("equipamentos", "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
+            return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME, "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
         }finally {
             dbWriter.close();
         }
