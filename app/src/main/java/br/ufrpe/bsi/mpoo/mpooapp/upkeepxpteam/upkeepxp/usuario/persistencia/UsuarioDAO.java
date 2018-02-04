@@ -118,7 +118,7 @@ public class UsuarioDAO {
 
     public List<Usuario> getUsuarioPorId(int idbusca) {
         String busca = String.valueOf(idbusca);
-        String sql = "SELECT * FROM Usuarios WHERE id = '" + busca + "'";
+        String sql = "SELECT * FROM Usuarios WHERE _id = '" + busca + "'";
         SQLiteDatabase db = dbReader;
         Cursor cursor = db.rawQuery(sql, null);
         return listarUsuarios(cursor);
