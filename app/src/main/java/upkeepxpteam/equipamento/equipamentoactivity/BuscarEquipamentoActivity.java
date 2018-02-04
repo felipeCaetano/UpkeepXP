@@ -24,12 +24,12 @@ import java.util.List;
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
 import upkeepxpteam.equipamento.equipamentobase.Equipamento;
 import upkeepxpteam.equipamento.equipamentodao.EquipamentoDAO;
-import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
 
-public class BuscarEquipActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BuscarEquipamentoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "sql";
 
@@ -74,7 +74,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
 
                 Equipamento equip = adaptadorEquip.getItem(position);
 
-                Intent intent = new Intent(BuscarEquipActivity.this, EditarCadastro.class);
+                Intent intent = new Intent(BuscarEquipamentoActivity.this, EditarCadastroEquipamento.class);
                 intent.putExtra("Equipamento", equip);
                 startActivity(intent);
             }
@@ -84,7 +84,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
             @Override
             public void onClick(View view) {
                 //chamar a intent que vai habilitar o cadastro no BD
-                Intent it = new Intent(BuscarEquipActivity.this, CadastrarEquipamentos.class);
+                Intent it = new Intent(BuscarEquipamentoActivity.this, CadastrarEquipamentos.class);
                 startActivity(it);
             }
         });
@@ -142,18 +142,18 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
             //Descobrir a activity correta
-            intent = new Intent(BuscarEquipActivity.this, AtividadeDiariaActivity.class);
+            intent = new Intent(BuscarEquipamentoActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
 
 
 
         } else if (id == R.id.nav_equipes) {
-            intent = new Intent(BuscarEquipActivity.this, EquipesActivity.class);
+            intent = new Intent(BuscarEquipamentoActivity.this, EquipesActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
-            intent =  new Intent(BuscarEquipActivity.this, CadastraUsuarioActivity.class);
+            intent =  new Intent(BuscarEquipamentoActivity.this, CadastraUsuarioActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_sobre) {

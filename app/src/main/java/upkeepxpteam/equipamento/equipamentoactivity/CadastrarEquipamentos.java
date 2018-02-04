@@ -78,7 +78,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         equipamentoDAO.salva(equipamento);
 
         Toast.makeText(this,R.string.salvo, Toast.LENGTH_SHORT).show();
-        Intent it = new Intent(this,BuscarEquipActivity.class);
+        Intent it = new Intent(this,BuscarEquipamentoActivity.class);
         startActivity(it);
         finish();
     }

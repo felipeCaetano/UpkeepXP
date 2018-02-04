@@ -1,8 +1,8 @@
 package upkeepxpteam.equipes.gui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,7 +20,7 @@ import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
-public class CadastraEquipeActivity extends Activity {
+public class CadastraEquipeActivity extends AppCompatActivity {
 
     private EditText edtnomeequipe;
     private Button btnSalvar;

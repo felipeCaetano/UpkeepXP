@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.util.List;
 
-import upkeepxpteam.equipes.gui.EditarEquipeActivity;
-import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.equipes.equipeDAO.EquipeIdDAO;
 import upkeepxpteam.equipes.equipebase.EquipeId;
+import upkeepxpteam.equipes.gui.EditarEquipeActivity;
+import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;

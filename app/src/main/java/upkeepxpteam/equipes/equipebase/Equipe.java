@@ -7,7 +7,15 @@ import upkeepxpteam.usuario.usuariobase.Usuario;
 
 public class Equipe implements Serializable {
 
-    //private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String nome;
     private List<Usuario> users;
     private String usuarios;

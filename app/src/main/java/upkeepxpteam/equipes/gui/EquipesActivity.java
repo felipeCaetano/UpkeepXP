@@ -1,4 +1,4 @@
-package upkeepxpteam.equipes;
+package upkeepxpteam.equipes.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,9 +24,8 @@ public class EquipesActivity extends AppCompatActivity {
 
         android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.tb_equipes);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Equipes");
 
-        ListView lista = (ListView) findViewById(R.id.listview_Equipes);
+        ListView lista = findViewById(R.id.listview_Equipes);
 
         final List<EquipeModel> modeloEquipe = new ArrayList<>();
         addItensListaModeloEquipe(modeloEquipe);

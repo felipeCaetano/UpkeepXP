@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,5 +87,13 @@ public class UsuarioDAO {
             }while (cursor.moveToNext());
         }
         return result;
+    }
+
+    public List<Usuario> getUsuarioPorId(int idbusca) {
+        String busca = String.valueOf(idbusca);
+        String sql = "SELECT * FROM Usuarios WHERE id = '" + busca + "'";
+        SQLiteDatabase db = dbReader;
+        Cursor cursor = db.rawQuery(sql, null);
+        return listarUsuarios(cursor);
     }
 }
