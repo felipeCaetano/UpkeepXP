@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import upkeepxpteam.atividadediaria.atividadediariaDAO.AtividadeDiariaDAO;
+import upkeepxpteam.equipamento.equipamentodao.EquipamentoDAO;
 import upkeepxpteam.equipes.equipeDAO.EquipeDAO;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
@@ -20,6 +21,7 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
     private String createTable;
     private String createTableEquipe;
 
+
     public UpkeepDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -32,6 +34,10 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
         createTableEquipe = EquipeDAO.createMyTable();
         db.execSQL(createTableEquipe);
+        getCreateTableEquipeId = EquipeIdDAO.createMyTable();
+        db.execSQL(getCreateTableEquipeId);
+        createTable = EquipamentoDAO.createMyTable();
+        db.execSQL(createTable);
     }
 
     @Override

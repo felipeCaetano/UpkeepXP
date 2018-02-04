@@ -58,6 +58,7 @@
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.CadastrarEquipamentos"/>
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.BuscarEquipamentoActivity"/>
         <activity android:name="upkeepxpteam.equipamento.equipamentoactivity.EditarCadastroEquipamento"/>
+
     </application>
 
 </manifest>
