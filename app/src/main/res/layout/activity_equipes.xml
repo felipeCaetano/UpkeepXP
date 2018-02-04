@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="upkeepxpteam.equipes.gui.EquipesActivity">
+    tools:context="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:layout_gravity="center"
-    tools:context="upkeepxpteam.upkeepxp.LoginActivity">
+    tools:context="upkeepxpteam.upkeepxp.upkeepxpteam.infraestrutura.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/img_logo"
