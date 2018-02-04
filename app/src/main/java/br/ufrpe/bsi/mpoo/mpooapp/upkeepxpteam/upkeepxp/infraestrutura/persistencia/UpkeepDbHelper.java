@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.persistencia.AtividadeDiariaDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeDAO;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeIdDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.persistencia.UsuarioDAO;
 
 /**
@@ -32,6 +33,8 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
         createTableEquipe = EquipeDAO.createMyTable();
         db.execSQL(createTableEquipe);
+        createTable = EquipeIdDAO.createMyTable();
+        db.execSQL(createTable);
     }
 
     @Override
