@@ -1,15 +1,17 @@
 package upkeepxpteam.equipes.gui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
 import upkeepxpteam.equipes.equipebase.Equipe;
@@ -18,16 +20,18 @@ import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuariobase.Usuario;
 import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
-public class CadastraEquipeActivity extends Activity {
+public class CadastraEquipeActivity extends AppCompatActivity {
 
     private EditText edtnomeequipe;
-    Equipe equipe;
+    private Button btnSalvar;
+
+    private Equipe equipe;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = findViewById(R.id.listView_Membros);
-        Button btnSalvar = findViewById(R.id.btn_confirmar);
+        btnSalvar = findViewById(R.id.btn_confirmar);
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();

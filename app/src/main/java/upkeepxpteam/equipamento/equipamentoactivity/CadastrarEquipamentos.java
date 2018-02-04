@@ -30,6 +30,8 @@ public class CadastrarEquipamentos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_equipamentos);
+        Toolbar toolbar = findViewById(R.id.tb_equipamento);
+        setSupportActionBar(toolbar);
         cadastraBD();
     }
 
@@ -75,8 +77,8 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         equipamentoDAO.salva(equipamento);
 
-        Toast.makeText(this, R.string.salvo, Toast.LENGTH_SHORT).show();
-        Intent it = new Intent(this,BuscarEquipActivity.class);
+        Toast.makeText(this,R.string.salvo, Toast.LENGTH_SHORT).show();
+        Intent it = new Intent(this,BuscarEquipamentoActivity.class);
         startActivity(it);
         finish();
     }

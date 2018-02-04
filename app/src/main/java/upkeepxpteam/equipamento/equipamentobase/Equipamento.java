@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by Felipe on 28/05/2017.
+ * classe de dominio: Equipamento
  */
 public class Equipamento implements Parcelable {
 
@@ -57,7 +58,7 @@ public class Equipamento implements Parcelable {
         this.descricao = parcel.readString();
     }
 
-    public static final Creator<Equipamento> CREATOR = new Creator<Equipamento>() {
+    public static final Parcelable.Creator<Equipamento> CREATOR = new Parcelable.Creator<Equipamento>() {
         @Override
         public Equipamento createFromParcel(Parcel p) {
             Equipamento eq = new Equipamento();

@@ -2,9 +2,11 @@ package upkeepxpteam.atividadediaria.atividadediariabase;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * Created by Felipe on 19/12/2017.
+ * GUI das atividades diárias
  */
 
 public class AtividadeDiaria implements Serializable {
@@ -16,6 +18,8 @@ public class AtividadeDiaria implements Serializable {
     private String equipeNome;
     private String local;
     private String descricao;
+    private String situacao;
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     public String getSituacao() {
         return situacao;
@@ -25,8 +29,6 @@ public class AtividadeDiaria implements Serializable {
         this.situacao = situacao;
     }
 
-    private String situacao;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public int getId() {
         return id;

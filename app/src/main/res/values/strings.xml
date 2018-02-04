@@ -56,8 +56,6 @@
     <string name="contentDescription_checkBox">checkBox</string>
     <string name="exemplo_telefone">9999–9999</string>
     <string name="exemplo_horario">00:00:00</string>
-    <string name="nome_da_equipe">Nome da Equipe</string>
-    <string name="exemplo_data">01/01/1950</string>
     <string name="exemplo_cep">55555–555</string>
     <string name="equipe_nome">Nome da Equipe</string>
     <string name="btn_editar">Editar</string>
@@ -79,6 +77,11 @@
     <string name="cancel">Cancela</string>
     <string name="edit_sucess">Editado com sucesso!</string>
     <string name="falha">Falha</string>
+    <string name="editar">editar</string>
+    <string name="edit_fail">Falha</string>
+    <string name="buscar">Pequisar</string>
+    <string name="exemplo_data">01/01/1950</string>
+    <string name="nome_da_equipe">Nome da Equipe</string>
     <string name="cadastrar_equipamento">Cadastrar Equipamento</string>
     <string name="edit_fail">Falha ao editar!</string>
 </resources>

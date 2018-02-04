@@ -7,6 +7,7 @@ import upkeepxpteam.persistence.UpkeepDbHelper;
 
 /**
  * Created by herma on 11/12/2017.
+ * Classe deve ser deletada
  */
 
 public class DbGateway {

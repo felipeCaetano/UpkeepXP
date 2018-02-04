@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by hermano on 11/12/2017.
+ * classe de dominio: Usuário
  */
 
 public class Usuario implements Serializable {

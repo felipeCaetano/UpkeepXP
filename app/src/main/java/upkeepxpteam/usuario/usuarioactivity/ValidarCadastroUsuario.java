@@ -2,6 +2,7 @@ package upkeepxpteam.usuario.usuarioactivity;
 
 /**
  * Created by Cleiton on 25/01/2018.
+ * classe que valida o cadastro do usuário
  */
 
 public class ValidarCadastroUsuario {

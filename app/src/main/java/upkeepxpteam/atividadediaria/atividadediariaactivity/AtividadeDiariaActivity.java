@@ -30,13 +30,11 @@ import upkeepxpteam.upkeepxp.R;
 
 public class AtividadeDiariaActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private CompactCalendarView compactCalendarView;
     private ListView eventos;
-    private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-    private Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
-    private AtividadeDiariaDAO atividadeDiariaDAO;
+    private final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private final Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
 
 
     @Override
@@ -46,9 +44,9 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
 
         //Inicializa instancia que pega atividades da memória
         Context context = this.getApplicationContext();
-        atividadeDiariaDAO = new AtividadeDiariaDAO(context);
+        AtividadeDiariaDAO atividadeDiariaDAO = new AtividadeDiariaDAO(context);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         compactCalendarView = findViewById(R.id.compactcalendar_view);

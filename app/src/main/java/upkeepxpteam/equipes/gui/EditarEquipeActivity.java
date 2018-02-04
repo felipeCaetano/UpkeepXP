@@ -2,15 +2,17 @@ package upkeepxpteam.equipes.gui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import upkeepxpteam.CustomAdapter;
 import upkeepxpteam.UserModel;
 import upkeepxpteam.equipes.equipebase.Equipe;
@@ -21,7 +23,6 @@ import upkeepxpteam.usuario.usuariopersistence.UsuarioDAO;
 
 public class EditarEquipeActivity extends AppCompatActivity {
 
-    private Button btnEditar;
     private EditText edtnomeequipe;
     Equipe equipe;
 
@@ -31,7 +32,7 @@ public class EditarEquipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_equipe);
 
         ListView listView = findViewById(R.id.listView_Membros);
-        btnEditar = findViewById(R.id.btn_confirmar);
+        Button btnEditar = findViewById(R.id.btn_confirmar);
         btnEditar.setText("EDITAR");
         edtnomeequipe = findViewById(R.id.editText_nome_equipe);
 

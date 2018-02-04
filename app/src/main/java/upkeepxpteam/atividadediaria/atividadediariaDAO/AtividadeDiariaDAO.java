@@ -14,7 +14,8 @@ import upkeepxpteam.persistence.UpKeepDataBaseContract;
 import upkeepxpteam.persistence.UpkeepDbHelper;
 
 /**
- * Created by Felipe on 20/12/2017.
+ * Created by Felipe on 20/12/2017
+ * Classe AtividadeDAO para CRUD de Atividades Diarias.
  */
 
 public class AtividadeDiariaDAO {
@@ -32,13 +33,14 @@ public class AtividadeDiariaDAO {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME;
-    private final SQLiteDatabase dbWriter;
-    private final SQLiteDatabase dbReader;
+    private SQLiteDatabase dbWriter;
+    private SQLiteDatabase dbReader;
+    private final UpkeepDbHelper upkeepDbHelper;
 
     public AtividadeDiariaDAO(Context ctx){
-        UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
-        dbWriter = upkeepDbHelper.getWritableDatabase();
-        dbReader = upkeepDbHelper.getReadableDatabase();
+        this.upkeepDbHelper = new UpkeepDbHelper(ctx);
+        this.dbWriter = upkeepDbHelper.getWritableDatabase();
+        this.dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
     public static String createMyTable(){
@@ -53,7 +55,7 @@ public class AtividadeDiariaDAO {
         cv.put("Equipe", atividadeDiaria.getEquipeNome());
         cv.put("Local", atividadeDiaria.getLocal());
         cv.put("Descricao", atividadeDiaria.getDescricao());
-        //colocar situaçao
+        cv.put("Situação",atividadeDiaria.getSituacao());
 
         return dbWriter.insert(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,cv)>0;
        }
@@ -62,27 +64,41 @@ public class AtividadeDiariaDAO {
 
     }
 
-    public void buscarTodasAtividades(){
-        //SELECT * from UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME
-        //retornar lista?
-
+    public List<AtividadeDiaria> buscarTodasAtividades(){
+        dbReader = upkeepDbHelper.getReadableDatabase();
+        try{
+            Cursor cursor = dbReader.query
+                    (UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,
+                            null,null,null,null,null,null);
+            return toList(cursor);
+        }finally {
+            dbReader.close();
+        }
     }
 
     public void atualizaAtividade(AtividadeDiaria atividadeDiaria){
 
     }
 
-    public void destroiAtividade(AtividadeDiaria atividadeDiaria){
+    public Boolean destroiAtividade(AtividadeDiaria atividadeDiaria){
+        dbWriter = upkeepDbHelper.getWritableDatabase();
+        try{
+            return dbWriter.delete
+                    (UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,
+                            "_id=?", new String[]{String.valueOf(atividadeDiaria.getId())})>0;
+        }finally {
+            dbWriter.close();
+        }
 
     }
 
     public void destroiTodasAtividades(){
         //DROP TABLE UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME;
-
+        dbWriter.execSQL(SQL_DELETE_ENTRIES);
     }
 
     private List<AtividadeDiaria> toList(Cursor c){
-        List<AtividadeDiaria> atividadeDiarias = new ArrayList<AtividadeDiaria>();
+        List<AtividadeDiaria> atividadeDiarias = new ArrayList<>();
         if(c.moveToFirst()){
             do{
                 AtividadeDiaria atividadeDiaria = new AtividadeDiaria();
@@ -94,14 +110,14 @@ public class AtividadeDiariaDAO {
                 atividadeDiaria.setLocal(c.getString(c.getColumnIndex("Local")));
                 atividadeDiaria.setDescricao(c.getString(c.getColumnIndex("Descricao")));
                 atividadeDiaria.setEquipeNome(c.getString(c.getColumnIndex("Equipe")));
-                //atividadeDiaria.setSituacao(c.getString(c.getColumnIndex("Situacao")));
+                atividadeDiaria.setSituacao(c.getString(c.getColumnIndex("Situacao")));
             }while (c.moveToNext());
         }
         return atividadeDiarias;
     }
 
     public List<AtividadeDiaria> selecionaAtividaPorDia(String date){
-
+            dbReader = upkeepDbHelper.getReadableDatabase();
         try{
             Cursor c = dbReader.query(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,"data='"+date+"'",null,null,null,null);
             return toList(c);

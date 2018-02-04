@@ -15,8 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/txt_email"
-        android:labelFor="@id/emailEditText"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/emailEditText"
         app:layout_constraintEnd_toEndOf="@+id/emailEditText"
         app:layout_constraintHorizontal_bias="0.027"
@@ -42,7 +41,6 @@
 
     <TextView
         android:id="@+id/nomeTextView"
-        android:labelFor="@id/nomeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -50,7 +48,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/txt_Nome"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
@@ -60,13 +58,12 @@
 
     <TextView
         android:id="@+id/sobrenomeTextView"
-        android:labelFor="@id/sobrenomeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/txt_Sobrenome"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/nomeTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.674"
@@ -111,8 +108,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:text="@string/txt_Nascimento"
-        android:textColor="@color/textColorPrimary"
-        android:labelFor="@id/nascimentoEditText"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/nascimentoEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -120,13 +116,12 @@
 
     <TextView
         android:id="@+id/sexoTextView"
-        android:labelFor="@id/sexoRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/txt_Sexo"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/nascimentoTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.591"
@@ -134,6 +129,7 @@
 
     <EditText
         android:id="@+id/nascimentoEditText"
+        style="@android:style/TextAppearance.Material.Small"
         android:layout_width="85dp"
         android:layout_height="42dp"
         android:layout_marginBottom="8dp"
@@ -161,6 +157,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.932"
@@ -168,25 +165,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.308">
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <RadioButton
             android:id="@+id/mascRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/txt_M"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/textColorPrimary"
-            android:shadowColor="@color/textColorPrimary"
-            android:buttonTint="@color/textColorPrimary"/>
+            android:textColor="@color/textColorPrimary" />
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <RadioButton
             android:id="@+id/femRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/txt_F"
-            android:textColor="@color/textColorPrimary"
-            android:buttonTint="@color/textColorPrimary"/>
+            android:textColor="@color/textColorPrimary" />
 
     </RadioGroup>
 
@@ -209,13 +203,12 @@
 
     <TextView
         android:id="@+id/especialidadeTextView"
-        android:labelFor="@id/especialidadeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/txt_Especialidade"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/foneEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.714"
@@ -293,13 +286,12 @@
 
     <TextView
         android:id="@+id/ufTextView"
-        android:labelFor="@id/ufSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/txt_UF"
-        android:textColor="@color/textColorPrimary"
+        android:theme="@style/UpkeepEditText"
         app:layout_constraintBaseline_toBaselineOf="@+id/numeroEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.557"
@@ -330,7 +322,7 @@
         android:ems="10"
         android:inputType="number"
         android:theme="@style/UpkeepEditText"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/numeroTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.318"
@@ -345,13 +337,14 @@
         android:entries="@array/UF"
         android:popupBackground="@color/colorPrimary"
         android:theme="@style/UpkeepEditText"
+        app:layout_constraintBaseline_toBaselineOf="@+id/numeroEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="331dp" />
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/funcaoTextView"
+        android:labelFor="@id/funcaoSpinner"
         android:layout_width="59dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -360,7 +353,6 @@
         android:layout_marginTop="8dp"
         android:text="@string/txt_Funcao"
         android:textColor="@color/textColorPrimary"
-        android:labelFor="@id/funcaoSpinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.028"
