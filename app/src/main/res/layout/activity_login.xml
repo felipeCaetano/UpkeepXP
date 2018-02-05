@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:layout_gravity="center"
-    tools:context="upkeepxpteam.upkeepxp.LoginActivity">
+    tools:context="upkeepxpteam.upkeepxp.upkeepxpteam.infraestrutura.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/img_logo"
@@ -20,9 +21,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/contentDescription_logo"
         app:srcCompat="@drawable/logo" />
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,9 +34,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/et_email"
+        android:textColorHint="@color/textColorHint"
         android:inputType="textEmailAddress"
-        android:text="hermano.costa@ufrpe.br"
+        android:text="ulisses.barros@ufrpe.br"
         android:theme="@style/UpkeepEditText"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,7 +57,7 @@
         android:ems="10"
         android:hint="@string/et_password"
         android:inputType="textPassword"
-        android:text="hermano123"
+        android:text="ulisses123"
         android:theme="@style/UpkeepEditText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +94,7 @@
         android:layout_marginTop="8dp"
         android:autoLink="web"
         android:text="@string/tv_forgotpass"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
