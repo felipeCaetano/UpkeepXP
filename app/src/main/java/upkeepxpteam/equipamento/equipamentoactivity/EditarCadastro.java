@@ -113,7 +113,7 @@ public class EditarCadastro extends AppCompatActivity {
             EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastro.this);
             public void onClick(DialogInterface dialog, int id) {
                 equipamentoDAO.delete(equip);
-                Toast.makeText(EditarCadastro.this,R.string.delete_sucess, Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditarCadastro.this, R.string.delete_sucess, Toast.LENGTH_SHORT).show();
                 returnActivity();
             }
         });
@@ -140,14 +140,14 @@ public class EditarCadastro extends AppCompatActivity {
         equip.setFabricante(edtfabricante.getText().toString());
         equip.setDefeito(edtfalha.getText().toString());
         equip.setTipo(edttipo.getText().toString());
-        //equip.setStatus(spstatus.getText().toString()); //precisa ser preenchido o spinner
+        equip.setStatus(spstatus.getText().toString());
         equip.setDescricao(edtobservacao.getText().toString());
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         Boolean salvou = equipamentoDAO.salva(equip);
         if (salvou){
-            Toast.makeText(EditarCadastro.this,R.string.edit_sucess, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditarCadastro.this, R.string.edit_sucess, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(EditarCadastro.this,R.string.edit_fail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditarCadastro.this, R.string.edit_fail, Toast.LENGTH_SHORT).show();
         }
         returnActivity();
     }

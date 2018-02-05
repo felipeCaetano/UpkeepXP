@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:layout_gravity="center"
-    tools:context="upkeepxpteam.upkeepxp.LoginActivity">
+    tools:context="upkeepxpteam.upkeepxp.upkeepxpteam.infraestrutura.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/img_logo"
@@ -21,6 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/contentDescription_logo"
         app:srcCompat="@drawable/logo" />
 
     <android.support.v7.widget.AppCompatEditText
@@ -36,6 +37,7 @@
         android:textColorHint="@color/textColorHint"
         android:inputType="textEmailAddress"
         android:text="ulisses.barros@ufrpe.br"
+        android:theme="@style/UpkeepEditText"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

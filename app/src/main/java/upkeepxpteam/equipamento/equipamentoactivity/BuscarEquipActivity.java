@@ -24,7 +24,7 @@ import java.util.List;
 import upkeepxpteam.atividadediaria.atividadediariaactivity.AtividadeDiariaActivity;
 import upkeepxpteam.equipamento.equipamentobase.Equipamento;
 import upkeepxpteam.equipamento.equipamentodao.EquipamentoDAO;
-import upkeepxpteam.equipes.EquipesActivity;
+import upkeepxpteam.equipes.gui.EquipesActivity;
 import upkeepxpteam.upkeepxp.R;
 import upkeepxpteam.usuario.usuarioactivity.CadastraUsuarioActivity;
 
@@ -37,10 +37,6 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_equip);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.title_activity_buscar_equip));
-        setSupportActionBar(toolbar);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         final List<Equipamento> lista = equipamentoDAO.findAll();
@@ -89,14 +85,7 @@ public class BuscarEquipActivity extends AppCompatActivity implements Navigation
             }
         });
 
-    DrawerLayout drawer = findViewById(R.id.drawer_layout);
-    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-    drawer.addDrawerListener(toggle);
-    toggle.syncState();
 
-    NavigationView navigationView = findViewById(R.id.nav_view);
-    navigationView.setNavigationItemSelectedListener(this);
 
     }
 

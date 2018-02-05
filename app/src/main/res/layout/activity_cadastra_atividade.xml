@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="upkeepxpteam.atividadediaria.atividadediariaactivity.CadastraAtividadeActivity">
+    tools:context="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.CadastraAtividadeActivity">
 
     <Button
         android:id="@+id/btn_salvar"
