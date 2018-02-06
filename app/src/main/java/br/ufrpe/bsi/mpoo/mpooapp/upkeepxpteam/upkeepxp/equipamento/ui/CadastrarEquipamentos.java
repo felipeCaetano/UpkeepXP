@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
@@ -22,6 +24,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
     private EditText descricao;
     private EditText fabricante;
     private EditText tipo;
+    private Spinner spinner;
     private Button btnSalvar;
     private Button btnDelete;
 
@@ -31,6 +34,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_equipamentos);
         Toolbar toolbar = findViewById(R.id.tb_equipamento);
+        toolbar.setTitle(getString(R.string.title_activity_cadastrar_equipamento));
         setSupportActionBar(toolbar);
         cadastraBD();
     }
@@ -73,6 +77,12 @@ public class CadastrarEquipamentos extends AppCompatActivity {
 
         descricao = findViewById(R.id.edt_descricao);
         equipamento.setDescricao(descricao.getText().toString());
+
+        spinner = findViewById(R.id.spn_status);
+        ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinadapter.add("opção");
+        spinner.setAdapter(spinadapter);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         equipamentoDAO.salva(equipamento);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="editar">editar</string>
     <string name="app_name">UpkeepXP</string>
     <string name="et_email">Insira seu e-mail</string>
     <string name="et_password">Insira sua senha</string>
@@ -77,11 +76,13 @@
     <string name="cancel">Cancela</string>
     <string name="edit_sucess">Editado com sucesso!</string>
     <string name="falha">Falha</string>
-    <string name="editar">editar</string>
-    <string name="edit_fail">Falha</string>
+    <string name="editar">Editar</string>
     <string name="buscar">Pequisar</string>
     <string name="exemplo_data">01/01/1950</string>
     <string name="nome_da_equipe">Nome da Equipe</string>
     <string name="cadastrar_equipamento">Cadastrar Equipamento</string>
     <string name="edit_fail">Falha ao editar!</string>
+    <string name="title_activity_cadastrar_equipamento">Cadastrar Equipamento</string>
+    <string name="tv_fabricante">Fabricante</string>
+    <string name="status">Status</string>
 </resources>

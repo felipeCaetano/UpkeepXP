@@ -19,10 +19,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.AtividadeDiariaActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.negocios.EquipamentoAdapter;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.ui.CadastraUsuarioActivity;
@@ -43,12 +44,12 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
         setSupportActionBar(toolbar);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-        final List<Equipamento> lista = equipamentoDAO.findAll();
+        final ArrayList<Equipamento> lista = (ArrayList<Equipamento>)equipamentoDAO.findAll();
 
         EditText pesquisar = findViewById(R.id.busca);
 
         ListView listaequip = findViewById(R.id.lvequip);
-        final ArrayAdapter<Equipamento> adaptadorEquip = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,lista);
+        final ArrayAdapter<Equipamento> adaptadorEquip = new EquipamentoAdapter(BuscarEquipamentoActivity.this,lista);
 
         //ativa a pesquisa no campo de texto pesquisar:
         pesquisar.addTextChangedListener(new TextWatcher() {
@@ -97,7 +98,6 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
 
     NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override

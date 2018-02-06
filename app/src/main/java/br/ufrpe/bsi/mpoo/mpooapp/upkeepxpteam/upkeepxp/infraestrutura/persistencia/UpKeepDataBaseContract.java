@@ -61,18 +61,4 @@ public final class UpKeepDataBaseContract {
         public static final String COLUMN_NAME_DEFEITO = "Defeito";
         public static final String COLUMN_NAME_STATUS = "Status";
     }
-
-
-        public static class EquipamentosTable implements BaseColumns{
-            public static final String TABLE_NAME = "Equipamentos";
-            public static final String COLUMN_NAME_NOME = "Equipamento";
-            public static final String COLUMN_NAME_CODIGO = "Codigo";
-            public static final String COLUMN_NAME_MODELO = "Modelo";
-            public static final String COLUMN_NAME_TIPO = "Tipo";
-            public static final String COLUMN_NAME_FABRICANTE = "Fabricante";
-            public static final String COLUMN_NAME_DESCRICAO = "Descricao";
-            public static final String COLUMN_NAME_DEFEITO = "Defeito";
-            public static final String COLUMN_NAME_STATUS = "Status";
-    }
-
 }
