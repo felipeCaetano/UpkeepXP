@@ -16,6 +16,7 @@ import java.util.List;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.CustomEquipeAdapter;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.EquipeModel;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.dominio.Equipe;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.negocio.EquipeNegocio;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeDAO;
 import upkeepxpteam.upkeepxp.R;
 
@@ -46,8 +47,8 @@ public class EquipesActivity extends AppCompatActivity {
     }
 
     public void addItensListaModeloEquipe(List equipeModels) {
-        EquipeDAO equipeDAO = new EquipeDAO(this);
-        List itens = equipeDAO.buscarTodasEquipes();
+        EquipeNegocio equipeNegocio = new EquipeNegocio(this);
+        List itens = equipeNegocio.buscarTodasEquipes();
         int cont = 0;
         while (cont <= itens.size() - 1) {
             Equipe equipe = (Equipe) itens.get(cont);
