@@ -2,8 +2,12 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.ToolbarWidgetWrapper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,9 +25,10 @@ public class EquipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipes);
-
-        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.tb_equipes);
-        setSupportActionBar(toolbar);
+        FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
+        floatingActionButton.bringToFront();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_equipes);
+        toolbar.setTitle("Equipes");
 
         ListView lista = findViewById(R.id.listview_Equipes);
 

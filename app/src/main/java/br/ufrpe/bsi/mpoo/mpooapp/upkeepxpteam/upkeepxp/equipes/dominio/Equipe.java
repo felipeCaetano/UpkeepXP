@@ -7,14 +7,6 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.dominio.Usuario;
 
 public class Equipe implements Serializable {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     private int id;
     private String nome;
     private List<Usuario> users;
@@ -40,19 +32,16 @@ public class Equipe implements Serializable {
 
     public String getUsuario(){return usuarios;}
 
-    public String getUsuariosNomes(){
-        String retorno = "Operários: ";
-        if(users!= null){
-            for (Usuario usuario:users) {
-                retorno += usuario.getNome()+" "+usuario.getSobrenome()+"\n";
-            }
-        }
-        return retorno;
-    }
-
     public String toString(){
         return "" + this.getNome() +" "+ this.getUsuario();
     }
 
-    public String toString2(){ return "" + this.getNome(); }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
