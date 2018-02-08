@@ -61,4 +61,23 @@ public final class UpKeepDataBaseContract {
         public static final String COLUMN_NAME_DEFEITO = "Defeito";
         public static final String COLUMN_NAME_STATUS = "Status";
     }
+
+    public static class DisponibilidadeTable implements BaseColumns{
+
+        public static final String TABLE_NAME = "disponibilidade";
+        public static final String COLUMN_NAME_ID_EQUIPAMENTO = "idEquipamento";
+        public static final String COLUMN_NAME_DATA_DISPONIBILIDADE = "dataDisponibilidade";
+        public static final String COLUMN_NAME_DISPONIBILIDADE = "disponibilidade";
+
+    }
+
+    public static class FalhasTable implements BaseColumns{
+
+        public static final String TABLE_NAME = "falhas";
+        public static final String COLUMN_NAME_ID_EQUIPAMENTO = "idEquipamento";
+        public static final String COLUMN_NAME_DATA_FALHA = "dataFalha";
+        public static final String COLUMN_NAME_DATA_NORMALIZACAO = "dataNormalizacao";
+
+    }
+
 }
