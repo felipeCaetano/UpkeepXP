@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.List;
-
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.dominio.EquipeId;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeIdDAO;
@@ -29,7 +27,6 @@ public class CustomEquipeAdapter extends BaseAdapter {
     Activity activity;
     List<EquipeModel> equipeModels;
     LayoutInflater inflater;
-    String PREFERENCE_NAME = "EditarPreferences";
 
     public CustomEquipeAdapter(Activity activity, List<EquipeModel> equipeModels){
         this.activity = activity;
@@ -72,14 +69,8 @@ public class CustomEquipeAdapter extends BaseAdapter {
         final String nome = equipeModel.getEquipe().getNome();
         int id = equipeModel.getEquipe().getId();
         EquipeIdDAO equipeIdDAO = new EquipeIdDAO(activity);
-        List<EquipeId> equipeIdList = equipeIdDAO.buscarTodasEquipesId(id);
-        String operarios = "";
-        for (EquipeId equipeId: equipeIdList){
-            int userid = equipeId.getIdUsuario();
-            UsuarioDAO usuarioDAO = new UsuarioDAO(activity);
-            List<Usuario> usuarioList = usuarioDAO.getUsuarioPorId(userid);
-            operarios += usuarioList.get(0).toString()+"\n";
-        }
+        String operarios = equipeIdDAO.getStringOperarioEquipeId(id);
+
         holder.tvEquipe.setText("Equipe: "+nome+"\n"+"Operarios: "+operarios);
         holder.tvEquipe.setTextColor(Color.parseColor("#000000"));
 

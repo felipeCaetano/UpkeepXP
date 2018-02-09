@@ -10,10 +10,13 @@ import java.util.List;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.dominio.EquipeId;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpKeepDataBaseContract;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpkeepDbHelper;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.dominio.Usuario;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.persistencia.UsuarioDAO;
 
 
 public class EquipeIdDAO {
 
+    Context context;
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
@@ -31,6 +34,7 @@ public class EquipeIdDAO {
         UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
         dbWriter = upkeepDbHelper.getWritableDatabase();
         dbReader = upkeepDbHelper.getReadableDatabase();
+        this.context = ctx;
     }
 
     public static String createMyTable(){
@@ -55,6 +59,18 @@ public class EquipeIdDAO {
             result.add(equipeId);
         }
         return result;
+    }
+
+    public String getStringOperarioEquipeId(int id){
+        String operario = "";
+        List<EquipeId> equipeIdList = buscarTodasEquipesId(id);
+        for (EquipeId equipeId: equipeIdList){
+            int userid = equipeId.getIdUsuario();
+            UsuarioDAO usuarioDAO = new UsuarioDAO(context);
+            List<Usuario> usuarioList = usuarioDAO.getUsuarioPorId(userid);
+            operario += usuarioList.get(0).getNome()+"\n";
+        }
+        return operario;
     }
 
 }

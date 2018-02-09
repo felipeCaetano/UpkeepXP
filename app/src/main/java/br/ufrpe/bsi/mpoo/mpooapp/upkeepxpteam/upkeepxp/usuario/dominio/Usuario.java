@@ -119,7 +119,4 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String toString(){
-        return this.nome;
-    }
 }
