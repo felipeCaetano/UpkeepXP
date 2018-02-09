@@ -80,4 +80,14 @@ public final class UpKeepDataBaseContract {
 
     }
 
+
+    public static class RelacaoEquipFalhasTable implements BaseColumns{
+
+        public static final String TABLE_NAME = "relacaoEquipFalhas";
+        public static final String COLUMN_NAME_ID_EQUIPAMENTO_ATUAL = "idEquipamentoAtual";
+        public static final String COLUMN_NAME_ID_EQUIPAMENTO_PROXIMO = "idEquipamentoProximo";
+        public static final String COLUMN_NAME_TIPO_ASSOIACAO = "tipoAssociacao";
+
+    }
+
 }
