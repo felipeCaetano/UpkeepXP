@@ -1,4 +1,4 @@
-package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.negocios;
+package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -26,7 +26,7 @@ public class EquipamentoAdapter extends ArrayAdapter<Equipamento> implements Fil
     private final Context context;
     private ArrayList<Equipamento> elementos;
 
-    
+
     public EquipamentoAdapter(Context context, ArrayList<Equipamento> elementos) {
         super(context, R.layout.equipamentolistview, elementos);
         this.context = context;
