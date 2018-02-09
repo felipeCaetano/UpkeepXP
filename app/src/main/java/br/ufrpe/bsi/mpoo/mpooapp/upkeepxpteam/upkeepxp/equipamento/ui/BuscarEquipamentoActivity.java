@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -44,12 +43,12 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
         setSupportActionBar(toolbar);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-        final ArrayList<Equipamento> lista = (ArrayList<Equipamento>)equipamentoDAO.findAll();
+        final ArrayList<Equipamento> lista = equipamentoDAO.findAll();
 
         EditText pesquisar = findViewById(R.id.busca);
 
         ListView listaequip = findViewById(R.id.lvequip);
-        final ArrayAdapter<Equipamento> adaptadorEquip = new EquipamentoAdapter(BuscarEquipamentoActivity.this,lista);
+        final EquipamentoAdapter equipamentoArrayAdapter = new EquipamentoAdapter(BuscarEquipamentoActivity.this, lista);
 
         //ativa a pesquisa no campo de texto pesquisar:
         pesquisar.addTextChangedListener(new TextWatcher() {
@@ -59,7 +58,8 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adaptadorEquip.getFilter().filter(s);
+                equipamentoArrayAdapter.getFilter().filter(s);
+                equipamentoArrayAdapter.setElementos(lista);
             }
 
             @Override
@@ -67,15 +67,15 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
             }
         });
 
-        listaequip.setAdapter(adaptadorEquip);
+        listaequip.setAdapter(equipamentoArrayAdapter);
 
         listaequip.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Equipamento equip = adaptadorEquip.getItem(position);
+                Equipamento equip = equipamentoArrayAdapter.getItem(position);
 
-                Intent intent = new Intent(BuscarEquipamentoActivity.this, EditarCadastroEquipamento.class);
+                Intent intent = new Intent(BuscarEquipamentoActivity.this, EditarCadastroEquipamentoActivity.class);
                 intent.putExtra("Equipamento", equip);
                 startActivity(intent);
             }
@@ -85,7 +85,7 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
             @Override
             public void onClick(View view) {
                 //chamar a intent que vai habilitar o cadastro no BD
-                Intent it = new Intent(BuscarEquipamentoActivity.this, CadastrarEquipamentos.class);
+                Intent it = new Intent(BuscarEquipamentoActivity.this, CadastrarEquipamentosActivity.class);
                 startActivity(it);
             }
         });
@@ -166,5 +166,6 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
 

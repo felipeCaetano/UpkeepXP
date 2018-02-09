@@ -15,7 +15,7 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equip
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import upkeepxpteam.upkeepxp.R;
 
-public class CadastrarEquipamentos extends AppCompatActivity {
+public class CadastrarEquipamentosActivity extends AppCompatActivity {
 
     private EditText nome;
     private EditText modelo;
@@ -79,9 +79,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         equipamento.setDescricao(descricao.getText().toString());
 
         spinner = findViewById(R.id.spn_status);
-        ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-        spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinadapter.add("opção");
+        ArrayAdapter<String> spinadapter = new ArrayAdapter<>(CadastrarEquipamentosActivity.this, R.layout.spinner_item);
         spinner.setAdapter(spinadapter);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);

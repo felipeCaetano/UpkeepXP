@@ -55,9 +55,9 @@
         <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity"
             android:label="Equipes"/>
         <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CadastrarEquipamentos"/>
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CadastrarEquipamentosActivity"/>
         <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentoActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.EditarCadastroEquipamento"/>
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.EditarCadastroEquipamentoActivity"/>
     </application>
 
 </manifest>

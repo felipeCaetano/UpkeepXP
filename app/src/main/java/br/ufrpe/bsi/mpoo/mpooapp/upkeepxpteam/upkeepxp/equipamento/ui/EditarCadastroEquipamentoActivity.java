@@ -15,7 +15,7 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equip
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import upkeepxpteam.upkeepxp.R;
 
-public class EditarCadastroEquipamento extends AppCompatActivity {
+public class EditarCadastroEquipamentoActivity extends AppCompatActivity {
 
     private EditText edtnome;
     private EditText edtid;
@@ -28,7 +28,7 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
 
     private Equipamento equip;
     private static final String TAG = "sql";
-    private EditarCadastroEquipamento activity;
+    private EditarCadastroEquipamentoActivity activity;
     private Long id;
 
     @Override
@@ -108,10 +108,10 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.deseja_Del).setTitle(R.string.delete_title);
         builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastroEquipamento.this);
+            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastroEquipamentoActivity.this);
             public void onClick(DialogInterface dialog, int id) {
                 equipamentoDAO.delete(equip);
-                Toast.makeText(EditarCadastroEquipamento.this,R.string.delete_sucess, Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditarCadastroEquipamentoActivity.this,R.string.delete_sucess, Toast.LENGTH_SHORT).show();
                 returnActivity();
             }
         });
@@ -126,7 +126,7 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
     }
 
     private void returnActivity(){
-        Intent it = new Intent(EditarCadastroEquipamento.this,BuscarEquipamentoActivity.class);
+        Intent it = new Intent(EditarCadastroEquipamentoActivity.this,BuscarEquipamentoActivity.class);
         startActivity(it);
     }
 
@@ -143,9 +143,9 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         Boolean salvou = equipamentoDAO.salva(equip);
         if (salvou){
-            Toast.makeText(EditarCadastroEquipamento.this,R.string.edit_sucess, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditarCadastroEquipamentoActivity.this,R.string.edit_sucess, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(EditarCadastroEquipamento.this,R.string.edit_fail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditarCadastroEquipamentoActivity.this,R.string.edit_fail, Toast.LENGTH_SHORT).show();
         }
         returnActivity();
     }

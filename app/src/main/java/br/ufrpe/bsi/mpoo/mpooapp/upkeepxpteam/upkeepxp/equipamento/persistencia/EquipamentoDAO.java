@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpKeepDataBaseContract;
@@ -85,7 +84,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public List<Equipamento> findAll(){
+    public ArrayList<Equipamento> findAll(){
         dbReader = upkeepDbHelper.getReadableDatabase();
         try{
             Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,null,null,null,null,null,null);
@@ -95,8 +94,8 @@ public class EquipamentoDAO {
         }
     }
 
-    private List<Equipamento> toList(Cursor c){
-        List<Equipamento> equipamentos = new ArrayList<>();
+    private ArrayList<Equipamento> toList(Cursor c){
+        ArrayList<Equipamento> equipamentos = new ArrayList<>();
         if (c.moveToFirst()){
             do{
                 Equipamento equipamento = new Equipamento();

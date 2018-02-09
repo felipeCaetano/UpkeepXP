@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:layout_gravity="center"
-    tools:context="upkeepxpteam.upkeepxp.upkeepxpteam.infraestrutura.ui.LoginActivity">
+    android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/img_logo"
@@ -36,7 +33,7 @@
         android:hint="@string/et_email"
         android:textColorHint="@color/textColorHint"
         android:inputType="textEmailAddress"
-        android:text="ulisses.barros@ufrpe.br"
+        android:text="felipe.caetano@ufrpe.br"
         android:theme="@style/UpkeepEditText"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +54,7 @@
         android:ems="10"
         android:hint="@string/et_password"
         android:inputType="textPassword"
-        android:text="ulisses123"
+        android:text="felipe123"
         android:theme="@style/UpkeepEditText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

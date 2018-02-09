@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="status">status
-        <item>opção 1</item>
+        <item>Em Análise</item>
+        <item>Resolvido</item>
+        <item>Não Resolvido</item>
     </string-array>
 
 </resources>

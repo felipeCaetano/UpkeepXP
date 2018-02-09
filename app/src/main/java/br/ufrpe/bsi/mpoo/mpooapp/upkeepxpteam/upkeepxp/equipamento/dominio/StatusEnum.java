@@ -8,7 +8,7 @@ public enum StatusEnum {
 
     EM_ANALISE("Em Análise"),RESOLVIDO("Resolvido"),NAO_RESOLVIDO("Não REsolvido");
 
-    private String status;
+    private final String status;
 
     StatusEnum(String status){
         this.status = status;
@@ -18,13 +18,18 @@ public enum StatusEnum {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 
     @Override
     public String toString() {
-        return status;
+        return this.status;
+    }
+
+    public static String[] enumEstadosLista(){
+        StatusEnum[] listastatus = StatusEnum.values();
+        String[] lista = new String[listastatus.length];
+        for (int i =0; i<listastatus.length;i++){
+            lista[i] = listastatus[i].getStatus();
+        }
+        return  lista;
     }
 }
