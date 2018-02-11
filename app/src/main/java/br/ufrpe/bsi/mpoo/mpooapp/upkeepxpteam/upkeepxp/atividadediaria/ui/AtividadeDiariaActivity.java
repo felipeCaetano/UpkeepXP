@@ -180,7 +180,9 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         calendar.set(Calendar.MILLISECOND, 0);
     }
 
-
+    /**
+     * Seta data atual
+     */
     public void gotoToday() {
         // Set any date to navigate to particular date
         compactCalendarView.setCurrentDate(Calendar.getInstance(Locale.getDefault()).getTime());

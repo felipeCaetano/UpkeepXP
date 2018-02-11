@@ -14,8 +14,8 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistenc
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpkeepDbHelper;
 
 /**
- * Created by Felipe on 20/12/2017
  * Classe AtividadeDAO para CRUD de Atividades Diarias.
+ *
  */
 
 public class AtividadeDiariaDAO {
@@ -60,9 +60,19 @@ public class AtividadeDiariaDAO {
         return dbWriter.insert(UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME,null,cv)>0;
        }
 
+    /**
+     * Busca uma atividade diária especifica
+     * @param atividadeDiaria
+     */
+
     public void buscarAtividade(AtividadeDiaria atividadeDiaria){
 
     }
+
+    /**
+     * Retorna uma lista com todas as atividades diárias
+     * @return
+     */
 
     public List<AtividadeDiaria> buscarTodasAtividades(){
         dbReader = upkeepDbHelper.getReadableDatabase();
@@ -76,9 +86,20 @@ public class AtividadeDiariaDAO {
         }
     }
 
+
+    /**
+     * Atualiza uma atividade diária específica
+     * @param atividadeDiaria
+     */
     public void atualizaAtividade(AtividadeDiaria atividadeDiaria){
 
     }
+
+    /**
+     * Exclui uma atividade diaária específica
+     * @param atividadeDiaria
+     * @return
+     */
 
     public Boolean destroiAtividade(AtividadeDiaria atividadeDiaria){
         dbWriter = upkeepDbHelper.getWritableDatabase();
@@ -92,10 +113,20 @@ public class AtividadeDiariaDAO {
 
     }
 
+    /**
+     * Exclui uma lista de atividades diárias
+     */
     public void destroiTodasAtividades(){
         //DROP TABLE UpKeepDataBaseContract.AtividadeDiariaTable.TABLE_NAME;
         dbWriter.execSQL(SQL_DELETE_ENTRIES);
     }
+
+
+    /**
+     * Cria uma lista de atividades diárias
+     * @param c
+     * @return
+     */
 
     private List<AtividadeDiaria> toList(Cursor c){
         List<AtividadeDiaria> atividadeDiarias = new ArrayList<>();
@@ -115,6 +146,12 @@ public class AtividadeDiariaDAO {
         }
         return atividadeDiarias;
     }
+
+    /**
+     * Selecionada uma as atividades diárias para uma data específica
+     * @param date
+     * @return
+     */
 
     public List<AtividadeDiaria> selecionaAtividaPorDia(String date){
             dbReader = upkeepDbHelper.getReadableDatabase();
