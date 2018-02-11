@@ -1,4 +1,4 @@
-package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.negocios;
+package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui;
 
 /**
  * Created by Felipe on 05/02/2018.

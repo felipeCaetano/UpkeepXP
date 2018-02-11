@@ -6,9 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.ToolbarWidgetWrapper;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class EquipesActivity extends AppCompatActivity {
 
         final CustomEquipeAdapter adapter = new CustomEquipeAdapter(this, modeloEquipe);
         lista.setAdapter(adapter);
+
     }
 
     public void addEquipe(View view){
@@ -56,4 +60,5 @@ public class EquipesActivity extends AppCompatActivity {
             cont += 1;
         }
     }
+
 }
