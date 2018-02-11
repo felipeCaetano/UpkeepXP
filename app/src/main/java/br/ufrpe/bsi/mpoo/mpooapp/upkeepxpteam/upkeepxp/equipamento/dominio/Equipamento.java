@@ -20,6 +20,11 @@ public class Equipamento implements Parcelable {
     private String descricao;
     private String status;
 
+    /**
+     * Sobrescreve o método toString escrever nome do equipamento
+     * o código do equipamento e o descrição do defeito
+     * @return
+     */
 
     @Override
     public String toString(){
@@ -31,6 +36,12 @@ public class Equipamento implements Parcelable {
     public int describeContents(){
         return 0;
     }
+
+    /**
+     * Escreve os dados para serem serializados
+     * @param dest
+     * @param flags
+     */
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
@@ -45,8 +56,13 @@ public class Equipamento implements Parcelable {
         dest.writeString(this.status);
         dest.writeString(this.descricao);
     }
+
+    /**
+     * Lê os dados na ordem que foram escritos no objeto Parcel
+     * @param parcel
+     */
     private void readFromParcel(Parcel parcel){
-        //le os dados na ordem que foram escritos
+
         this.id = parcel.readLong();
         this.nome = parcel.readString();
         this.codigo = parcel.readString();
@@ -58,7 +74,18 @@ public class Equipamento implements Parcelable {
         this.descricao = parcel.readString();
     }
 
+
+    /**
+     * Método necessário para implementação da interface Parcelable
+     */
     public static final Parcelable.Creator<Equipamento> CREATOR = new Parcelable.Creator<Equipamento>() {
+
+        /**
+         * Retorna um objeto equipamento com os dados da atividade registrada
+         * passados pelo objeto Parcel
+         * @param p
+         * @return
+         */
         @Override
         public Equipamento createFromParcel(Parcel p) {
             Equipamento eq = new Equipamento();
@@ -71,7 +98,10 @@ public class Equipamento implements Parcelable {
         }
     };
 
-    //geters e setters
+    /**
+     * getters e setters
+     * @return
+     */
     public long getId() {
         return id;
     }

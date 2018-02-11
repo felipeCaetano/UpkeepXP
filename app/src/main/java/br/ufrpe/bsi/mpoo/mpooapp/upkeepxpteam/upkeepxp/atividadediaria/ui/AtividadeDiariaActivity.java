@@ -32,7 +32,8 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
 
     private CompactCalendarView compactCalendarView;
     private ListView eventos;
-    private final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private final SimpleDateFormat dateFormatForMonth = new
+            SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private final Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
 
@@ -58,11 +59,14 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
 
         String data = dateFormat.format(today);
         Log.d("Data de Hoje", data);
-        final List<Event> events = compactCalendarView.getEvents(today);
-        final List<String> dadosAtividade = new ArrayList<>();
+        final List<Event> events;
+        events = compactCalendarView.getEvents(today);
+        final List<String> dadosAtividade;
+        dadosAtividade = new ArrayList<>();
         Log.d("Hoje tem: ", ""+events);
 
-        List<AtividadeDiaria> atividadeDiarias = atividadeDiariaDAO.selecionaAtividaPorDia(data);
+        List<AtividadeDiaria> atividadeDiarias;
+        atividadeDiarias = atividadeDiariaDAO.selecionaAtividaPorDia(data);
         Log.d("Atividades tem: ", ""+atividadeDiarias);
         for(AtividadeDiaria atividade: atividadeDiarias) {
             Event ev = new Event(Color.CYAN,today.getTime(),atividade);
@@ -70,18 +74,14 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         }
         for (Event ev: events) {
             AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
-            /*Esse trecho add uma lista inteira num array list:
-            String[] dados = {atividadeDiaria.getEquipeNome(), atividadeDiaria.getDescricao()};
-            dadosAtividade.addAll(Arrays.asList(dados));
-             */
-            dadosAtividade.add(""+atividadeDiaria.getEquipeNome()+"\n"+atividadeDiaria.getDescricao()); //Gambis detected: fazer um adapter customizado
+            dadosAtividade.add(""+atividadeDiaria.getEquipeNome()+"\n"+atividadeDiaria.getDescricao());
+
         }
         Log.d("Hoje tem: ", ""+events);
 
         eventos = findViewById(R.id.lista_eventos);
         //final ArrayAdapter<Event> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,events);
         final ArrayAdapter<String> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,dadosAtividade);
-
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_date_range);
@@ -139,24 +139,14 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
     }
 
     private void criaListaEventos(Date dateClicked) {
-        //events = compactCalendarView.getEvents(dateClicked);
+
     }
 
-    // Adding dummy events in calendar view for April, may, june 2016
-    //este método é de testes
-    private void addDummyEvents() {
-
-        addEvents(compactCalendarView, Calendar.APRIL);
-        addEvents(compactCalendarView, Calendar.MAY);
-        addEvents(compactCalendarView, Calendar.JUNE);
-
-        // Refresh calendar to update events
-        compactCalendarView.invalidate();
-    }
-
-
-    // Adding events from 1 to 6 days
-
+    /**
+     * adiciona atividades aos dias da semana no calendário
+     * @param compactCalendarView
+     * @param month
+     */
     private void addEvents(CompactCalendarView compactCalendarView, int month) {
         currentCalender.setTime(new Date());
         currentCalender.set(Calendar.DAY_OF_MONTH, 1);
@@ -168,11 +158,15 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
             }
             currentCalender.add(Calendar.DATE, i);
             setToMidnight(currentCalender);
-            compactCalendarView.addEvent(new Event(Color.CYAN,currentCalender.getTimeInMillis(),"Evento"+i), true);
+            compactCalendarView.addEvent(new Event(Color.CYAN,currentCalender.getTimeInMillis(),
+                    "Evento"+i), true);
         }
     }
 
-    //trocar para setHorario??
+    /**
+     * Configura horário para meia-noite
+     * @param calendar
+     */
     private void setToMidnight(Calendar calendar) {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);

@@ -42,15 +42,6 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         //UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(context);
         atividadeDiariaDAO = new AtividadeDiariaDAO(context);
 
-        /*Incluir campos para capturar a situação
-        da atividade diária tanto aqui quanto no layout
-        Criar enum para os seguintes campos:
-        Realizado - verde
-        Não Realizado - Vermelho
-        Cancelado - Cinza
-        Em Andamento - Amarelo
-         */
-
         Button btnSave = findViewById(R.id.btn_salvar);
         Button btnClear = findViewById(R.id.btn_limpar);
         edtEquipeNome = findViewById(R.id.edt_atv_name);
@@ -79,6 +70,9 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Grava a atividade no DAO de atividade e notifica via TOAST
+     */
     private void salvaAtividade(){
         AtividadeDiaria atividade = new AtividadeDiaria();
         atividade.setNome(edtEquipeNome.getText().toString());
@@ -96,6 +90,9 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Limpa os campos da tela de cadastro após ter salvo os dados atuais
+     */
     private void limpaCampos(){
         //melhorar
         edtEquipeNome.setText(edtEquipeNome.getHint());

@@ -1,12 +1,12 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio;
 
 /**
- * Created by Felipe on 05/02/2018.
+ * Enum com opções de status
  */
 
 public enum StatusEnum {
 
-    EM_ANALISE("Em Análise"),RESOLVIDO("Resolvido"),NAO_RESOLVIDO("Não REsolvido");
+    EM_ANALISE("Em Análise"),RESOLVIDO("Resolvido"),NAO_RESOLVIDO("Não Resolvido");
 
     private String status;
 

@@ -38,6 +38,11 @@ public class EquipamentoDAO {
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DEFEITO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_STATUS + TEXT_TYPE + " )";
 
+    /**
+     * Construtor do objeto EquipamentoDAO que instancia objetos da Classe UpKeepDbHelper
+     * utilizados para persistência
+     * @param context
+     */
 
     public EquipamentoDAO(Context context){
         this.upkeepDbHelper = new UpkeepDbHelper(context);
@@ -45,11 +50,22 @@ public class EquipamentoDAO {
         this.dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
+    /**
+     * Classe de UpKeepDbHelper que cria a tabela de acordo com o atributo SQL_CREATE_ENTRIES da
+     * linha 29
+     * @return
+     */
+
     public static String createMyTable(){
         return SQL_CREATE_ENTRIES;
     }
 
-    //metodo de inserção ou atualização:
+
+    /**
+     * Salva no banco os valores do registro
+     * @param equipamento
+     * @return
+     */
     public Boolean salva(Equipamento equipamento){
         long id = equipamento.getId();
         dbWriter = upkeepDbHelper.getWritableDatabase();
@@ -76,25 +92,42 @@ public class EquipamentoDAO {
         }
     }
 
+    /**
+     * Deleta do banco o um registro com id específico
+     * @param equipamento
+     * @return
+     */
     public Boolean delete(Equipamento equipamento){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
-            return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME, "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
+            return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
+                    "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
         }finally {
             dbWriter.close();
         }
     }
 
+    /**
+     * Busca todos os equipamentos registrados
+     * @return
+     */
+
     public List<Equipamento> findAll(){
         dbReader = upkeepDbHelper.getReadableDatabase();
         try{
-            Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,null,null,null,null,null,null);
+            Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
+                    null,null,null,null,null,null);
             return toList(cursor);
         }finally {
             dbReader.close();
         }
     }
 
+    /**
+     * Cria uma lista de equipamentos de acordo os dados dos registros
+     * @param c
+     * @return
+     */
     private List<Equipamento> toList(Cursor c){
         List<Equipamento> equipamentos = new ArrayList<>();
         if (c.moveToFirst()){
@@ -115,12 +148,17 @@ public class EquipamentoDAO {
         return equipamentos;
     }
 
-
+    /**
+     * Verifica um determnado equipamento pelo nome
+     * @param nome
+     * @return
+     */
     public boolean exists(String nome){
         Cursor c = null;
         dbReader = upkeepDbHelper.getReadableDatabase();
         try{
-             c = dbReader.query("equipamentos", null, "nome=?", new String[]{nome}, null, null, null, null);
+             c = dbReader.query("equipamentos", null, "nome=?",
+                     new String[]{nome}, null, null, null, null);
             return c.getCount()>0;
         }finally {
             assert c != null; //foi colocado pelo AS - verificar sobre asserts
@@ -128,7 +166,10 @@ public class EquipamentoDAO {
         }
     }
 
-    //Executa SQL
+    /**
+     * Executa comando sql
+     * @param sql
+     */
     public void execSQL(String sql){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
@@ -138,7 +179,11 @@ public class EquipamentoDAO {
         }
     }
 
-    //Executa SQL
+    /**
+     * Executa comando sql recebendo objeto como arguemtno adicional
+     * @param sql
+     * @param args
+     */
     public void execSQL(String sql, Object[] args){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
