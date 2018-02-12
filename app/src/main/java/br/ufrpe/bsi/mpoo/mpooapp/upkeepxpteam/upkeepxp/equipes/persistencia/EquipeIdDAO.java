@@ -30,6 +30,10 @@ public class EquipeIdDAO {
     private final SQLiteDatabase dbWriter;
     private final SQLiteDatabase dbReader;
 
+    /**
+     * Instancia os objetos necessários para realizar leitura e escrita no banco de dados.
+     * @param ctx
+     */
     public EquipeIdDAO(Context ctx){
         UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
         dbWriter = upkeepDbHelper.getWritableDatabase();
@@ -37,10 +41,19 @@ public class EquipeIdDAO {
         this.context = ctx;
     }
 
+    /**
+     * Cria a tabela conforme cláusulas da string SQL_CREATE_ENTRIES
+     * @return
+     */
     public static String createMyTable(){
         return SQL_CREATE_ENTRIES;
     }
 
+    /**
+     * Retorna um cursor que será tratado pos listarEquipeId.
+     * @param idBusca
+     * @return
+     */
     public List<EquipeId> buscarTodasEquipesId(int idBusca) {
         String sql = "SELECT * FROM equipeid WHERE idEquipe = '" + idBusca + "'";
         SQLiteDatabase db = dbReader;
@@ -48,6 +61,11 @@ public class EquipeIdDAO {
         return listarEquipeId(cursor);
     }
 
+    /**
+     * Trata o cursor recebido de buscarTodasEquipesId, retornando a lista de id´s
+     * @param cursor
+     * @return
+     */
     public List<EquipeId> listarEquipeId(Cursor cursor){
         List<EquipeId> result = new ArrayList<>();
         while (cursor.moveToNext()){
@@ -61,6 +79,11 @@ public class EquipeIdDAO {
         return result;
     }
 
+    /**
+     * Retorna uma lista dos usuários da equipe
+     * @param id
+     * @return
+     */
     public String getStringOperarioEquipeId(int id){
         String operario = "";
         List<EquipeId> equipeIdList = buscarTodasEquipesId(id);

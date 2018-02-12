@@ -11,17 +11,29 @@ public class EquipeNegocio {
 
     EquipeDAO equipeDAO;
 
-
-
+    /**
+     * Cria um novo objeto equipeDAO
+     * @param context
+     */
     public EquipeNegocio(Context context){
         equipeDAO = new EquipeDAO(context);
     }
 
+    /**
+     * Salva equipe no banco de daodos
+     * @param equipe
+     */
     public void salvarEquipe(Equipe equipe) {
         if (existeEquipe(equipe.getNome()) == false) {
             equipeDAO.equipeSave(equipe);
         }
     }
+
+    /**
+     * Verifica se exsite uma equipe com nome 'nomeEquipe'
+     * @param nomeEquipe
+     * @return
+     */
 
     public boolean existeEquipe(String nomeEquipe){
         if (equipeDAO.getIdEquipe(nomeEquipe) == -1){
@@ -30,12 +42,21 @@ public class EquipeNegocio {
         return true;
     }
 
+    /**
+     * Modifica uma equipe salva no banco de dados
+     * @param equipe
+     * @param idEquipeAntiga
+     */
     public void editarEquipe(Equipe equipe, int idEquipeAntiga){
 
         equipeDAO.equipeEditar(equipe,idEquipeAntiga);
 
     }
 
+    /**
+     * Retorna uma lista com todas as equipes cadastradas no banco de dados.
+     * @return
+     */
     public List<Equipe> buscarTodasEquipes(){
 
         return equipeDAO.buscarTodasEquipes();
