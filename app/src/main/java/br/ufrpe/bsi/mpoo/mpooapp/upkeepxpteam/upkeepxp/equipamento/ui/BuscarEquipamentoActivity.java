@@ -29,7 +29,8 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.ui.CadastraUsuari
 import upkeepxpteam.upkeepxp.R;
 
 
-public class BuscarEquipamentoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BuscarEquipamentoActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "sql";
 
@@ -43,12 +44,14 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
         setSupportActionBar(toolbar);
 
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-        final ArrayList<Equipamento> lista = (ArrayList<Equipamento>)equipamentoDAO.findAll();
+        final ArrayList<Equipamento> lista;
+        lista = (ArrayList<Equipamento>)equipamentoDAO.findAll();
 
         EditText pesquisar = findViewById(R.id.busca);
 
         ListView listaequip = findViewById(R.id.lvequip);
-        final ArrayAdapter<Equipamento> adaptadorEquip = new EquipamentoAdapter(BuscarEquipamentoActivity.this,lista);
+        final ArrayAdapter<Equipamento> adaptadorEquip =
+                new EquipamentoAdapter(BuscarEquipamentoActivity.this,lista);
 
         //ativa a pesquisa no campo de texto pesquisar:
         pesquisar.addTextChangedListener(new TextWatcher() {
@@ -79,6 +82,7 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
                 startActivity(intent);
             }
         });
+
 
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +135,12 @@ public class BuscarEquipamentoActivity extends AppCompatActivity implements Navi
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Responsável por responder à seleção feita no menu
+     * @param item
+     * @return
+     */
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
