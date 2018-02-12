@@ -29,6 +29,15 @@ public class EquipamentoAdapter extends ArrayAdapter {
         this.elementos = elementos;
     }
 
+    /**
+     * Retorna a view com o layout equipamentoListview no objeto rowview carregando na tela o
+     * cóodigo do equipamento o defeito e o status.
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
