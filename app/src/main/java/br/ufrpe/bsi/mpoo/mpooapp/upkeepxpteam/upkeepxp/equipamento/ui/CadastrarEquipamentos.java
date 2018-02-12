@@ -39,6 +39,10 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         cadastraBD();
     }
 
+    /**
+     * Invoca o método salvarCadastro ao clicar no botão btnSalvar
+     */
+
     private void cadastraBD(){
 
         btnDelete = findViewById(R.id.btn_excluir);
@@ -52,6 +56,11 @@ public class CadastrarEquipamentos extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Salva os valores preenchidos no formulário nos atributos do objeto Equipamento por meio
+     * do método salva() da Classe EquipamentoDAO.
+     */
 
     private void salvarCadastro(){
 
@@ -92,5 +101,5 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         startActivity(it);
         finish();
     }
-//@: verificar o empilhamento de telas.
+
 }

@@ -73,10 +73,6 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
             String tipo = equip.getTipo();
             edttipo.setText(tipo);
 
-            //spstatus = findViewById(R.id.edtSolucao);
-            //String solucao = equip.status;
-            //spstatus.setText(solucao);
-
             edtobservacao = findViewById(R.id.edt_descricao);
             String obs = equip.getDescricao();
             edtobservacao.setText(obs);
@@ -97,6 +93,13 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Remove um cadastro de equipamento recebendo o objeto equip como argumento e invocando o
+     * método equipamentoDAO.delete(equip) que por sua vez instancia um objeto dbwriter e remove do
+     * banco o equipamento com um id recuperado.
+     * @param equipamento
+     */
 
 
     private void deletarCadastro(Equipamento equipamento) {
@@ -125,10 +128,21 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
         builder.show();
     }
 
+    /**
+     * Retorna para Activity BuscarEquipamentoActivity
+     */
+
     private void returnActivity(){
         Intent it = new Intent(EditarCadastroEquipamento.this,BuscarEquipamentoActivity.class);
         startActivity(it);
     }
+
+    /**
+     * Recebe o id como argumento e invoca o método salva() da classe EquipamentoDAO. Com o id
+     * recebido, monta o objeto equip com os valores passados no cadastro e invoca salva(), que por
+     * sua vez
+     * @param id
+     */
 
     private void salvarCadastro(Long id){
         equip.setId(id);

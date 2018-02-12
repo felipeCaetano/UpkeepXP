@@ -21,7 +21,7 @@ public class Equipamento implements Parcelable {
     private String status;
 
     /**
-     * Sobrescreve o método toString escrever nome do equipamento
+     * Sobrescreve o método toString retornar nome do equipamento
      * o código do equipamento e o descrição do defeito
      * @return
      */
