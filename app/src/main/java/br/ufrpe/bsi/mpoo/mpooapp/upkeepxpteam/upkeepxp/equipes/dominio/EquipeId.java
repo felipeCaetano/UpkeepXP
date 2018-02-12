@@ -9,6 +9,10 @@ public class EquipeId implements Serializable{
     private int idEquipe;
     private int idUsuario;
 
+    /**
+     * Getters e setter do objeto EquipeId
+     * @return
+     */
     public int getId() {
         return id;
     }

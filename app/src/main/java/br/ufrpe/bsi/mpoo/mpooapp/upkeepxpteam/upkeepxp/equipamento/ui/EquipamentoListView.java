@@ -11,6 +11,13 @@ public class EquipamentoListView {
     private String defeito;
     private String status;
 
+    /**
+     * Carrega a view com detalhes do equipamento. Ainda em desenvolvimento.
+     * @param equipamento
+     * @param codigo
+     * @param defeito
+     * @param status
+     */
     public EquipamentoListView(String equipamento, String codigo, String defeito, String status) {
         this.equipamento = equipamento;
         this.codigo = codigo;

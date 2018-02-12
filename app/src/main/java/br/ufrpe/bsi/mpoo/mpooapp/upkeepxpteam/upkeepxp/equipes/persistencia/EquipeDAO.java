@@ -30,21 +30,41 @@ public class EquipeDAO {
     private final SQLiteDatabase dbWriter;
     private final SQLiteDatabase dbReader;
 
+    /**
+     * Instancia os objetos que serão utilizados para leitura e gravação no banco de dados, receben-
+     * do um contexto como parâmetro
+     * @param ctx
+     */
     public EquipeDAO(Context ctx) {
         UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
         dbWriter = upkeepDbHelper.getWritableDatabase();
         dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
+    /**
+     * Instancia os objetos que serão utilizados para leitura e gravação no banco de dados, rece-
+     * bendo a activity cadastraEquipeActivity como parâmetro
+     * @param cadastraEquipeActivity
+     */
     public EquipeDAO(CadastraEquipeActivity cadastraEquipeActivity) {
         UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(cadastraEquipeActivity);
         dbWriter = upkeepDbHelper.getWritableDatabase();
         dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
+    /**
+     * Retorna a constante com as cláusulas para criação da tabela
+     * @return
+     */
     public static String createMyTable() {
         return SQL_CREATE_ENTRIES;
     }
+
+    /**
+     * Salva no banco de dados a equipe pelo NOME e também relaciona na tabela EquipesTableID
+     * os usuários a uma determinada equipe, passando o id da equipe e os ids dos usuários
+     * @param equipe
+     */
 
     public void equipeSave(Equipe equipe) {
         ContentValues cv = new ContentValues();
@@ -59,11 +79,21 @@ public class EquipeDAO {
         }
     }
 
+    /**
+     * Edita as equipes gravadas no banco de dados.  Exclui a equipe (idEquipeEdit) da tabela
+     * EquipesTableId, atualiza a equipe (idEquipeEdit) e reconstrói a entrada na tabela
+     * EquipesTableId com as novas informações.
+     * @param equipe
+     * @param idEquipeEdit
+     */
+
     public void equipeEditar(Equipe equipe, int idEquipeEdit){
-        dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(idEquipeEdit)});
+        dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME,
+                "idEquipe = ?", new String[]{String.valueOf(idEquipeEdit)});
         ContentValues cv = new ContentValues();
         cv.put("Nome", equipe.getNome());
-        dbWriter.update(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,cv,"_id = ?", new String[]{String.valueOf(idEquipeEdit)});
+        dbWriter.update(UpKeepDataBaseContract.EquipesTable.TABLE_NAME,cv,
+                "_id = ?", new String[]{String.valueOf(idEquipeEdit)});
         for (Usuario usuario : equipe.getUsers()) {
             ContentValues contentValues = new ContentValues();
             int idEquipe = getIdEquipe(equipe.getNome());
@@ -73,12 +103,23 @@ public class EquipeDAO {
         }
     }
 
+    /**
+     * Faz consulta no banco de dados para retornar um cursor com dados das equipes cadastradas
+     * @return
+     */
+
     public List<Equipe> buscarTodasEquipes() {
         String sql = "SELECT * FROM equipe";
         SQLiteDatabase db = dbReader;
         Cursor cursor = db.rawQuery(sql, null);
         return listarEquipe(cursor);
     }
+
+    /**
+     * Recebe o cursor obtido em buscarTodasEquipes e retorna uma lista de equipes
+     * @param cursor
+     * @return
+     */
 
     public List<Equipe> listarEquipe(Cursor cursor) {
         List<Equipe> result = new ArrayList<>();
@@ -93,6 +134,10 @@ public class EquipeDAO {
         return result;
     }
 
+    /**
+     * Exclui do banco uma equipe pelo nome
+     * @param nome
+     */
     public void excluirEquipe(String nome) {
 
         SQLiteDatabase db = dbReader;
@@ -102,6 +147,11 @@ public class EquipeDAO {
 
     }
 
+    /**
+     * Executa uma consulta no banco pelo nome da equipe e retorna o id da respectiva equipe
+     * @param nomeEquipe
+     * @return
+     */
     public int getIdEquipe(String nomeEquipe) {
         String sql = "SELECT * FROM equipe WHERE Nome = '" + nomeEquipe + "'";
         SQLiteDatabase db = dbReader;
@@ -109,6 +159,10 @@ public class EquipeDAO {
         return listarIdEquipe(cursor);
     }
 
+    /**
+     * @param cursor
+     * @return
+     */
     public int listarIdEquipe(Cursor cursor) {
         int id = -1;
         while (cursor.moveToNext()) {

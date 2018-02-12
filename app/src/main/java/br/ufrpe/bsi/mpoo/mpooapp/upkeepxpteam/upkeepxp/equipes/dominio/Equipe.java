@@ -12,6 +12,10 @@ public class Equipe implements Serializable {
     private List<Usuario> users;
     private String usuarios;
 
+    /**
+     * Getters e setters do obejto equipe.
+     * @return
+     */
     public String getNome() {
         return nome;
     }

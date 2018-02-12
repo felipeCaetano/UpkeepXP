@@ -11,6 +11,8 @@ public class EquipeNegocio {
 
     EquipeDAO equipeDAO;
 
+
+
     public EquipeNegocio(Context context){
         equipeDAO = new EquipeDAO(context);
     }
