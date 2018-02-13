@@ -75,7 +75,11 @@ public class CadastraEquipeActivity extends AppCompatActivity {
         });
     }
 
-        public void addItensListaUsuarios(List users) {
+    /**
+     * Recebe um objeto lista de usuários e adiciona usuários a essa lista.
+     * @param users
+     */
+    public void addItensListaUsuarios(List users) {
             UsuarioDAO usuarioDAO = new UsuarioDAO(this);
             List itens = usuarioDAO.buscarTodosUsuarios();
             int cont = 0;
@@ -86,16 +90,23 @@ public class CadastraEquipeActivity extends AppCompatActivity {
             }
         }
 
-        public Equipe montarObjetoEquipe(){
+    /**
+     * Retorna um objeto equipe com o nome 'nomeequipe'
+     * @return
+     */
+    public Equipe montarObjetoEquipe(){
 
-            String nomeequipe = edtnomeequipe.getText().toString();
+            String nomeEquipe = edtnomeequipe.getText().toString();
             Equipe equipe = new Equipe();
-            equipe.setNome(nomeequipe);
+            equipe.setNome(nomeEquipe);
             return  equipe;
 
         }
 
-        public void chamaEquipesActivity(){
+    /**
+     * Invoca a Activity de Equipes a partir da Activity de cadastro de equipes.
+     */
+    public void chamaEquipesActivity(){
 
             Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
             startActivity(intent);
