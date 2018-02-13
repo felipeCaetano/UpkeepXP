@@ -3,8 +3,7 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.dominio;
 import java.io.Serializable;
 
 /**
- * Created by hermano on 11/12/2017.
- * classe de dominio: Usuário
+ * * classe de dominio: Usuário
  */
 
 public class Usuario implements Serializable {
@@ -22,6 +21,10 @@ public class Usuario implements Serializable {
     private String funcao;
     private int id;
 
+    /**
+     * Getters e setters dos atributos de usuário
+     * @return
+     */
 
     public String getEmail() {
         return email;
