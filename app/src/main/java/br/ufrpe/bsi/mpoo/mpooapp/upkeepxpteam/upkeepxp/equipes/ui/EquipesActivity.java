@@ -44,11 +44,20 @@ public class EquipesActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Chama a Activity de cadastro de equipes.
+     * @param view
+     */
     public void addEquipe(View view){
         Intent intent = new Intent(this, CadastraEquipeActivity.class);
         startActivity(intent);
         finish();
     }
+
+    /**
+     * Recebe um objeto euipeModels e adiciona equipe a essa lista.
+     * @param equipeModels
+     */
 
     public void addItensListaModeloEquipe(List equipeModels) {
         EquipeNegocio equipeNegocio = new EquipeNegocio(this);

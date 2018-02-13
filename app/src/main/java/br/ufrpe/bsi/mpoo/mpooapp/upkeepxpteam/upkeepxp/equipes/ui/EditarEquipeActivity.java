@@ -47,7 +47,8 @@ public class EditarEquipeActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences userDetails = EditarEquipeActivity.this.getSharedPreferences("idEquipePreference", MODE_PRIVATE);
+                SharedPreferences userDetails = EditarEquipeActivity.this.
+                        getSharedPreferences("idEquipePreference", MODE_PRIVATE);
                 int idEquipeEdit = userDetails.getInt("idEquipePreferences", 0);
                 equipe = montarObjetoEquipe();
                 equipe.setUsers(usersequipe);
@@ -79,6 +80,10 @@ public class EditarEquipeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Recebe um objeto lista de usuários e adiciona usuários a essa lista.
+     * @param users
+     */
     public void addItensListaUsuarios(List users) {
         UsuarioDAO usuarioDAO = new UsuarioDAO(this);
         List itens = usuarioDAO.buscarTodosUsuarios();
@@ -90,6 +95,10 @@ public class EditarEquipeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retorna um objeto equipe com o nome 'nomeequipe'
+     * @return
+     */
     public Equipe montarObjetoEquipe(){
 
         String nomeequipe = edtnomeequipe.getText().toString();
@@ -99,6 +108,9 @@ public class EditarEquipeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Invoca a Activity de Equipes a partir da Activity de cadastro de equipes.
+     */
     public void chamarEquipesActivity(){
 
         Intent intent = new Intent(EditarEquipeActivity.this, EquipesActivity.class);

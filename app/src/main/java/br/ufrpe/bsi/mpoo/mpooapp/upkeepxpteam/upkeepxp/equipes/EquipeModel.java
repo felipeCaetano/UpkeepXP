@@ -6,7 +6,7 @@ public class EquipeModel {
 
     Equipe equipe;
 
-    public EquipeModel(Equipe equipe){
+    public  EquipeModel(Equipe equipe){
 
         this.equipe = equipe;
     }
