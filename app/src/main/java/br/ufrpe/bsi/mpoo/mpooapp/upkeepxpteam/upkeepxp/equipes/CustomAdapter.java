@@ -17,9 +17,19 @@ public class CustomAdapter extends BaseAdapter {
     List<UserModel> users;
     LayoutInflater inflater;
 
+    /**
+     * Construtor para classe
+     * @param activity
+     */
     public CustomAdapter(Activity activity) {
         this.activity = activity;
     }
+
+    /**
+     * Construtor para classe
+     * @param activity
+     * @param users
+     */
 
     public CustomAdapter(Activity activity, List<UserModel> users) {
         this.activity = activity;

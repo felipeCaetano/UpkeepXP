@@ -6,6 +6,10 @@ public class EquipeModel {
 
     Equipe equipe;
 
+    /**
+     * Construtor para classe
+     * @param equipe
+     */
     public  EquipeModel(Equipe equipe){
 
         this.equipe = equipe;

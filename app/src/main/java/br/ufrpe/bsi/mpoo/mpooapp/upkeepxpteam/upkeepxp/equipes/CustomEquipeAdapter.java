@@ -28,6 +28,11 @@ public class CustomEquipeAdapter extends BaseAdapter {
     List<EquipeModel> equipeModels;
     LayoutInflater inflater;
 
+    /**
+     * Construtor para classe
+     * @param activity
+     * @param equipeModels
+     */
     public CustomEquipeAdapter(Activity activity, List<EquipeModel> equipeModels){
         this.activity = activity;
         this.equipeModels = equipeModels;
@@ -50,6 +55,13 @@ public class CustomEquipeAdapter extends BaseAdapter {
         return i;
     }
 
+    /**
+     * Retorna uma view
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return
+     */
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
@@ -61,13 +73,13 @@ public class CustomEquipeAdapter extends BaseAdapter {
             holder.btnExcluir = view.findViewById(R.id.btn_excluir);
             holder.btnEditar = view.findViewById(R.id.btn_confirmar);
             view.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) view.getTag();
         }
         final EquipeModel equipeModel = equipeModels.get(i);
-
         final String nome = equipeModel.getEquipe().getNome();
         int id = equipeModel.getEquipe().getId();
+
         EquipeIdDAO equipeIdDAO = new EquipeIdDAO(activity);
         String operarios = equipeIdDAO.getStringOperarioEquipeId(id);
 
