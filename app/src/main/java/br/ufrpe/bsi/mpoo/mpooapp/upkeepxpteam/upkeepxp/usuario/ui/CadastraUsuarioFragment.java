@@ -26,6 +26,7 @@ import upkeepxpteam.upkeepxp.R;
  */
 
 public class CadastraUsuarioFragment extends Fragment {
+
     private static final int REQUEST_DATE = 0;
     private static final String DIALOG_DATE = "DialogDate";
 
@@ -52,18 +53,6 @@ public class CadastraUsuarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_cadastra_usuario, container, false);
 
- /*       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-*/
         nascimentoEditText =  view.findViewById(R.id.nascimentoEditText);
         nascimentoEditText.setOnClickListener(new View.OnClickListener() {
             @Override

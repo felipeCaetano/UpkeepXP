@@ -7,9 +7,13 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.SingleFrag
 
 public class CadastraUsuarioActivity extends SingleFragmentActivity {
 
-
+    /**
+     * Retorna um fragment que faz o cadastro do usuário
+     * @return
+     */
     @Override
     protected Fragment createFragment() {
+
         return new CadastraUsuarioFragment();
     }
 }
