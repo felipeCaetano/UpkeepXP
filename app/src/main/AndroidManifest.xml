@@ -43,21 +43,23 @@
             android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.hardware.TirarFotoActivity"
             android:label="@string/act_bar_tirarFoto" />
         <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.ui.CadastraUsuarioActivity" />
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.AtividadeDiariaActivity" >
-        <intent-filter>
-            <category android:name="android.intent.category.LAUNCHER" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.AtividadeDiariaActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
 
-            <action android:name="android.intent.action.MAIN" />
-        </intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.CadastraAtividadeActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.CadastraEquipeActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity"
-            android:label="Equipes"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CadastrarEquipamentos"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentoActivity"/>
-        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.EditarCadastroEquipamento"/>
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.CadastraAtividadeActivity" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.CadastraEquipeActivity" />
+        <activity
+            android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity"
+            android:label="Equipes" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CadastrarEquipamentos" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentoActivity" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.EditarCadastroEquipamento" />
+        <activity android:name="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade"></activity>
     </application>
 
 </manifest>
