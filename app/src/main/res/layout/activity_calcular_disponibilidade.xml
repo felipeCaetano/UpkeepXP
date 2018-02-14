@@ -52,7 +52,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -70,7 +70,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
@@ -85,7 +85,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -94,7 +94,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -103,7 +103,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
@@ -118,7 +118,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -127,7 +127,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -136,7 +136,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
@@ -150,7 +150,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -159,7 +159,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -168,7 +168,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
@@ -182,7 +182,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -191,7 +191,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -200,7 +200,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
@@ -214,7 +214,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Linha 3 Coluna 1"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000FF"
                 android:textColor="#000000"
@@ -223,7 +223,7 @@
 
             <TextView
                 android:id="@+id/TextView04"
-                android:text="Linha 3 Coluna 2"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000CF"
                 android:textColor="#000000"
@@ -232,7 +232,7 @@
 
             <TextView
                 android:id="@+id/TextView05"
-                android:text="Linha 3 Coluna 3"
+                android:text="EQPT"
                 android:layout_weight="1"
                 android:background="#0000AF"
                 android:textColor="#000000"
