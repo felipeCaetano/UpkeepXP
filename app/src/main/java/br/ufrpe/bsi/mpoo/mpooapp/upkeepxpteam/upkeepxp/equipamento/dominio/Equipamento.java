@@ -19,6 +19,7 @@ public class Equipamento implements Parcelable {
     private String tipo;
     private String descricao;
     private String status;
+    private String disponibilidade;
 
     /**
      * Sobrescreve o método toString retornar nome do equipamento
@@ -55,6 +56,7 @@ public class Equipamento implements Parcelable {
         dest.writeString(this.tipo);
         dest.writeString(this.status);
         dest.writeString(this.descricao);
+        dest.writeString(this.disponibilidade);
     }
 
     /**
@@ -72,6 +74,7 @@ public class Equipamento implements Parcelable {
         this.tipo = parcel.readString();
         this.status = parcel.readString();
         this.descricao = parcel.readString();
+        this.disponibilidade = parcel.readString();
     }
 
 
@@ -172,5 +175,13 @@ public class Equipamento implements Parcelable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setDisponibilidade(String disponibilidade){
+        this.disponibilidade = disponibilidade;
+    }
+
+    public String getDisponibilidade(){
+        return this.disponibilidade;
     }
 }

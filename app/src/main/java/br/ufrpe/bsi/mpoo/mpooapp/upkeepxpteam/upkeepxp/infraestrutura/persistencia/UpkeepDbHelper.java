@@ -21,6 +21,7 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
     private String createTable;
     private String createTableEquipe;
+    private String createTableFalha;
 
     public UpkeepDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,6 +39,8 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
         createTable = EquipeIdDAO.createMyTable();
         db.execSQL(createTable);
+        createTableFalha = EquipamentoDAO.createMyTable2();
+        db.execSQL(createTableFalha);
     }
 
     @Override

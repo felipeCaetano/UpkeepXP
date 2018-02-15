@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/btn_confirmar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_calcular"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,7 +21,7 @@
 
 
     <Button
-        android:id="@+id/btn_confirmar"
+        android:id="@+id/btn_calcular"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"

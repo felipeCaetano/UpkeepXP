@@ -9,8 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import upkeepxpteam.upkeepxp.R;
 
 
@@ -64,7 +67,7 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.rowequipamento, viewGroup, false);
             holder = new CustomEquipamentoAdapter.ViewHolder();
-            holder.tvEquipamentoAtual = view.findViewById(R.id.textView_Equipe);
+            holder.tvEquipamentoAtual = view.findViewById(R.id.textView_Equipamento_Atual);
             holder.spinnerAtual = view.findViewById(R.id.spinner2);
             holder.spinnerProx = view.findViewById(R.id.spinner3);
             holder.ligacao = view.findViewById(R.id.spinner4);
@@ -73,7 +76,12 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             holder = (CustomEquipamentoAdapter.ViewHolder) view.getTag();
         }
 
-        ArrayAdapter<EquipamentoModel> equipamentoModelArrayAdapter = new ArrayAdapter<EquipamentoModel>(activity, android.R.layout.simple_spinner_item, equipamentoModels);
+        EquipamentoModel equipamentoModel = equipamentoModels.get(i);
+
+        List<String> lista = new ArrayList<>();
+        addItensListaModeloEquipamento(lista);
+
+        ArrayAdapter<String> equipamentoModelArrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, lista);
         equipamentoModelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ligacaoAdapter = ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item);
@@ -82,6 +90,18 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         holder.spinnerAtual.setAdapter(equipamentoModelArrayAdapter);
         holder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
         holder.ligacao.setAdapter(ligacaoAdapter);
+
+        if (equipamentoModel.isSelected()){
+            String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
+            String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
+            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "Série");
+        }else {
+            String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
+            String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
+            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "Paralelo");
+        }
 
 
         return view;
@@ -92,6 +112,17 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         Spinner spinnerAtual;
         Spinner spinnerProx;
         Spinner ligacao;
+    }
+
+    public void addItensListaModeloEquipamento(List equipeModels) {
+        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+        List itens = equipamentoDAO.findAll();
+        int cont = 0;
+        while (cont <= itens.size() - 1) {
+            Equipamento equipamento = (Equipamento) itens.get(cont);
+            equipeModels.add(equipamento.getNome());
+            cont += 1;
+        }
     }
 
 }

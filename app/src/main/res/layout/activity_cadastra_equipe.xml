@@ -13,12 +13,11 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
-
         app:layout_constraintBottom_toTopOf="@+id/btn_confirmar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_disponibilidade" />
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Nome_Equipe" />
 
 
     <Button
@@ -36,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listView_Membros" />
 
     <EditText
-        android:id="@+id/TextView_disponibilidade"
+        android:id="@+id/TextView_Nome_Equipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

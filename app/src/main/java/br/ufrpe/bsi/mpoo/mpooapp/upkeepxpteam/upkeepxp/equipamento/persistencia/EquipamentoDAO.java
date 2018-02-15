@@ -36,7 +36,16 @@ public class EquipamentoDAO {
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_FABRICANTE + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DESCRICAO + TEXT_TYPE+ COMMA_SEP +
                     UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DEFEITO + TEXT_TYPE + COMMA_SEP +
-                    UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_STATUS + TEXT_TYPE + " )";
+                    UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_STATUS + TEXT_TYPE + COMMA_SEP +
+                    UpKeepDataBaseContract.EquipamentosTable.COLUMN_NAME_DISPONIBILIDADE + TEXT_TYPE + " )";
+
+    private static final String SQL_CREATE_ENTRIES2 =
+            "CREATE TABLE " + UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME + " (" +
+                    UpKeepDataBaseContract.RelacaoEquipFalhasTable._ID + " INTEGER PRIMARY KEY," +
+                    UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_ID_EQUIPAMENTO_ATUAL + TEXT_TYPE + COMMA_SEP +
+                    UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_ID_EQUIPAMENTO_PROXIMO + TEXT_TYPE + COMMA_SEP +
+                    UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_TIPO_ASSOIACAO + TEXT_TYPE + " ) ";
+
 
     /**
      * Construtor do objeto EquipamentoDAO que instancia objetos da Classe UpKeepDbHelper
@@ -60,6 +69,10 @@ public class EquipamentoDAO {
         return SQL_CREATE_ENTRIES;
     }
 
+    public static String createMyTable2(){
+        return SQL_CREATE_ENTRIES2;
+    }
+
 
     /**
      * Salva no banco os valores do registro
@@ -79,6 +92,7 @@ public class EquipamentoDAO {
             values.put("Tipo", equipamento.getTipo());
             values.put("Status", equipamento.getStatus());
             values.put("Descricao", equipamento.getDescricao());
+            values.put("Disponibilidade", equipamento.getDisponibilidade());
             if (id!=0){
                 String _id = String.valueOf(id);
                 String[] whereArgs = new String[]{_id};
@@ -143,6 +157,7 @@ public class EquipamentoDAO {
                 equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                 equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                 equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
+                equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
             }while(c.moveToNext());
         }
         return equipamentos;
@@ -192,4 +207,54 @@ public class EquipamentoDAO {
             dbWriter.close();
         }
     }
+
+    public boolean salvaDisponibilidade(String atual, String prox, String ligar){
+        ContentValues cv = new ContentValues();
+        cv.put("idEquipamentoAtual", atual);
+        cv.put("idEquipamentoProximo", prox);
+        cv.put("tipoAssociacao", ligar);
+        dbWriter.insert(UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME,null,cv);
+        return true;
+    }
+
+    public List getRelacaoFalhas() {
+        String sql = "SELECT * FROM relacaoEquipFalhas";
+        SQLiteDatabase db = dbReader;
+        Cursor cursor = db.rawQuery(sql, null);
+        List result = new ArrayList();
+        result.add(cursor.getColumnIndex("idEquipamentoAtual"));
+        result.add(cursor.getColumnIndex("idEquipamentoProximo"));
+        result.add(cursor.getColumnIndex("tipoAssociacao"));
+        return result;
+    }
+
+    public Equipamento equipamentoPorId(int id){
+        Cursor c = null;
+        dbReader = upkeepDbHelper.getReadableDatabase();
+        Equipamento equipamento = new Equipamento();
+        try{
+            c = dbReader.query("equipamentos", null, "_id=?",
+                    new String[]{String.valueOf(id)}, null, null, null, null);
+            if(c.moveToFirst()) {
+                if (c != null) {
+                    equipamento.setId(c.getLong(c.getColumnIndex("_id")));
+                    equipamento.setNome(c.getString(c.getColumnIndex("Equipamento")));
+                    equipamento.setCodigo(c.getString(c.getColumnIndex("Codigo")));
+                    equipamento.setModelo(c.getString(c.getColumnIndex("Modelo")));
+                    equipamento.setFabricante(c.getString(c.getColumnIndex("Fabricante")));
+                    equipamento.setDefeito(c.getString(c.getColumnIndex("Defeito")));
+                    equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
+                    equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
+                    equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
+                    equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                    return equipamento;
+                }
+            }
+        }finally {
+            assert c != null; //foi colocado pelo AS - verificar sobre asserts
+            c.close();
+        }
+        return equipamento;
+    }
+
 }

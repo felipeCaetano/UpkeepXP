@@ -6,6 +6,18 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equip
 public class EquipamentoModel {
 
     Equipamento equipamento;
+    Equipamento proxEquipamento;
+    String nome;
+    Boolean isSelected;
+    String ligacao;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     /**
      * Construtor para classe
@@ -14,6 +26,8 @@ public class EquipamentoModel {
     public EquipamentoModel(Equipamento equipamento) {
         this.equipamento = equipamento;
     }
+
+    public EquipamentoModel(){}
 
     /**
      * Retorna um equipamento
@@ -30,4 +44,27 @@ public class EquipamentoModel {
     public void setEquipamento(Equipamento equipamento) {
         this.equipamento = equipamento;
     }
+
+    public void setSelected(boolean selected) {
+
+        isSelected = selected;
+    }
+
+    public boolean isSelected() {
+        if (ligacao == "Série"){
+            return isSelected;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public Equipamento getProxEquipamento() {
+        return proxEquipamento;
+    }
+
+    public void setProxEquipamento(Equipamento proxEquipamento) {
+        this.proxEquipamento = proxEquipamento;
+    }
+
 }
