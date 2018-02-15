@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_nome_equipe" />
+        app:layout_constraintTop_toBottomOf="@+id/TextView_disponibilidade" />
 
 
     <Button
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listView_Membros" />
 
     <EditText
-        android:id="@+id/editText_nome_equipe"
+        android:id="@+id/TextView_disponibilidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

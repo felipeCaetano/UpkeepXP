@@ -7,364 +7,60 @@
     android:background="@color/colorPrimaryDark"
     tools:context="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade">
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:layout_marginBottom="8dp"
+    <ListView
+        android:id="@+id/listView_calcular_disponibilidade"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="#ffffff"
-        android:shrinkColumns="*"
-        android:stretchColumns="*"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/btn_confirmar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!-- Linha 1 com 3 colunas-->
-        <TableRow
-            android:id="@+id/tableRow0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@+id/TextView_disponibilidade" />
 
-            <TextView
-                android:id="@+id/TextView03"
-                android:layout_weight="1"
-                android:background="#0000FF"
-                android:gravity="center"
-                android:padding="20dip"
-                android:text="EQP ATUAL"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/TextView04"
-                android:layout_weight="1"
-                android:background="#0000CF"
-                android:gravity="center"
-                android:padding="20dip"
-                android:text="EQP NOVO"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/TextView05"
-                android:layout_weight="1"
-                android:background="#0000AF"
-                android:gravity="center"
-                android:padding="20dip"
-                android:text="ASSOCIAÇÃO"
-                android:textColor="#000000" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-    </TableLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_confirmar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:text="CALCULAR"
+        android:textColor="@color/textColorPrimary"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView_calcular_disponibilidade" />
+
+    <TextView
+        android:id="@+id/TextView_disponibilidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Calcular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732"
-        tools:layout_editor_absoluteX="28dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Alterar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731"
-        tools:layout_editor_absoluteX="289dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Disponibilidade do sistema"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:text="DISPONIBILIDADE: "
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/listView_calcular_disponibilidade"
+        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="495dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valor"
-        android:textSize="40sp"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="514dp" />
-
+        android:id="@+id/textView_valor_disponibilidade"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/listView_calcular_disponibilidade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TextView_disponibilidade"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

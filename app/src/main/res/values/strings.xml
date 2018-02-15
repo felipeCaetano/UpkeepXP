@@ -85,4 +85,8 @@
     <string name="title_activity_cadastrar_equipamento">Cadastrar Equipamento</string>
     <string name="tv_fabricante">Fabricante</string>
     <string name="status">Status</string>
+    <string-array name="ligacao">
+        <item>Série</item>
+        <item>Paralelo</item>
+    </string-array>
 </resources>

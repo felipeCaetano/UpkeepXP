@@ -34,7 +34,7 @@ public class EditarEquipeActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView_Membros);
         Button btnEditar = findViewById(R.id.btn_confirmar);
         btnEditar.setText("EDITAR");
-        edtnomeequipe = findViewById(R.id.editText_nome_equipe);
+        edtnomeequipe = findViewById(R.id.TextView_disponibilidade);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
         addItensListaUsuarios(listaUsuarios);

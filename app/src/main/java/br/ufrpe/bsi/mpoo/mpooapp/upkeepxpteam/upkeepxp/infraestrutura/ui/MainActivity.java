@@ -20,6 +20,7 @@ import java.io.ByteArrayInputStream;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.AtividadeDiariaActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentoActivity;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.hardware.TirarFotoActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.ui.CadastraUsuarioActivity;
@@ -174,6 +175,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_sobre) {
+            intent = new Intent(MainActivity.this, CalcularDisponibilidade.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
 
