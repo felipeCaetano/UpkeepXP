@@ -81,7 +81,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
                 return disponibilidade;
             }
             else if (falhas.get(2).equals("paralelo")) {
-                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
+                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade())) * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
                 return disponibilidade;
             }
         }

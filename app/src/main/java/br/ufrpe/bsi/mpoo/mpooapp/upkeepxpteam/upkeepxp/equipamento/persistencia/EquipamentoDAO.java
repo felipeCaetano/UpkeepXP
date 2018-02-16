@@ -46,6 +46,8 @@ public class EquipamentoDAO {
                     UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_ID_EQUIPAMENTO_PROXIMO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_TIPO_ASSOIACAO + TEXT_TYPE + " ) ";
 
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME;
 
     /**
      * Construtor do objeto EquipamentoDAO que instancia objetos da Classe UpKeepDbHelper
@@ -72,6 +74,8 @@ public class EquipamentoDAO {
     public static String createMyTable2(){
         return SQL_CREATE_ENTRIES2;
     }
+
+    public static String deleteMyTable2() { return SQL_DELETE_ENTRIES; }
 
 
     /**
