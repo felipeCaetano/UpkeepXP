@@ -39,10 +39,10 @@ public class CalcularDisponibilidade extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_disponibilidade);
-        ListView listView = (ListView) findViewById(R.id.listView_calcular_disponibilidade);
-        Spinner spinnerAtual = (Spinner) findViewById(R.id.spinner2);
-        Button calcular = (Button) findViewById(R.id.btn_calcular);
-        TextView tvValorDisponibilidade = (TextView) findViewById(R.id.textView_valor_disponibilidade);
+        ListView listView =  findViewById(R.id.listView_calcular_disponibilidade);
+        Spinner spinnerAtual = findViewById(R.id.spinner2);
+        Button calcular = findViewById(R.id.btn_calcular);
+        TextView tvValorDisponibilidade = findViewById(R.id.textView_valor_disponibilidade);
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
 
         final List equipamentoList = new ArrayList<>();
@@ -51,7 +51,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         final CustomEquipamentoAdapter adapter = new CustomEquipamentoAdapter(this, equipamentoList);
         listView.setAdapter(adapter);
 
-        int disponibilidade = calcularDisponibilidade();
+        double disponibilidade = calcularDisponibilidade();
         tvValorDisponibilidade.setText(""+disponibilidade+"%");
         tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
     }
@@ -69,8 +69,8 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         }
     }
 
-    public int calcularDisponibilidade(){
-        int disponibilidade = 0;
+    public double calcularDisponibilidade(){
+        double disponibilidade = 0;
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         List falhas = equipamentoDAO.getRelacaoFalhas();
         if (falhas.size() != 0) {

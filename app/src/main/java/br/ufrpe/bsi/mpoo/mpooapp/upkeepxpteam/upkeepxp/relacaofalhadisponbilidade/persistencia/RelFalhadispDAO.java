@@ -80,6 +80,8 @@ public class RelFalhadispDAO
         if (c.moveToFirst()){
             do{
                 FalhaDisponibilidade falhaDisponibilidade = new FalhaDisponibilidade();
+                Equipamento equipamento1 = new Equipamento();
+                Equipamento equipamento2 = new Equipamento();
                 falhaDisponibilidades.add(falhaDisponibilidade);
                 //falhaDisponibilidade.setAtual(c.getLong(c.getColumnIndex("idEquipamentoAtual")));
                 //result.add(cursor.getColumnIndex("idEquipamentoProximo"));
