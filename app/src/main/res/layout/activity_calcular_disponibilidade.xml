@@ -26,6 +26,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
         android:text="CALCULAR"
+        android:onClick="btnCalcular"
         android:textColor="@color/textColorPrimary"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,7 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade;
 import upkeepxpteam.upkeepxp.R;
 
 
@@ -91,16 +93,19 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         holder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
         holder.ligacao.setAdapter(ligacaoAdapter);
 
-        if (equipamentoModel.isSelected()){
+        if (equipamentoModel.isSelected() == true){
+            String serie = "serie";
             String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
             String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
             EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "Série");
+            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, serie);
+            //newActivity();
         }else {
             String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
             String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
             EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "Paralelo");
+            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "paralelo");
+            //newActivity();
         }
 
 
@@ -123,6 +128,12 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             equipeModels.add(equipamento.getNome());
             cont += 1;
         }
+    }
+
+    public void newActivity(){
+        Intent intent = new Intent(activity, CalcularDisponibilidade.class);
+        activity.startActivity(intent);
+        activity.finish();
     }
 
 }
