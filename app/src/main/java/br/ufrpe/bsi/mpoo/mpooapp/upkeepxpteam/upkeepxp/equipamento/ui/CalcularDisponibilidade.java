@@ -77,7 +77,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
             Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId((Integer) falhas.get(0));
             Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId((Integer) falhas.get(1));
             if (falhas.get(2).equals("serie")) {
-                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade());
+                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
                 return disponibilidade;
             }
             else if (falhas.get(2).equals("paralelo")) {

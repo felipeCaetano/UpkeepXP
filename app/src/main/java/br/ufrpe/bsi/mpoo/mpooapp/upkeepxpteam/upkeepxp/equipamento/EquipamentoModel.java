@@ -51,7 +51,7 @@ public class EquipamentoModel {
     }
 
     public boolean isSelected() {
-        if (ligacao == "serie"){
+        if (isSelected == true){
             return true;
         }
         else{
