@@ -39,19 +39,19 @@ public class CalcularDisponibilidade extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_disponibilidade);
-        ListView listView =  findViewById(R.id.listView_calcular_disponibilidade);
-        Spinner spinnerAtual = findViewById(R.id.spinner2);
-        Button calcular = findViewById(R.id.btn_calcular);
-        TextView tvValorDisponibilidade = findViewById(R.id.textView_valor_disponibilidade);
-        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-
-        final List equipamentoList = new ArrayList<>();
+        ListView listView = (ListView) findViewById(R.id.listView_calcular_disponibilidade);
+        Spinner spinnerAtual = (Spinner) findViewById(R.id.spinner2);
+        Button calcular = (Button) findViewById(R.id.btn_calcular);
+        TextView tvValorDisponibilidade = (TextView) findViewById(R.id.textView_valor_disponibilidade);
+        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this); // Ajeitar, por no DAO relação disponibilidade
+        // Chamar spinner pra pegar o valor
+        final List<EquipamentoModel> equipamentoList = new ArrayList<>();
         addItensListaModeloEquipamento(equipamentoList);
 
         final CustomEquipamentoAdapter adapter = new CustomEquipamentoAdapter(this, equipamentoList);
         listView.setAdapter(adapter);
 
-        double disponibilidade = calcularDisponibilidade();
+        int disponibilidade = calcularDisponibilidade(); //colocar na camada de negocios
         tvValorDisponibilidade.setText(""+disponibilidade+"%");
         tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
     }
@@ -63,25 +63,27 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         while (cont <= itens.size() - 1) {
             Equipamento equipamento = (Equipamento) itens.get(cont);
             EquipamentoModel equipamentoModel = new EquipamentoModel(equipamento);
-            equipamentoModel.setSelected(true);
+            equipamentoModel.setSelected(true); // setar com valor que vem do spinner
             equipeModels.add(equipamentoModel);
             cont += 1;
         }
     }
 
-    public double calcularDisponibilidade(){
-        double disponibilidade = 0;
+    public int calcularDisponibilidade(){
+        int disponibilidade = 0;
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-        List falhas = equipamentoDAO.getRelacaoFalhas();
+        List falhas = equipamentoDAO.getRelacaoFalhas(); //melhorar nome
         if (falhas.size() != 0) {
             Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId((Integer) falhas.get(0));
             Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId((Integer) falhas.get(1));
             if (falhas.get(2).equals("serie")) {
-                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
+                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) *
+                        Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
                 return disponibilidade;
             }
             else if (falhas.get(2).equals("paralelo")) {
-                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade())) * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
+                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade()))
+                        * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
                 return disponibilidade;
             }
         }
