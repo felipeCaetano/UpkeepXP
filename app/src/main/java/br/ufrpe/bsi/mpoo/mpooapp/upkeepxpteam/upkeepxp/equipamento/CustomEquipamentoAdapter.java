@@ -86,15 +86,17 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         ArrayAdapter<String> equipamentoModelArrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, lista);
         equipamentoModelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        ligacaoAdapter = ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item);
+        ligacaoAdapter = ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item); // USAR ENUM
         ligacaoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         holder.spinnerAtual.setAdapter(equipamentoModelArrayAdapter);
+        // melhorar equipamentoModelArrayAdapter para retirar um item selecionado
         holder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
         holder.ligacao.setAdapter(ligacaoAdapter);
 
+        // SUBSTITIUR PELOS MÉTODOS DO SPINNER PRA PEGAR VALOR
         if (equipamentoModel.isSelected() == true){
-            String serie = "serie";
+            String serie = "serie"; // USAR ENUNM
             String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
             String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
             EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
