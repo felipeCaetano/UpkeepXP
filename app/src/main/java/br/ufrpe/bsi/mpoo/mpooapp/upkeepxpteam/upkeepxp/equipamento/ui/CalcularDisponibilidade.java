@@ -1,5 +1,6 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -51,7 +52,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         int disponibilidade = calcularDisponibilidade();
-        tvValorDisponibilidade.setText(""+disponibilidade);
+        tvValorDisponibilidade.setText(""+disponibilidade+"%");
         tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
     }
 
@@ -61,7 +62,9 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         int cont = 0;
         while (cont <= itens.size() - 1) {
             Equipamento equipamento = (Equipamento) itens.get(cont);
-            equipeModels.add(new EquipamentoModel(equipamento));
+            EquipamentoModel equipamentoModel = new EquipamentoModel(equipamento);
+            equipamentoModel.setSelected(true);
+            equipeModels.add(equipamentoModel);
             cont += 1;
         }
     }
@@ -70,14 +73,25 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         int disponibilidade = 0;
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         List falhas = equipamentoDAO.getRelacaoFalhas();
-        Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId((Integer) falhas.get(0));
-        Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId((Integer) falhas.get(1));
-        System.out.print("AAAAAAAAAAAAAAAHHHHHHHH"+ falhas.get(2));
-        if (falhas.get(2) == "Série"){
-            disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade())*Integer.valueOf(equipamentoProx.getDisponibilidade());
-            return disponibilidade;
+        if (falhas.size() != 0) {
+            Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId((Integer) falhas.get(0));
+            Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId((Integer) falhas.get(1));
+            if (falhas.get(2).equals("serie")) {
+                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade());
+                return disponibilidade;
+            }
+            else if (falhas.get(2).equals("paralelo")) {
+                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
+                return disponibilidade;
+            }
         }
         return disponibilidade;
+    }
+
+    public void btnCalcular(View view){
+        Intent intent = new Intent(this, CalcularDisponibilidade.class);
+        startActivity(intent);
+        finish();
     }
 
 }

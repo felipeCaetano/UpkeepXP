@@ -222,9 +222,13 @@ public class EquipamentoDAO {
         SQLiteDatabase db = dbReader;
         Cursor cursor = db.rawQuery(sql, null);
         List result = new ArrayList();
-        result.add(cursor.getColumnIndex("idEquipamentoAtual"));
-        result.add(cursor.getColumnIndex("idEquipamentoProximo"));
-        result.add(cursor.getColumnIndex("tipoAssociacao"));
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                result.add(cursor.getColumnIndex("idEquipamentoAtual"));
+                result.add(cursor.getColumnIndex("idEquipamentoProximo"));
+                result.add(cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
+            }
+        }
         return result;
     }
 
@@ -256,5 +260,7 @@ public class EquipamentoDAO {
         }
         return equipamento;
     }
+
+
 
 }
