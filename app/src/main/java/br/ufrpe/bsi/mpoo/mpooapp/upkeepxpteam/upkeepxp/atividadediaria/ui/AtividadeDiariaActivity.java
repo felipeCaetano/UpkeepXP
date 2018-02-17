@@ -80,7 +80,7 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         Log.d("Hoje tem: ", ""+events);
 
         eventos = findViewById(R.id.lista_eventos);
-        //final ArrayAdapter<Event> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,events);
+        //final ArrayAdapter<Event> adaptadorEvents = new ArrayAdapter<>(BuscarEquipamentosActivity.this,android.R.layout.simple_list_item_1,events);
         final ArrayAdapter<String> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,dadosAtividade);
 
         final ActionBar actionBar = getSupportActionBar();

@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity;
 import upkeepxpteam.upkeepxp.R;
 
 public class CadastrarEquipamentos extends AppCompatActivity {
@@ -102,7 +101,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         equipamentoDAO.salva(equipamento);
 
         Toast.makeText(this,R.string.salvo, Toast.LENGTH_SHORT).show();
-        Intent it = new Intent(this,BuscarEquipamentoActivity.class);
+        Intent it = new Intent(this,BuscarEquipamentosActivity.class);
         startActivity(it);
         finish();
     }

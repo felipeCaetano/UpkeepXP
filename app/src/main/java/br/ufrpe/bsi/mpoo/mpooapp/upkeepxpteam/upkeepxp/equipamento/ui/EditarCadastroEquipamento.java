@@ -124,16 +124,15 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
                 returnActivity();
             }
         });
-
         builder.show();
     }
 
     /**
-     * Retorna para Activity BuscarEquipamentoActivity
+     * Retorna para Activity BuscarEquipamentosActivity
      */
 
     private void returnActivity(){
-        Intent it = new Intent(EditarCadastroEquipamento.this,BuscarEquipamentoActivity.class);
+        Intent it = new Intent(EditarCadastroEquipamento.this,BuscarEquipamentosActivity.class);
         startActivity(it);
     }
 

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.io.ByteArrayInputStream;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.ui.AtividadeDiariaActivity;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentoActivity;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.BuscarEquipamentosActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.hardware.TirarFotoActivity;
@@ -164,8 +164,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
 
-
-
         } else if (id == R.id.nav_equipes) {
             intent = new Intent(MainActivity.this, EquipesActivity.class);
             startActivity(intent);
@@ -181,7 +179,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_registro) {
-            intent =  new Intent(MainActivity.this, BuscarEquipamentoActivity.class);
+            intent =  new Intent(MainActivity.this, BuscarEquipamentosActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_unicorn) {
+            intent = new Intent(MainActivity.this, br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.ui.BuscarUnicorniosActivity.class);
             startActivity(intent);
         }
 

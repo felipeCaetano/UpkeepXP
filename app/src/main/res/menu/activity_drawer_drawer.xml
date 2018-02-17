@@ -38,6 +38,10 @@
             <item
                 android:id="@+id/nav_send"
                 android:title="@string/nav_helpus" />
+            <item
+                android:id="@+id/nav_unicorn"
+                android:icon="@drawable/unicorn"
+                android:title="@string/unicorn_crud"/>
         </menu>
     </item>
 

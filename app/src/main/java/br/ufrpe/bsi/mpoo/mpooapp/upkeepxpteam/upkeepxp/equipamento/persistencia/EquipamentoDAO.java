@@ -96,10 +96,10 @@ public class EquipamentoDAO {
             if (id!=0){
                 String _id = String.valueOf(id);
                 String[] whereArgs = new String[]{_id};
-                return dbWriter.update(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME, values, "_id=?", whereArgs)>0;
+                return dbWriter.update(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME, values, "_id=?", whereArgs)>0;
             }else{
                 Log.w("Banco", "Sucesso");
-                return dbWriter.insert(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,"",values)>0;
+                return dbWriter.insert(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,"",values)>0;
             }
         }finally {
             dbWriter.close();
@@ -114,7 +114,7 @@ public class EquipamentoDAO {
     public Boolean delete(Equipamento equipamento){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
-            return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
+            return dbWriter.delete(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,
                     "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
         }finally {
             dbWriter.close();
@@ -129,7 +129,7 @@ public class EquipamentoDAO {
     public List<Equipamento> findAll(){
         SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         try{
-            Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
+            Cursor cursor = dbReader.query(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,
                     null,null,null,null,null,null);
             return toList(cursor);
         }finally {
@@ -242,7 +242,7 @@ public class EquipamentoDAO {
     SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
     try{
         Cursor c =
-        dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,null,"_id=?
+        dbReader.query(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,null,"_id=?
         ,new String[]{String.valueOf(id)},null,null,null);
         List<Equipamento> lista = toList(c);
         return lista[0];

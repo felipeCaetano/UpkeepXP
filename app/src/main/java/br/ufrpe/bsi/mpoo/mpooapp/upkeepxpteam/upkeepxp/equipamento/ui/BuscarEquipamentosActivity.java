@@ -29,7 +29,7 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.ui.CadastraUsuari
 import upkeepxpteam.upkeepxp.R;
 
 
-public class BuscarEquipamentoActivity extends AppCompatActivity
+public class BuscarEquipamentosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "sql";
@@ -51,7 +51,7 @@ public class BuscarEquipamentoActivity extends AppCompatActivity
 
         ListView listaequip = findViewById(R.id.lvequip);
         final ArrayAdapter<Equipamento> adaptadorEquip =
-                new EquipamentoAdapter(BuscarEquipamentoActivity.this,lista);
+                new EquipamentoAdapter(BuscarEquipamentosActivity.this,lista);
 
         //ativa a pesquisa no campo de texto pesquisar:
         pesquisar.addTextChangedListener(new TextWatcher() {
@@ -77,7 +77,7 @@ public class BuscarEquipamentoActivity extends AppCompatActivity
 
                 Equipamento equip = adaptadorEquip.getItem(position);
 
-                Intent intent = new Intent(BuscarEquipamentoActivity.this, EditarCadastroEquipamento.class);
+                Intent intent = new Intent(BuscarEquipamentosActivity.this, EditarCadastroEquipamento.class);
                 intent.putExtra("Equipamento", equip);
                 startActivity(intent);
             }
@@ -88,7 +88,7 @@ public class BuscarEquipamentoActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //chamar a intent que vai habilitar o cadastro no BD
-                Intent it = new Intent(BuscarEquipamentoActivity.this, CadastrarEquipamentos.class);
+                Intent it = new Intent(BuscarEquipamentosActivity.this, CadastrarEquipamentos.class);
                 startActivity(it);
                 finish();
             }
@@ -151,25 +151,31 @@ public class BuscarEquipamentoActivity extends AppCompatActivity
 
         if (id == R.id.nav_agenda) {
             // Handle the agenda action
-            //Descobrir a activity correta
-            intent = new Intent(BuscarEquipamentoActivity.this, AtividadeDiariaActivity.class);
+            intent = new Intent(BuscarEquipamentosActivity.this, AtividadeDiariaActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contatos) {
 
-
-
         } else if (id == R.id.nav_equipes) {
-            intent = new Intent(BuscarEquipamentoActivity.this, EquipesActivity.class);
+            intent = new Intent(BuscarEquipamentosActivity.this, EquipesActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_membros) {
-            intent =  new Intent(BuscarEquipamentoActivity.this, CadastraUsuarioActivity.class);
+            intent =  new Intent(BuscarEquipamentosActivity.this, CadastraUsuarioActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_sobre) {
+        } else if (id == R.id.nav_disponibilidade) {
+            intent = new Intent(BuscarEquipamentosActivity.this, CalcularDisponibilidade.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_registro) {
+            intent =  new Intent(BuscarEquipamentosActivity.this, BuscarEquipamentosActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_unicorn) {
+            intent = new Intent(BuscarEquipamentosActivity.this, br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.ui.BuscarUnicorniosActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

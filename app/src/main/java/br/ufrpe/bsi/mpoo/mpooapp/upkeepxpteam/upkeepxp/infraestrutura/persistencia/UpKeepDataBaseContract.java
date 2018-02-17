@@ -64,7 +64,6 @@ public final class UpKeepDataBaseContract {
     }
 
     public static class DisponibilidadeTable implements BaseColumns{
-
         public static final String TABLE_NAME = "disponibilidade";
         public static final String COLUMN_NAME_ID_EQUIPAMENTO = "idEquipamento";
         public static final String COLUMN_NAME_DATA_DISPONIBILIDADE = "dataDisponibilidade";
@@ -73,14 +72,11 @@ public final class UpKeepDataBaseContract {
     }
 
     public static class FalhasTable implements BaseColumns{
-
         public static final String TABLE_NAME = "falhas";
         public static final String COLUMN_NAME_ID_EQUIPAMENTO = "idEquipamento";
         public static final String COLUMN_NAME_DATA_FALHA = "dataFalha";
         public static final String COLUMN_NAME_DATA_NORMALIZACAO = "dataNormalizacao";
-
     }
-
 
     public static class RelacaoEquipFalhasTable implements BaseColumns{
 
@@ -88,7 +84,16 @@ public final class UpKeepDataBaseContract {
         public static final String COLUMN_NAME_ID_EQUIPAMENTO_ATUAL = "idEquipamentoAtual";
         public static final String COLUMN_NAME_ID_EQUIPAMENTO_PROXIMO = "idEquipamentoProximo";
         public static final String COLUMN_NAME_TIPO_ASSOIACAO = "tipoAssociacao";
+    }
 
+    public static class UnicorniosTable implements BaseColumns{
+        public static final String TABLE_NAME = "Unicornios";
+        public static final String COLUMN_NAME_NOME = "Nome";
+        public static final String COLUMN_NAME_PESO = "Peso";
+        public static final String COLUMN_NAME_ALTURA = "Altura";
+        public static final String COLUMN_NAME_COR = "Cor";
+        public static final String COLUMN_NAME_ELEMENTO = "Elemento";
+        public static final String COLUMN_NAME_GENENRO = "Genero";
     }
 
 }

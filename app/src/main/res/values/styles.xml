@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="UnicornTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/unicornprimaryColor</item>
+        <item name="colorPrimaryDark">@color/unicornprimaryDarkColor</item>
+        <item name="colorAccent">@color/unicornsecondaryLightColor</item>
+    </style>
+
     <style name="UpkeepEditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorHint</item>
@@ -20,6 +27,17 @@
         <item name="android:textColorHint">@color/unicornsecondaryTextColor</item>
         <item name="android:editTextColor">@color/unicornsecondaryDarkColor</item>
         <item name="android:colorBackground">@color/unicornsecondaryLightColor</item>
+    </style>
+
+    <style name="UnicornSpinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/unicornprimaryTextColor</item>
+        <item name="android:textColorHint">@color/unicornsecondaryTextColor</item>
+        <item name="android:editTextColor">@color/unicornsecondaryDarkColor</item>
+        <item name="android:colorBackground">@color/unicornsecondaryLightColor</item>
+    </style>
+
+    <style name="UnicornListView" parent="Base.Widget.AppCompat.ListView">
+        <item name="android:textColor">@color/unicornprimaryTextColor</item>
     </style>
 
     <color name="textColorPrimary">#FFFFFF</color>

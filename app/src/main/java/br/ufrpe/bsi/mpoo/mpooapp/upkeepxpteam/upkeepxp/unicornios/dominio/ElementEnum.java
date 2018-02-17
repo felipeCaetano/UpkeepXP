@@ -5,7 +5,7 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio;
  * Enum para os elementos dos unicornios
  */
 
-enum ElementEnum {
+public enum ElementEnum {
 
     AR("Ar"), TERRA("Terra"), FOGO("Fogo"), AGUA("Água"), LUZ("Luz"), ESCURIDAO("Escuridão");
     private String elemento;

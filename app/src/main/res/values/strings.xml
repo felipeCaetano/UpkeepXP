@@ -89,6 +89,8 @@
     <string name="altura">Altura em cm</string>
     <string name="peso">Peso em Kg</string>
     <string name="nome_de_unicornio">Nome do Unicórnio</string>
+    <string name="cadastrar_unicornio">Cadastrar Unicórnio</string>
+    <string name="unicorn_crud">Unicórnios</string>
     <string-array name="ligacao">
         <item>Série</item>
         <item>Paralelo</item>
