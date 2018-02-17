@@ -15,6 +15,13 @@
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="UnicornEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/unicornprimaryTextColor</item>
+        <item name="android:textColorHint">@color/unicornsecondaryTextColor</item>
+        <item name="android:editTextColor">@color/unicornsecondaryDarkColor</item>
+        <item name="android:colorBackground">@color/unicornsecondaryLightColor</item>
+    </style>
+
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorHint">#FFFFFF</color>
     <color name="editTextColor">#FFFFFF</color>

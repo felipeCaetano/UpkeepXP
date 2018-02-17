@@ -123,6 +123,24 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_descricao"
         app:layout_constraintVertical_bias="0.0" />
 
+    <AutoCompleteTextView
+        android:id="@+id/edt_disponibilidade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:hint="disponibilidade"
+        android:inputType="textAutoComplete"
+        android:theme="@style/UpkeepEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_descricao"
+        app:layout_constraintVertical_bias="0.164" />
+
     <Spinner
         android:id="@+id/spn_status"
         android:layout_width="0dp"
@@ -139,6 +157,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_tipo"
         app:layout_constraintVertical_bias="0.543" />
+
 
     <Button
         android:id="@+id/btn_salvar"

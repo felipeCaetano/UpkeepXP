@@ -20,8 +20,6 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistenc
 
 public class EquipamentoDAO {
 
-    private SQLiteDatabase dbWriter;
-    private SQLiteDatabase dbReader;
     private final UpkeepDbHelper upkeepDbHelper;
 
     private static final String TEXT_TYPE = " TEXT";
@@ -46,6 +44,8 @@ public class EquipamentoDAO {
                     UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_ID_EQUIPAMENTO_PROXIMO + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.RelacaoEquipFalhasTable.COLUMN_NAME_TIPO_ASSOIACAO + TEXT_TYPE + " ) ";
 
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME;
 
     /**
      * Construtor do objeto EquipamentoDAO que instancia objetos da Classe UpKeepDbHelper
@@ -55,8 +55,6 @@ public class EquipamentoDAO {
 
     public EquipamentoDAO(Context context){
         this.upkeepDbHelper = new UpkeepDbHelper(context);
-        this.dbWriter = upkeepDbHelper.getWritableDatabase();
-        this.dbReader = upkeepDbHelper.getReadableDatabase();
     }
 
     /**
@@ -73,6 +71,8 @@ public class EquipamentoDAO {
         return SQL_CREATE_ENTRIES2;
     }
 
+    public static String deleteMyTable2() { return SQL_DELETE_ENTRIES; }
+
 
     /**
      * Salva no banco os valores do registro
@@ -81,7 +81,7 @@ public class EquipamentoDAO {
      */
     public Boolean salva(Equipamento equipamento){
         long id = equipamento.getId();
-        dbWriter = upkeepDbHelper.getWritableDatabase();
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
             ContentValues values = new ContentValues();
             values.put("Equipamento", equipamento.getNome());
@@ -112,7 +112,7 @@ public class EquipamentoDAO {
      * @return
      */
     public Boolean delete(Equipamento equipamento){
-        dbWriter = upkeepDbHelper.getWritableDatabase();
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
             return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
                     "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
@@ -127,7 +127,7 @@ public class EquipamentoDAO {
      */
 
     public List<Equipamento> findAll(){
-        dbReader = upkeepDbHelper.getReadableDatabase();
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         try{
             Cursor cursor = dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
                     null,null,null,null,null,null);
@@ -170,7 +170,7 @@ public class EquipamentoDAO {
      */
     public boolean exists(String nome){
         Cursor c = null;
-        dbReader = upkeepDbHelper.getReadableDatabase();
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         try{
              c = dbReader.query("equipamentos", null, "nome=?",
                      new String[]{nome}, null, null, null, null);
@@ -178,6 +178,7 @@ public class EquipamentoDAO {
         }finally {
             assert c != null; //foi colocado pelo AS - verificar sobre asserts
             c.close();
+            dbReader.close();
         }
     }
 
@@ -186,7 +187,7 @@ public class EquipamentoDAO {
      * @param sql
      */
     public void execSQL(String sql){
-        dbWriter = upkeepDbHelper.getWritableDatabase();
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
             dbWriter.execSQL(sql);
         }finally {
@@ -200,7 +201,7 @@ public class EquipamentoDAO {
      * @param args
      */
     public void execSQL(String sql, Object[] args){
-        dbWriter = upkeepDbHelper.getWritableDatabase();
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
             dbWriter.execSQL(sql, args);
         }finally {
@@ -209,6 +210,7 @@ public class EquipamentoDAO {
     }
 
     public boolean salvaDisponibilidade(String atual, String prox, String ligar){
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("idEquipamentoAtual", atual);
         cv.put("idEquipamentoProximo", prox);
@@ -218,9 +220,12 @@ public class EquipamentoDAO {
     }
 
     public List getRelacaoFalhas() {
+        /*Este método é o mesmo que um findAll()
+        deve ser substituido por um findAll, e usar o metodo tolist()
+        */
         String sql = "SELECT * FROM relacaoEquipFalhas";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql, null);
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
+        Cursor cursor = dbWriter.rawQuery(sql, null);
         List result = new ArrayList();
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -231,11 +236,27 @@ public class EquipamentoDAO {
         }
         return result;
     }
+    /*
+    public Equipamento findById(long id){
+
+    SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+    try{
+        Cursor c =
+        dbReader.query(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,null,"_id=?
+        ,new String[]{String.valueOf(id)},null,null,null);
+        List<Equipamento> lista = toList(c);
+        return lista[0];
+       }
+       finally{
+            dbReader.close()
+            }
+    }
+     */
 
     public Equipamento equipamentoPorId(int id){
         Cursor c = null;
-        dbReader = upkeepDbHelper.getReadableDatabase();
         Equipamento equipamento = new Equipamento();
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         try{
             c = dbReader.query("equipamentos", null, "_id=?",
                     new String[]{String.valueOf(id)}, null, null, null, null);

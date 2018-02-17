@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_build"
             android:title="@string/nav_registro_chamados" />
         <item
+            android:id="@+id/nav_disponibilidade"
+            android:icon="@drawable/ic_event_available_black_24dp"
+            android:title="@string/nav_disponibilidade" />
+        <item
             android:id="@+id/nav_contatos"
             android:icon="@drawable/ic_contact_phone"
             android:title="@string/nav_contatos" />

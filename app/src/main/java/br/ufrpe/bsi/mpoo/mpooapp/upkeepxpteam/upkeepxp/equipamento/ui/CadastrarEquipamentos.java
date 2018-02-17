@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity;
 import upkeepxpteam.upkeepxp.R;
 
 public class CadastrarEquipamentos extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
     private EditText descricao;
     private EditText fabricante;
     private EditText tipo;
+    private EditText disponibilidade;
     private Spinner spinner;
     private Button btnSalvar;
     private Button btnDelete;
@@ -87,7 +89,8 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         descricao = findViewById(R.id.edt_descricao);
         equipamento.setDescricao(descricao.getText().toString());
 
-        equipamento.setDisponibilidade("50");
+        disponibilidade = findViewById(R.id.edt_disponibilidade);
+        equipamento.setDisponibilidade(disponibilidade.getText().toString());
 
         spinner = findViewById(R.id.spn_status);
         ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);

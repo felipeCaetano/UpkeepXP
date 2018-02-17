@@ -85,6 +85,10 @@
     <string name="title_activity_cadastrar_equipamento">Cadastrar Equipamento</string>
     <string name="tv_fabricante">Fabricante</string>
     <string name="status">Status</string>
+    <string name="nav_disponibilidade">Disponibilidade</string>
+    <string name="altura">Altura em cm</string>
+    <string name="peso">Peso em Kg</string>
+    <string name="nome_de_unicornio">Nome do Unicórnio</string>
     <string-array name="ligacao">
         <item>Série</item>
         <item>Paralelo</item>
