@@ -9,6 +9,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.EquipamentoModel;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpKeepDataBaseContract;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpkeepDbHelper;
@@ -209,29 +210,34 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean salvaDisponibilidade(long atual, long prox, String ligar){
+    public boolean salvaDisponibilidade(EquipamentoModel equipamentoModel){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("idEquipamentoAtual", atual);
-        cv.put("idEquipamentoProximo", prox);
-        cv.put("tipoAssociacao", ligar);
+        cv.put("idEquipamentoAtual", equipamentoModel.getNomeEquipamentoAtual());
+        cv.put("idEquipamentoProximo", equipamentoModel.getNomeEquipamentoProx());
+        cv.put("tipoAssociacao", equipamentoModel.getLigacao());
         dbWriter.insert(UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME,null,cv);
         return true;
     }
 
-    public List getRelacaoFalhas() {
+    public List<EquipamentoModel> getRelacaoFalhas() {
         /*Este método é o mesmo que um findAll()
         deve ser substituido por um findAll, e usar o metodo tolist()
         */
         String sql = "SELECT * FROM relacaoEquipFalhas";
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         Cursor cursor = dbWriter.rawQuery(sql, null);
-        List result = new ArrayList();
+        List<EquipamentoModel> result = new ArrayList();
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                result.add(cursor.getColumnIndex("idEquipamentoAtual"));
-                result.add(cursor.getColumnIndex("idEquipamentoProximo"));
-                result.add(cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
+                Equipamento equipamentoAtual = equipamentoPorId(cursor.getColumnIndex("idEquipamentoAtual"));
+                Equipamento equipamentoProx = equipamentoPorId(cursor.getColumnIndex("idEquipamentoProximo"));
+                String ligacao = (cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
+                EquipamentoModel equipamentoModel = new EquipamentoModel();
+                equipamentoModel.setEquipamento(equipamentoAtual);
+                equipamentoModel.setProxEquipamento(equipamentoProx);
+                equipamentoModel.setLigacao(ligacao);
+                result.add(equipamentoModel);
             }
         }
         return result;

@@ -69,19 +69,17 @@ public class CalcularDisponibilidade extends AppCompatActivity {
     public int calcularDisponibilidade(){
         int disponibilidade = 0;
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
-        List falhas = equipamentoDAO.getRelacaoFalhas(); //melhorar nome
-        if (falhas.size() != 0) {
-            Toast.makeText(this, "Mano", Toast.LENGTH_SHORT).show();
-            Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId(Integer.valueOf(String.valueOf(falhas.get(0))));
-            Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId(Integer.valueOf(String.valueOf(falhas.get(1))));
-            if (falhas.get(2).equals("Série")) {
+        List<EquipamentoModel> falhas = equipamentoDAO.getRelacaoFalhas(); //melhorar nome
+        // Percorrer toda a lista
+        for (EquipamentoModel equipamentoModel: falhas){
+            if (equipamentoModel.getLigacao().equals("Série")) {
                 Toast.makeText(this, "Mano do", Toast.LENGTH_SHORT).show();
-                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
+                disponibilidade += Integer.valueOf(equipamentoModel.getEquipamento().getDisponibilidade()) * Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade()) / 100;
                 return disponibilidade;
             }
-            else if (falhas.get(2).equals("Paralelo")) {
+            else if (equipamentoModel.getLigacao().equals("Paralelo")) {
                 Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();
-                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade())) * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
+                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoModel.getEquipamento().getDisponibilidade())) * (1 - Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
                 if (disponibilidade < 0){
                     disponibilidade *= -1;
                 }

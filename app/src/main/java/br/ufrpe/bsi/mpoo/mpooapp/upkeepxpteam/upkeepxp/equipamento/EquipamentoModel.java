@@ -67,4 +67,28 @@ public class EquipamentoModel {
         this.proxEquipamento = proxEquipamento;
     }
 
+    public void setLigacao(String ligacao){
+
+        this.ligacao = ligacao;
+
+    }
+
+    public String getLigacao(){
+
+        return ligacao;
+
+    }
+
+    public String getNomeEquipamentoAtual(){
+
+        return this.equipamento.getNome();
+
+    }
+
+    public String getNomeEquipamentoProx(){
+
+        return this.proxEquipamento.getNome();
+
+    }
+
 }

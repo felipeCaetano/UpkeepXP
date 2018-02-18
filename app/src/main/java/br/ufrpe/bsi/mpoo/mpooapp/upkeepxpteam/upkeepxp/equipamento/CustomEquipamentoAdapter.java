@@ -82,7 +82,7 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             holder = (CustomEquipamentoAdapter.ViewHolder) view.getTag();
         }
 
-        EquipamentoModel equipamentoModel = equipamentoModels.get(i);
+        final EquipamentoModel equipamentoModel = equipamentoModels.get(i);
 
         List<String> lista = new ArrayList<>();
         addItensListaModeloEquipamento(lista);
@@ -127,25 +127,16 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String stringLigacaoAdapter = String.valueOf(ligacaoAdapter.getItem(i));
-                if(stringLigacaoAdapter.equals("Paralelo")){
-                    Toast.makeText(activity, String.valueOf(ligacaoAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
-                    EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-                    Equipamento equipamentoSpinnerAtual = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerAtual.getSelectedItem()));
-                    Equipamento equipamentoSpinnerProx = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerProx.getSelectedItem()));
-                    equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());
-                    equipamentoDAO.execSQL(EquipamentoDAO.createMyTable2());
-                    equipamentoDAO.salvaDisponibilidade(equipamentoSpinnerAtual.getId(), equipamentoSpinnerProx.getId() , stringLigacaoAdapter);
-                }
-                else if (stringLigacaoAdapter.equals("Série")){
-                    Toast.makeText(activity, String.valueOf(ligacaoAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
-                    EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-                    Equipamento equipamentoSpinnerAtual = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerAtual.getSelectedItem()));
-                    Equipamento equipamentoSpinnerProx = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerProx.getSelectedItem()));
-                    equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());
-                    equipamentoDAO.execSQL(EquipamentoDAO.createMyTable2());
-                    equipamentoDAO.salvaDisponibilidade(equipamentoSpinnerAtual.getId(), equipamentoSpinnerProx.getId(), stringLigacaoAdapter);
-                }
-
+                Toast.makeText(activity, String.valueOf(ligacaoAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
+                EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+                Equipamento equipamentoSpinnerAtual = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerAtual.getSelectedItem()));
+                Equipamento equipamentoSpinnerProx = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerProx.getSelectedItem()));
+                equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());
+                equipamentoDAO.execSQL(EquipamentoDAO.createMyTable2());
+                equipamentoModel.setEquipamento(equipamentoSpinnerAtual);
+                equipamentoModel.setProxEquipamento(equipamentoSpinnerProx);
+                equipamentoModel.setLigacao(stringLigacaoAdapter);
+                equipamentoDAO.salvaDisponibilidade(equipamentoModel);
             }
 
             @Override
