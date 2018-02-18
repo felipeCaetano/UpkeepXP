@@ -209,7 +209,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean salvaDisponibilidade(String atual, String prox, String ligar){
+    public boolean salvaDisponibilidade(long atual, long prox, String ligar){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("idEquipamentoAtual", atual);
@@ -282,6 +282,33 @@ public class EquipamentoDAO {
         return equipamento;
     }
 
-
+    public Equipamento equipamentoPorNome(String nome){
+        Cursor c = null;
+        Equipamento equipamento = new Equipamento();
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+        try{
+            c = dbReader.query("equipamentos", null, "Equipamento=?",
+                    new String[]{nome}, null, null, null, null);
+            if(c.moveToFirst()) {
+                if (c != null) {
+                    equipamento.setId(c.getLong(c.getColumnIndex("_id")));
+                    equipamento.setNome(c.getString(c.getColumnIndex("Equipamento")));
+                    equipamento.setCodigo(c.getString(c.getColumnIndex("Codigo")));
+                    equipamento.setModelo(c.getString(c.getColumnIndex("Modelo")));
+                    equipamento.setFabricante(c.getString(c.getColumnIndex("Fabricante")));
+                    equipamento.setDefeito(c.getString(c.getColumnIndex("Defeito")));
+                    equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
+                    equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
+                    equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
+                    equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                    return equipamento;
+                }
+            }
+        }finally {
+            assert c != null; //foi colocado pelo AS - verificar sobre asserts
+            c.close();
+        }
+        return equipamento;
+    }
 
 }

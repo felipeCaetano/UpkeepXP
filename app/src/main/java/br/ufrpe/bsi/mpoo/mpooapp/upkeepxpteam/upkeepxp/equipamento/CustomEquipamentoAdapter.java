@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.List;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.ui.MainActivity;
 import upkeepxpteam.upkeepxp.R;
 
 
@@ -83,7 +87,7 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         List<String> lista = new ArrayList<>();
         addItensListaModeloEquipamento(lista);
 
-        ArrayAdapter<String> equipamentoModelArrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, lista);
+        final ArrayAdapter<String> equipamentoModelArrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, lista);
         equipamentoModelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ligacaoAdapter = ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item); // USAR ENUM
@@ -94,30 +98,69 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         holder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
         holder.ligacao.setAdapter(ligacaoAdapter);
 
-        // SUBSTITIUR PELOS MÉTODOS DO SPINNER PRA PEGAR VALOR
-        if (equipamentoModel.isSelected() == true){
-            String serie = "serie"; // USAR ENUNM
-            String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
-            String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
-            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, serie);
-            //newActivity();
-        }else {
-            String nomeEquipAtual = String.valueOf(holder.spinnerAtual.getSelectedItem());
-            String nomeProxEquip = String.valueOf(holder.spinnerProx.getSelectedItem());
-            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
-            equipamentoDAO.salvaDisponibilidade(nomeEquipAtual, nomeProxEquip, "paralelo");
-            //newActivity();
-        }
+        holder.spinnerAtual.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(activity, String.valueOf(equipamentoModelArrayAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        holder.spinnerProx.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(activity, String.valueOf(equipamentoModelArrayAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        holder.ligacao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String stringLigacaoAdapter = String.valueOf(ligacaoAdapter.getItem(i));
+                if(stringLigacaoAdapter.equals("Paralelo")){
+                    Toast.makeText(activity, String.valueOf(ligacaoAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
+                    EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+                    Equipamento equipamentoSpinnerAtual = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerAtual.getSelectedItem()));
+                    Equipamento equipamentoSpinnerProx = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerProx.getSelectedItem()));
+                    equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());
+                    equipamentoDAO.execSQL(EquipamentoDAO.createMyTable2());
+                    equipamentoDAO.salvaDisponibilidade(equipamentoSpinnerAtual.getId(), equipamentoSpinnerProx.getId() , stringLigacaoAdapter);
+                }
+                else if (stringLigacaoAdapter.equals("Série")){
+                    Toast.makeText(activity, String.valueOf(ligacaoAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
+                    EquipamentoDAO equipamentoDAO = new EquipamentoDAO(activity);
+                    Equipamento equipamentoSpinnerAtual = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerAtual.getSelectedItem()));
+                    Equipamento equipamentoSpinnerProx = equipamentoDAO.equipamentoPorNome(String.valueOf(ViewHolder.spinnerProx.getSelectedItem()));
+                    equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());
+                    equipamentoDAO.execSQL(EquipamentoDAO.createMyTable2());
+                    equipamentoDAO.salvaDisponibilidade(equipamentoSpinnerAtual.getId(), equipamentoSpinnerProx.getId(), stringLigacaoAdapter);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         return view;
     }
 
     static class ViewHolder {
         TextView tvEquipamentoAtual;
-        Spinner spinnerAtual;
-        Spinner spinnerProx;
+        static Spinner spinnerAtual;
+        static Spinner spinnerProx;
         Spinner ligacao;
     }
 
@@ -133,7 +176,7 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
     }
 
     public void newActivity(){
-        Intent intent = new Intent(activity, CalcularDisponibilidade.class);
+        Intent intent = new Intent(activity, MainActivity.class);
         activity.startActivity(intent);
         activity.finish();
     }

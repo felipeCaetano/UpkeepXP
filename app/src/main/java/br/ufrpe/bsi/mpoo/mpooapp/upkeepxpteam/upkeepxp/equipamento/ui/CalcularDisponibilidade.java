@@ -40,8 +40,6 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_disponibilidade);
         ListView listView = (ListView) findViewById(R.id.listView_calcular_disponibilidade);
-        Spinner spinnerAtual = (Spinner) findViewById(R.id.spinner2);
-        Button calcular = (Button) findViewById(R.id.btn_calcular);
         TextView tvValorDisponibilidade = (TextView) findViewById(R.id.textView_valor_disponibilidade);
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this); // Ajeitar, por no DAO relação disponibilidade
         // Chamar spinner pra pegar o valor
@@ -51,9 +49,8 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         final CustomEquipamentoAdapter adapter = new CustomEquipamentoAdapter(this, equipamentoList);
         listView.setAdapter(adapter);
 
-        int disponibilidade = calcularDisponibilidade(); //colocar na camada de negocios
-        tvValorDisponibilidade.setText(""+disponibilidade+"%");
-        tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
+        tvValorDisponibilidade.setText("0%");
+
     }
 
     public void addItensListaModeloEquipamento(List equipeModels) {
@@ -63,7 +60,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         while (cont <= itens.size() - 1) {
             Equipamento equipamento = (Equipamento) itens.get(cont);
             EquipamentoModel equipamentoModel = new EquipamentoModel(equipamento);
-            equipamentoModel.setSelected(true); // setar com valor que vem do spinner
+             // setar com valor que vem do spinner
             equipeModels.add(equipamentoModel);
             cont += 1;
         }
@@ -74,16 +71,20 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         List falhas = equipamentoDAO.getRelacaoFalhas(); //melhorar nome
         if (falhas.size() != 0) {
-            Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId((Integer) falhas.get(0));
-            Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId((Integer) falhas.get(1));
-            if (falhas.get(2).equals("serie")) {
-                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) *
-                        Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
+            Toast.makeText(this, "Mano", Toast.LENGTH_SHORT).show();
+            Equipamento equipamentoAtual = equipamentoDAO.equipamentoPorId(Integer.valueOf(String.valueOf(falhas.get(0))));
+            Equipamento equipamentoProx = equipamentoDAO.equipamentoPorId(Integer.valueOf(String.valueOf(falhas.get(1))));
+            if (falhas.get(2).equals("Série")) {
+                Toast.makeText(this, "Mano do", Toast.LENGTH_SHORT).show();
+                disponibilidade += Integer.valueOf(equipamentoAtual.getDisponibilidade()) * Integer.valueOf(equipamentoProx.getDisponibilidade()) / 100;
                 return disponibilidade;
             }
-            else if (falhas.get(2).equals("paralelo")) {
-                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade()))
-                        * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
+            else if (falhas.get(2).equals("Paralelo")) {
+                Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();
+                disponibilidade += 1 - (1 - Integer.valueOf(equipamentoAtual.getDisponibilidade())) * (1 - Integer.valueOf(equipamentoProx.getDisponibilidade())) / 100;
+                if (disponibilidade < 0){
+                    disponibilidade *= -1;
+                }
                 return disponibilidade;
             }
         }
@@ -91,9 +92,10 @@ public class CalcularDisponibilidade extends AppCompatActivity {
     }
 
     public void btnCalcular(View view){
-        Intent intent = new Intent(this, CalcularDisponibilidade.class);
-        startActivity(intent);
-        finish();
+        int disponibilidade = calcularDisponibilidade();
+        TextView tvValorDisponibilidade = findViewById(R.id.textView_valor_disponibilidade);
+        tvValorDisponibilidade.setText(""+disponibilidade+"%");
+        tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
     }
 
 }
