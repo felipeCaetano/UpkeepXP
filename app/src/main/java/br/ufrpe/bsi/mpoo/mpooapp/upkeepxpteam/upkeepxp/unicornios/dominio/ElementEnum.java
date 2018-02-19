@@ -7,7 +7,9 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio;
 
 public enum ElementEnum {
 
-    AR("Ar"), TERRA("Terra"), FOGO("Fogo"), AGUA("Água"), LUZ("Luz"), ESCURIDAO("Escuridão");
+    Undefined("Escolha Elemento"), AR("Ar"), TERRA("Terra"), FOGO("Fogo"),
+    AGUA("Água"), LUZ("Luz"), ESCURIDAO("Escuridão"), SEMELEMENTO("null");
+
     private String elemento;
 
     ElementEnum(String elemento){
@@ -25,6 +27,6 @@ public enum ElementEnum {
 
     @Override
     public String toString() {
-        return elemento;
+        return this.elemento;
     }
 }

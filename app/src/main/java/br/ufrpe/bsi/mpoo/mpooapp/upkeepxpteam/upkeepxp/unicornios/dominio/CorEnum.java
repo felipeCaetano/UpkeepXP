@@ -7,7 +7,7 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio;
  */
 
 public enum  CorEnum {
-    Black("Preta"), Blue("Azul"), Pink("Rosa"), White("Branca"),Yellow("Amarela"),
+    Undefined("Escolha a Cor"),Black("Preta"), Blue("Azul"), Pink("Rosa"), White("Branca"),Yellow("Amarela"),
     Red("Vemelha"),Purple("Violeta"),Green("Verde");
 
     private String cor;

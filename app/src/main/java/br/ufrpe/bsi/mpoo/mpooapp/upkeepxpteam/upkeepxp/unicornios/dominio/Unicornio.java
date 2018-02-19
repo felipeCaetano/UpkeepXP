@@ -22,8 +22,8 @@ public class Unicornio implements Parcelable {
     private String nome;
     private double peso;
     private double altura;
-    private Enum<CorEnum> cor;
-    private Enum<ElementEnum> elemento;
+    private String cor;
+    private String elemento;
     private String genero;
 
     @Override
@@ -38,8 +38,8 @@ public class Unicornio implements Parcelable {
         dest.writeString(this.nome);
         dest.writeDouble(this.peso);
         dest.writeDouble(this.altura);
-        dest.writeString(this.cor.toString());
-        dest.writeString(this.elemento.toString());
+        dest.writeString(this.cor);
+        dest.writeString(this.elemento);
         dest.writeString(this.genero);
     }
 
@@ -53,8 +53,8 @@ public class Unicornio implements Parcelable {
         this.nome = parcel.readString();
         this.peso = parcel.readDouble();
         this.altura = parcel.readDouble();
-        this.cor = CorEnum.valueOf(parcel.readString());
-        this.elemento = ElementEnum.valueOf(parcel.readString());
+        this.cor = parcel.readString();
+        this.elemento = parcel.readString();
         this.genero = parcel.readString();
     }
 
@@ -82,6 +82,11 @@ public class Unicornio implements Parcelable {
         }
     };
 
+    @Override
+    public String toString(){
+
+        return this.getNome()+ '\t' + this.getCor()+ '\t' + this.getElemento();
+    }
 
 
     public int getId() {
@@ -116,19 +121,19 @@ public class Unicornio implements Parcelable {
         this.altura = altura;
     }
 
-    public Enum<CorEnum> getCor() {
+    public String getCor() {
         return cor;
     }
 
-    public void setCor(Enum<CorEnum> cor) {
+    public void setCor(String cor) {
         this.cor = cor;
     }
 
-    public Enum<ElementEnum> getElemento() {
+    public String getElemento() {
         return elemento;
     }
 
-    public void setElemento(Enum<ElementEnum> elemento) {
+    public void setElemento(String elemento) {
         this.elemento = elemento;
     }
 
@@ -137,6 +142,7 @@ public class Unicornio implements Parcelable {
     }
 
     public void setGenero(String genero) {
+
         this.genero = genero;
     }
 

@@ -35,7 +35,7 @@ public class UnicornioDAO {
                     UpKeepDataBaseContract.UnicorniosTable.COLUMN_NAME_ALTURA + DOUBLE_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.UnicorniosTable.COLUMN_NAME_COR + TEXT_TYPE + COMMA_SEP +
                     UpKeepDataBaseContract.UnicorniosTable.COLUMN_NAME_ELEMENTO + TEXT_TYPE + COMMA_SEP +
-                    UpKeepDataBaseContract.UnicorniosTable.COLUMN_NAME_GENENRO + TEXT_TYPE+ COMMA_SEP + " )";
+                    UpKeepDataBaseContract.UnicorniosTable.COLUMN_NAME_GENENRO + TEXT_TYPE+ " )";
     
 
     private static final String SQL_DELETE_ENTRIES =
@@ -78,8 +78,8 @@ public class UnicornioDAO {
             values.put("Nome", unicornio.getNome());
             values.put("Altura", unicornio.getAltura());
             values.put("Peso", unicornio.getPeso());
-            values.put("Cor", unicornio.getCor().toString());
-            values.put("Elemento", unicornio.getElemento().toString());
+            values.put("Cor", unicornio.getCor());
+            values.put("Elemento", unicornio.getElemento());
             values.put("Genero", unicornio.getGenero());
             //Atualiza um unicornio
             if (id!=0){
@@ -142,8 +142,8 @@ public class UnicornioDAO {
                 unicornio.setNome(c.getString(c.getColumnIndex("Nome")));
                 unicornio.setPeso(c.getDouble(c.getColumnIndex("Peso")));
                 unicornio.setAltura(c.getDouble(c.getColumnIndex("Altura")));
-                unicornio.setCor(CorEnum.valueOf(c.getString(c.getColumnIndex("Cor"))));
-                unicornio.setElemento(ElementEnum.valueOf(c.getString(c.getColumnIndex("Elemento"))));
+                unicornio.setCor(c.getString(c.getColumnIndex("Cor")));
+                unicornio.setElemento(c.getString(c.getColumnIndex("Elemento")));
                 unicornio.setGenero(c.getString(c.getColumnIndex("Genero")));
             }while(c.moveToNext());
         }

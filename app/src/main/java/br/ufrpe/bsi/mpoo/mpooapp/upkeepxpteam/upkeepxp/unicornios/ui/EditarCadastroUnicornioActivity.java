@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -33,28 +35,38 @@ import upkeepxpteam.upkeepxp.R;
 public class EditarCadastroUnicornioActivity extends AppCompatActivity{
 
     private Unicornio unicornio;
+    private EditText edtUnicornioNome;
+    private EditText edtUnicornioPeso;
+    private EditText edtUnicornioAltura;
+    private RadioGroup rdgUnicornioSexo;
+    private RadioButton femRadioButton;
+    private RadioButton mascRadioButton;
+    private Spinner spnUnicornioElemento;
+    private Spinner spnUnicornioCor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_unicornios);
 
-        Button btndelete = findViewById(R.id.excluirButton);
+        Button btndelete = findViewById(R.id.btn_excluir);
         btndelete.setVisibility(View.VISIBLE);
 
-        EditText edtUnicornioNome = findViewById(R.id.unicornioNomeEditText);
-        EditText edtUnicornioPeso = findViewById(R.id.pesoEditText);
-        EditText edtUnicornioAltura = findViewById(R.id.alturaEditText);
-        RadioGroup rdgUnicornioSexo = findViewById(R.id.sexoRadioGroup);
-        Spinner spnUnicornioElemento = findViewById(R.id.spn_elemento);
-        Spinner spnUnicornioCor = findViewById(R.id.spn_color);
+        edtUnicornioNome = findViewById(R.id.unicornioNomeEditText);
+        edtUnicornioPeso = findViewById(R.id.pesoEditText);
+        edtUnicornioAltura = findViewById(R.id.alturaEditText);
+        rdgUnicornioSexo = findViewById(R.id.sexoRadioGroup);
+        femRadioButton = findViewById(R.id.femRadioButton);
+        mascRadioButton = findViewById(R.id.mascRadioButton);
+        spnUnicornioElemento = findViewById(R.id.spn_elemento);
+        spnUnicornioCor = findViewById(R.id.spn_color);
         Button btnSalvar = findViewById(R.id.btn_salvar);
 
         Bundle args =getIntent().getExtras();   //recupera os arguementos passados
-
         unicornio = new Unicornio();
         unicornio = args.getParcelable("Unicornio");
-        
+        Log.d("Unicornio:",unicornio.getNome());
+
         //recuperar campos
         if(unicornio != null){
             String unicornioNome = unicornio.getNome();
@@ -64,31 +76,34 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             Double unicornioAltura = unicornio.getAltura();
             edtUnicornioAltura.setText(unicornioAltura.toString());
             String unicornioSexo = unicornio.getGenero();
-            if(unicornioSexo.equals("F")){
-                rdgUnicornioSexo.check(R.id.femRadioButton);
-            }else{
-                rdgUnicornioSexo.check(R.id.mascRadioButton);
-            }
+
             //Setar Spinners
             //Spiner Elementos:
-            String unicornioElemento = unicornio.getElemento().toString();
+            String unicornioElemento = unicornio.getElemento();
             ArrayAdapter<ElementEnum> elementEnumArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ElementEnum.values());
             spnUnicornioElemento.setAdapter(elementEnumArrayAdapter);
             elementEnumArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            if (unicornioElemento != null) {
-                int spinnerPosition = elementEnumArrayAdapter.getPosition(ElementEnum.valueOf(unicornioElemento));
+            int spinnerPosition = 0;
+            if(unicornioElemento != null){
+                spinnerPosition = elementEnumArrayAdapter.getPosition(ElementEnum.valueOf(unicornioElemento));
+                spnUnicornioElemento.setSelection(spinnerPosition);
+            }else{
                 spnUnicornioElemento.setSelection(spinnerPosition);
             }
 
             //Spinner COR:
-            String unicornioCor = unicornio.getCor().toString();
+            String unicornioCor = unicornio.getCor();
             ArrayAdapter<CorEnum> corEnumArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, CorEnum.values());
             spnUnicornioCor.setAdapter(corEnumArrayAdapter);
             corEnumArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            int corSpinnerPosition = 0;
             if (unicornioCor != null) {
-                int spinnerPosition = corEnumArrayAdapter.getPosition(CorEnum.valueOf(unicornioCor));
-                spnUnicornioCor.setSelection(spinnerPosition);
+                corSpinnerPosition = corEnumArrayAdapter.getPosition(CorEnum.valueOf(unicornioCor));
+                spnUnicornioCor.setSelection(corSpinnerPosition);
+            }else{
+                spnUnicornioElemento.setSelection(corSpinnerPosition);
             }
+
 
         }
         btnSalvar.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +144,33 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
     }
 
     private void salvaCadastro(Unicornio unicornio) {
+
+        unicornio.setNome( edtUnicornioNome.getText().toString());
+        //inserir regra de validação: se for vazio assumir zero para peso ou altura
+        if(edtUnicornioPeso.getText().toString().equals("")){
+            edtUnicornioPeso.setText("1");
+        }
+        unicornio.setPeso( Double.parseDouble(edtUnicornioPeso.getText().toString()));
+        if(edtUnicornioAltura.getText().toString().equals("")){
+            edtUnicornioAltura.setText("1");
+        }
+        unicornio.setAltura(Double.parseDouble(edtUnicornioAltura.getText().toString()));
+
+        //checagem do RadioGroup:
+        CharSequence sexo = null;
+        if(femRadioButton.isChecked()){
+            sexo = femRadioButton.getText();
+        }
+        else if(mascRadioButton.isChecked()){
+            sexo = mascRadioButton.getText();
+        }
+        unicornio.setGenero(sexo.toString());
+
+        String elemento = spnUnicornioElemento.getSelectedItem().toString();
+        unicornio.setElemento(elemento);
+        String cor = spnUnicornioCor.getSelectedItem().toString();
+        unicornio.setCor(cor);
+
         UnicornioDAO unicornioDAO = new UnicornioDAO(this);
         Boolean actionResult = unicornioDAO.salva(unicornio);
         if (actionResult){

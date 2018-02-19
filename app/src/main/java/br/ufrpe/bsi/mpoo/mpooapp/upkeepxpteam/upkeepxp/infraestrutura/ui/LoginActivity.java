@@ -95,8 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String results){
 
             //Criado para tratar a nova String vinda do Servidor;
-
-            String[] resultado = results.split(", ");
+                String[] resultado = results.split(", ");
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor

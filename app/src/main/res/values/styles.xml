@@ -29,13 +29,6 @@
         <item name="android:colorBackground">@color/unicornsecondaryLightColor</item>
     </style>
 
-    <style name="UnicornSpinner" parent="Widget.AppCompat.Spinner">
-        <item name="android:textColor">@color/unicornprimaryTextColor</item>
-        <item name="android:textColorHint">@color/unicornsecondaryTextColor</item>
-        <item name="android:editTextColor">@color/unicornsecondaryDarkColor</item>
-        <item name="android:colorBackground">@color/unicornsecondaryLightColor</item>
-    </style>
-
     <style name="UnicornListView" parent="Base.Widget.AppCompat.ListView">
         <item name="android:textColor">@color/unicornprimaryTextColor</item>
     </style>

@@ -8,6 +8,7 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.persisten
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeIdDAO;
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.persistencia.UnicornioDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.persistencia.UsuarioDAO;
 
 /**
@@ -39,12 +40,16 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
         createTable = EquipeIdDAO.createMyTable();
         db.execSQL(createTable);
+        createTable = UnicornioDAO.createMyTable();
+        db.execSQL(createTable);
         createTableFalha = EquipamentoDAO.createMyTable2();
         db.execSQL(createTableFalha);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE '*'");
+        onCreate(db);
 
     }
 }
