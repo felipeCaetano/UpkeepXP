@@ -78,7 +78,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
                 if (equipamentoModel.getLigacao().equals("Série")) {
                     disponibilidade += ((equipamentoModel.getEquipamento().getDisponibilidade()) * (equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
-                    disponibilidade += (1 - (1 - (equipamentoModel.getEquipamento().getDisponibilidade())) * (1 - (equipamentoModel.getProxEquipamento().getDisponibilidade()))) / 100;
+                    disponibilidade += (1 - (1 - ((equipamentoModel.getEquipamento().getDisponibilidade())/100)) * (1 - ((equipamentoModel.getProxEquipamento().getDisponibilidade())/100)))*100;
                     if (disponibilidade < 0) {
                         disponibilidade *= -1;
                     }
@@ -87,7 +87,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
                 if (equipamentoModel.getLigacao().equals("Série")) {
                     disponibilidade = ((disponibilidade) * (equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
-                    disponibilidade = (1 - (1 - (disponibilidade)) * (1 - (equipamentoModel.getProxEquipamento().getDisponibilidade()))) / 100;
+                    disponibilidade = (1 - (1 - ((disponibilidade)/100)) * (1 - ((equipamentoModel.getProxEquipamento().getDisponibilidade())/100)))*100;
                     if (disponibilidade < 0) {
                         disponibilidade *= -1;
                     }
