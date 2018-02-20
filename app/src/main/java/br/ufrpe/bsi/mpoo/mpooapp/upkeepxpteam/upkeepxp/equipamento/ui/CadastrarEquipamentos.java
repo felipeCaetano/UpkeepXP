@@ -90,7 +90,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         equipamento.setDescricao(descricao.getText().toString());
 
         disponibilidade = findViewById(R.id.edt_disponibilidade);
-        equipamento.setDisponibilidade(disponibilidade.getText().toString());
+        equipamento.setDisponibilidade(Integer.valueOf(disponibilidade.getText().toString()));
 
         spinner = findViewById(R.id.spn_status);
         ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);

@@ -53,6 +53,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         addItensListaModeloEquipamento(equipamentoList);
 
         ArrayAdapter<EquipamentoModel> adapter = new ArrayAdapter<EquipamentoModel>(this, android.R.layout.simple_spinner_item, equipamentoList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ArrayAdapter adapterLigacao = ArrayAdapter.createFromResource(this, R.array.ligacao, android.R.layout.simple_spinner_item);
         spinnerAtual.setAdapter(adapter);
         spinnerProx.setAdapter(adapter);
@@ -83,8 +84,8 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         for (EquipamentoModel equipamentoModel: falhas){
             if (disponibilidade == 0) {
                 if (equipamentoModel.getLigacao().equals("Série")) {
-                    Toast.makeText(this, "Mano do 1", Toast.LENGTH_SHORT).show();
-                    disponibilidade += ((Integer.valueOf(equipamentoModel.getEquipamento().getDisponibilidade())) * (Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade()))) / 100;
+                    Toast.makeText(this, "Mano do 1  "+ equipamentoModel.getProxEquipamento().getNome(), Toast.LENGTH_SHORT).show();
+                    disponibilidade += ((equipamentoModel.getEquipamento().getDisponibilidade()) * (equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
                     return disponibilidade;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
                     Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();
@@ -96,7 +97,7 @@ public class CalcularDisponibilidade extends AppCompatActivity {
                 }
             }else {
                 if (equipamentoModel.getLigacao().equals("Série")) {
-                    Toast.makeText(this, "Mano do 2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Mano do 2  "+ spinnerProx.getSelectedItem(), Toast.LENGTH_SHORT).show();
                     disponibilidade = Integer.valueOf(disponibilidade) * Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade()) / 100;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
                     Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();

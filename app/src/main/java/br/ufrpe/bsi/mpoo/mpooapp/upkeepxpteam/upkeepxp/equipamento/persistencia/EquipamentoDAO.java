@@ -158,7 +158,7 @@ public class EquipamentoDAO {
                 equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                 equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                 equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
             }while(c.moveToNext());
         }
         return equipamentos;
@@ -213,8 +213,8 @@ public class EquipamentoDAO {
     public boolean salvaDisponibilidade(EquipamentoModel equipamentoModel){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("idEquipamentoAtual", equipamentoModel.getNomeEquipamentoAtual());
-        cv.put("idEquipamentoProximo", equipamentoModel.getNomeEquipamentoProx());
+        cv.put("idEquipamentoAtual", equipamentoModel.getEquipamento().getNome());
+        cv.put("idEquipamentoProximo", equipamentoModel.getProxEquipamento().getNome());
         cv.put("tipoAssociacao", equipamentoModel.getLigacao());
         dbWriter.insert(UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME,null,cv);
         return true;
@@ -230,8 +230,8 @@ public class EquipamentoDAO {
         List<EquipamentoModel> result = new ArrayList();
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                Equipamento equipamentoAtual = equipamentoPorId(cursor.getColumnIndex("idEquipamentoAtual"));
-                Equipamento equipamentoProx = equipamentoPorId(cursor.getColumnIndex("idEquipamentoProximo"));
+                Equipamento equipamentoAtual = equipamentoPorNome(cursor.getString(cursor.getColumnIndex("idEquipamentoAtual")));
+                Equipamento equipamentoProx = equipamentoPorNome(cursor.getString(cursor.getColumnIndex("idEquipamentoProximo")));
                 String ligacao = (cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
                 EquipamentoModel equipamentoModel = new EquipamentoModel();
                 equipamentoModel.setEquipamento(equipamentoAtual);
@@ -277,7 +277,7 @@ public class EquipamentoDAO {
                     equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                     equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                     equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                    equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                    equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
                     return equipamento;
                 }
             }
@@ -306,7 +306,7 @@ public class EquipamentoDAO {
                     equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                     equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                     equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                    equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                    equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
                     return equipamento;
                 }
             }
