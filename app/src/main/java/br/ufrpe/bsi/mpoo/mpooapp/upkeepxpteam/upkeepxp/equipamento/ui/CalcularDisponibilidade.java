@@ -1,29 +1,21 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.CustomEquipamentoAdapter;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.EquipamentoModel;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.EquipeModel;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.dominio.Equipe;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.negocio.EquipeNegocio;
 import upkeepxpteam.upkeepxp.R;
 
 public class CalcularDisponibilidade extends AppCompatActivity {
@@ -84,24 +76,18 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         for (EquipamentoModel equipamentoModel: falhas){
             if (disponibilidade == 0) {
                 if (equipamentoModel.getLigacao().equals("Série")) {
-                    Toast.makeText(this, "Mano do 1  "+ equipamentoModel.getProxEquipamento().getNome(), Toast.LENGTH_SHORT).show();
                     disponibilidade += ((equipamentoModel.getEquipamento().getDisponibilidade()) * (equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
-                    return disponibilidade;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
-                    Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();
-                    disponibilidade += 1 - (1 - Integer.valueOf(equipamentoModel.getEquipamento().getDisponibilidade())) * (1 - Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
+                    disponibilidade += (1 - (1 - (equipamentoModel.getEquipamento().getDisponibilidade())) * (1 - (equipamentoModel.getProxEquipamento().getDisponibilidade()))) / 100;
                     if (disponibilidade < 0) {
                         disponibilidade *= -1;
                     }
-                    return disponibilidade;
                 }
             }else {
                 if (equipamentoModel.getLigacao().equals("Série")) {
-                    Toast.makeText(this, "Mano do 2  "+ spinnerProx.getSelectedItem(), Toast.LENGTH_SHORT).show();
-                    disponibilidade = Integer.valueOf(disponibilidade) * Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade()) / 100;
+                    disponibilidade = ((disponibilidade) * (equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
                 } else if (equipamentoModel.getLigacao().equals("Paralelo")) {
-                    Toast.makeText(this, "Mano do céu", Toast.LENGTH_SHORT).show();
-                    disponibilidade = 1 - (1 - Integer.valueOf(disponibilidade)) * (1 - Integer.valueOf(equipamentoModel.getProxEquipamento().getDisponibilidade())) / 100;
+                    disponibilidade = (1 - (1 - (disponibilidade)) * (1 - (equipamentoModel.getProxEquipamento().getDisponibilidade()))) / 100;
                     if (disponibilidade < 0) {
                         disponibilidade *= -1;
                     }
@@ -120,7 +106,8 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         equipamentoModel.setProxEquipamento(equipamentoSpinnerProx);
         equipamentoModel.setLigacao(String.valueOf(spinnerLigacao.getSelectedItem()));
         equipamentoDAO.salvaDisponibilidade(equipamentoModel);
-        int disponibilidade = calcularDisponibilidade();
+        disponibilidade = 0;
+        disponibilidade = calcularDisponibilidade();
         TextView tvValorDisponibilidade = findViewById(R.id.textView_valor_disponibilidade);
         tvValorDisponibilidade.setText(""+disponibilidade+"%");
         tvValorDisponibilidade.setTextColor(Color.parseColor("#ffffff"));
