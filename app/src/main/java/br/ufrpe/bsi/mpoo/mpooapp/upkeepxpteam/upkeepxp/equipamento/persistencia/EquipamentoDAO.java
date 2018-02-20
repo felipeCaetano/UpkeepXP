@@ -9,6 +9,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.EquipamentoModel;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpKeepDataBaseContract;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpkeepDbHelper;
@@ -157,7 +158,7 @@ public class EquipamentoDAO {
                 equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                 equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                 equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
             }while(c.moveToNext());
         }
         return equipamentos;
@@ -209,29 +210,34 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean salvaDisponibilidade(String atual, String prox, String ligar){
+    public boolean salvaDisponibilidade(EquipamentoModel equipamentoModel){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("idEquipamentoAtual", atual);
-        cv.put("idEquipamentoProximo", prox);
-        cv.put("tipoAssociacao", ligar);
+        cv.put("idEquipamentoAtual", equipamentoModel.getEquipamento().getNome());
+        cv.put("idEquipamentoProximo", equipamentoModel.getProxEquipamento().getNome());
+        cv.put("tipoAssociacao", equipamentoModel.getLigacao());
         dbWriter.insert(UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME,null,cv);
         return true;
     }
 
-    public List getRelacaoFalhas() {
+    public List<EquipamentoModel> getRelacaoFalhas() {
         /*Este método é o mesmo que um findAll()
         deve ser substituido por um findAll, e usar o metodo tolist()
         */
         String sql = "SELECT * FROM relacaoEquipFalhas";
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         Cursor cursor = dbWriter.rawQuery(sql, null);
-        List result = new ArrayList();
+        List<EquipamentoModel> result = new ArrayList();
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                result.add(cursor.getColumnIndex("idEquipamentoAtual"));
-                result.add(cursor.getColumnIndex("idEquipamentoProximo"));
-                result.add(cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
+                Equipamento equipamentoAtual = equipamentoPorNome(cursor.getString(cursor.getColumnIndex("idEquipamentoAtual")));
+                Equipamento equipamentoProx = equipamentoPorNome(cursor.getString(cursor.getColumnIndex("idEquipamentoProximo")));
+                String ligacao = (cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
+                EquipamentoModel equipamentoModel = new EquipamentoModel();
+                equipamentoModel.setEquipamento(equipamentoAtual);
+                equipamentoModel.setProxEquipamento(equipamentoProx);
+                equipamentoModel.setLigacao(ligacao);
+                result.add(equipamentoModel);
             }
         }
         return result;
@@ -271,7 +277,7 @@ public class EquipamentoDAO {
                     equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
                     equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
                     equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
-                    equipamento.setDisponibilidade(c.getString(c.getColumnIndex("Disponibilidade")));
+                    equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
                     return equipamento;
                 }
             }
@@ -282,6 +288,33 @@ public class EquipamentoDAO {
         return equipamento;
     }
 
-
+    public Equipamento equipamentoPorNome(String nome){
+        Cursor c = null;
+        Equipamento equipamento = new Equipamento();
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+        try{
+            c = dbReader.query("equipamentos", null, "Equipamento=?",
+                    new String[]{nome}, null, null, null, null);
+            if(c.moveToFirst()) {
+                if (c != null) {
+                    equipamento.setId(c.getLong(c.getColumnIndex("_id")));
+                    equipamento.setNome(c.getString(c.getColumnIndex("Equipamento")));
+                    equipamento.setCodigo(c.getString(c.getColumnIndex("Codigo")));
+                    equipamento.setModelo(c.getString(c.getColumnIndex("Modelo")));
+                    equipamento.setFabricante(c.getString(c.getColumnIndex("Fabricante")));
+                    equipamento.setDefeito(c.getString(c.getColumnIndex("Defeito")));
+                    equipamento.setTipo(c.getString(c.getColumnIndex("Tipo")));
+                    equipamento.setStatus(c.getString(c.getColumnIndex("Status")));
+                    equipamento.setDescricao(c.getString(c.getColumnIndex("Descricao")));
+                    equipamento.setDisponibilidade(c.getInt(c.getColumnIndex("Disponibilidade")));
+                    return equipamento;
+                }
+            }
+        }finally {
+            assert c != null; //foi colocado pelo AS - verificar sobre asserts
+            c.close();
+        }
+        return equipamento;
+    }
 
 }

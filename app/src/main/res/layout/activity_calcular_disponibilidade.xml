@@ -7,18 +7,7 @@
     android:background="@color/colorPrimaryDark"
     tools:context="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.CalcularDisponibilidade">
 
-    <ListView
-        android:id="@+id/listView_calcular_disponibilidade"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:cacheColorHint="@color/editTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/btn_calcular"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_disponibilidade" />
+
 
 
     <Button
@@ -34,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView_calcular_disponibilidade" />
+         />
 
     <TextView
         android:id="@+id/TextView_disponibilidade"
@@ -46,7 +35,6 @@
         android:gravity="center"
         android:text="DISPONIBILIDADE: "
         android:textColor="@color/textColorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/listView_calcular_disponibilidade"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -54,15 +42,49 @@
 
     <TextView
         android:id="@+id/textView_valor_disponibilidade"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="67dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="47dp"
         android:layout_marginEnd="94dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/listView_calcular_disponibilidade"
+
+        app:layout_constraintBottom_toTopOf="@+id/spinnerAtual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/TextView_disponibilidade"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerAtual"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerProx"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_disponibilidade" />
+
+    <Spinner
+        android:id="@+id/spinnerProx"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="103dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerLigacao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAtual" />
+
+    <Spinner
+        android:id="@+id/spinnerLigacao"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="343dp"
+        android:layout_marginTop="39dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_calcular"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerProx" />
 </android.support.constraint.ConstraintLayout>
