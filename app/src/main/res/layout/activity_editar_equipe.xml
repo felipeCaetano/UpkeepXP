@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="upkeepxpteam.equipes.gui.CadastraEquipeActivity">
+    tools:context="br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.CadastraEquipeActivity">
 
     <ListView
         android:id="@+id/listView_Membros"
@@ -43,7 +43,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Nome da Equipe"
+        android:hint="@string/nome_da_equipe"
         android:inputType="textPersonName"
         android:theme="@style/UpkeepEditText"
         android:textColorHint="@color/textColorHint"

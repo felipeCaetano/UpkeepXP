@@ -4,4 +4,18 @@
     <color name="colorPrimaryDark">#2532A1</color>
     <color name="colorAccent">#FF8140</color>
     <color name="colorEditingText">#FFFFFF</color>
+
+    <color name="em_analise">#FFFFAA</color>
+    <color name="resolvido">#00FFAA</color>
+    <color name="nao_resolvido">#FF1088</color>
+
+    <color name="unicornprimaryColor">#f48fb1</color>
+    <color name="unicornprimaryLightColor">#ffc1e3</color>
+    <color name="unicornprimaryDarkColor">#bf5f82</color>
+    <color name="unicornsecondaryColor">#ff9800</color>
+    <color name="unicornsecondaryLightColor">#ffc947</color>
+    <color name="unicornsecondaryDarkColor">#c66900</color>
+    <color name="unicornprimaryTextColor">#000000</color>
+    <color name="unicornsecondaryTextColor">#000000</color>
+
 </resources>
