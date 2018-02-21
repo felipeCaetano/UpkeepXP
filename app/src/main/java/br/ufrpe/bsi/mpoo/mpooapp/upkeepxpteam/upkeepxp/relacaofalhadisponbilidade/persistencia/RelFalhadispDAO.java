@@ -4,18 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpKeepDataBaseContract;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistencia.UpkeepDbHelper;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.relacaofalhadisponbilidade.dominio.FalhaDisponibilidade;
 
 /**
  * Created by anton on 16/02/2018.
+ * Utilizado para resgatar falhas de disponibilidades
  */
 
 public class RelFalhadispDAO
@@ -80,10 +78,8 @@ public class RelFalhadispDAO
         if (c.moveToFirst()){
             do{
                 FalhaDisponibilidade falhaDisponibilidade = new FalhaDisponibilidade();
-                Equipamento equipamento1 = new Equipamento();
-                Equipamento equipamento2 = new Equipamento();
                 falhaDisponibilidades.add(falhaDisponibilidade);
-                //falhaDisponibilidade.setAtual(c.getLong(c.getColumnIndex("idEquipamentoAtual")));
+                //falhaDisponibilidade.setAtual(c.getExtras("idEquipamentoAtual"));
                 //result.add(cursor.getColumnIndex("idEquipamentoProximo"));
                 //result.add(cursor.getString(cursor.getColumnIndex("tipoAssociacao")));
             }while(c.moveToNext());

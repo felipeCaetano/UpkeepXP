@@ -176,8 +176,7 @@
             android:text="@string/txt_M"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/textColorPrimary"
-            android:shadowColor="@color/textColorPrimary"
-            android:buttonTint="@color/textColorPrimary"/>
+            android:shadowColor="@color/textColorPrimary" />
 
         <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/femRadioButton"
@@ -185,8 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/txt_F"
-            android:textColor="@color/textColorPrimary"
-            android:buttonTint="@color/textColorPrimary"/>
+            android:textColor="@color/textColorPrimary"/>
 
     </RadioGroup>
 
@@ -284,6 +282,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/txt_Número"
         android:theme="@style/UpkeepEditText"
+        android:labelFor="@id/numeroEditText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.028"
@@ -330,7 +329,7 @@
         android:ems="10"
         android:inputType="number"
         android:theme="@style/UpkeepEditText"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/numeroTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.318"
@@ -342,13 +341,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:entries="@array/UF"
         android:popupBackground="@color/colorPrimary"
         android:theme="@style/UpkeepEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="331dp" />
+        app:layout_constraintTop_toBottomOf="@+id/especialidadeEditText" />
 
     <TextView
         android:id="@+id/funcaoTextView"

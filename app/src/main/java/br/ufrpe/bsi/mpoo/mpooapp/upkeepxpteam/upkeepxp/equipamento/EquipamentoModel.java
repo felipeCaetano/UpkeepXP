@@ -51,7 +51,7 @@ public class EquipamentoModel {
     }
 
     public boolean isSelected() {
-        if (isSelected == true){
+        if (isSelected){
             return true;
         }
         else{

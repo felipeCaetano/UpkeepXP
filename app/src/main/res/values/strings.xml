@@ -91,6 +91,14 @@
     <string name="nome_de_unicornio">Nome do Unicórnio</string>
     <string name="cadastrar_unicornio">Cadastrar Unicórnio</string>
     <string name="unicorn_crud">Unicórnios</string>
+    <string name="txt_editar">Editar</string>
+    <string name="disponibilidade">Disponibilidade</string>
+    <string name="btn_calcular">CALCULAR</string>
+    <string name="txt_disponibilidade">DISPONIBILIDADE:</string>
+    <string name="equipamento_atual">Equipamento Atual</string>
+    <string name="proximo_equipamento">Próximo Equipamento</string>
+    <string name="associacao">Associação</string>
+    <string name="btn_editar">Editar</string>
     <string-array name="ligacao">
         <item>Série</item>
         <item>Paralelo</item>

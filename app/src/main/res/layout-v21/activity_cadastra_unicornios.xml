@@ -92,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/unicornsecondaryTextColor"
             android:shadowColor="@color/unicornprimaryTextColor"
             android:text="@string/txt_M"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -102,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/unicornprimaryTextColor"
             android:text="@string/txt_F"
             android:textColor="@color/unicornprimaryTextColor" />
 

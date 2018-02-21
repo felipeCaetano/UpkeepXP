@@ -26,7 +26,6 @@ public class CadastrarEquipamentos extends AppCompatActivity {
     private EditText tipo;
     private EditText disponibilidade;
     private Spinner spinner;
-    private Button btnSalvar;
     private Button btnDelete;
 
 
@@ -49,7 +48,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         btnDelete = findViewById(R.id.btn_excluir);
         btnDelete.setVisibility(View.INVISIBLE);
 
-        btnSalvar = findViewById(R.id.btn_salvar);
+        Button btnSalvar = findViewById(R.id.btn_salvar);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

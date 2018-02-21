@@ -1,14 +1,7 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio;
 
-import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 
 /**
  * Created by Felipe on 19/12/2017.

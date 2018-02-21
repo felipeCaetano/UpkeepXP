@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        android:text="Equipamento Atual"
+        android:text="@string/equipamento_atual"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        android:text="Próximo Equipamento"
+        android:text="@string/proximo_equipamento"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        android:text="Ligação"
+        android:text="@string/associacao"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

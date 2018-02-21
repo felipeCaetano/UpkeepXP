@@ -23,23 +23,19 @@ import upkeepxpteam.upkeepxp.R;
 public class CadastraEquipeActivity extends AppCompatActivity {
 
     private EditText edtnomeequipe;
-    private Button btnSalvar;
-
     private Equipe equipe;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_equipe);
         ListView listView = findViewById(R.id.listView_Membros);
-        btnSalvar = findViewById(R.id.btn_confirmar);
+        Button btnSalvar = findViewById(R.id.btn_confirmar);
         edtnomeequipe = findViewById(R.id.TextView_Nome_Equipe);
 
         final List<UserModel> listaUsuarios = new ArrayList<>();
         addItensListaUsuarios(listaUsuarios);
-
         final CustomAdapter adapter = new CustomAdapter(this, listaUsuarios);
         listView.setAdapter(adapter);
-
         final List<Usuario> usersequipe = new ArrayList<>();
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +48,6 @@ public class CadastraEquipeActivity extends AppCompatActivity {
                 chamaEquipesActivity();
             }
         });
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -100,7 +95,6 @@ public class CadastraEquipeActivity extends AppCompatActivity {
             Equipe equipe = new Equipe();
             equipe.setNome(nomeEquipe);
             return  equipe;
-
         }
 
     /**
@@ -111,7 +105,6 @@ public class CadastraEquipeActivity extends AppCompatActivity {
             Intent intent = new Intent(CadastraEquipeActivity.this, EquipesActivity.class);
             startActivity(intent);
             finish();
-
         }
 }
 

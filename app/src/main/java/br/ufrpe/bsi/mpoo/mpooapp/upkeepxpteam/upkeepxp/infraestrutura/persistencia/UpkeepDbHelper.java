@@ -50,6 +50,5 @@ public class UpkeepDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE '*'");
         onCreate(db);
-
     }
 }

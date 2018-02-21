@@ -130,7 +130,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
-        android:hint="disponibilidade"
+        android:hint="@string/disponibilidade"
         android:inputType="textAutoComplete"
         android:theme="@style/UpkeepEditText"
         app:layout_constraintBottom_toBottomOf="parent"

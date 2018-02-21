@@ -21,8 +21,8 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.persistenc
 
 public class EquipamentoDAO {
 
-    private final UpkeepDbHelper upkeepDbHelper;
 
+    private final UpkeepDbHelper upkeepDbHelper;
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
@@ -224,6 +224,7 @@ public class EquipamentoDAO {
         /*Este método é o mesmo que um findAll()
         deve ser substituido por um findAll, e usar o metodo tolist()
         */
+
         String sql = "SELECT * FROM relacaoEquipFalhas";
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         Cursor cursor = dbWriter.rawQuery(sql, null);
@@ -242,22 +243,20 @@ public class EquipamentoDAO {
         }
         return result;
     }
-    /*
+
     public Equipamento findById(long id){
 
     SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
     try{
         Cursor c =
-        dbReader.query(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,null,"_id=?
-        ,new String[]{String.valueOf(id)},null,null,null);
+        dbReader.query(UpKeepDataBaseContract.UnicorniosTable.TABLE_NAME,null,"_id=? ",new String[]{String.valueOf(id)},null,null,null);
         List<Equipamento> lista = toList(c);
-        return lista[0];
+        return lista.get(0);
        }
        finally{
-            dbReader.close()
+            dbReader.close();
             }
     }
-     */
 
     public Equipamento equipamentoPorId(int id){
         Cursor c = null;

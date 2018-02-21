@@ -1,7 +1,6 @@
 package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.infraestrutura.hardware;
 
 import android.os.Environment;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

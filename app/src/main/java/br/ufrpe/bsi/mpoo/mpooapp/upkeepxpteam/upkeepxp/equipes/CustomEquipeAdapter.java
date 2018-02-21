@@ -11,13 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.dominio.EquipeId;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.EquipeIdDAO;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EditarEquipeActivity;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.ui.EquipesActivity;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.dominio.Usuario;
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.persistencia.UsuarioDAO;
 import upkeepxpteam.upkeepxp.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -104,7 +101,7 @@ public class CustomEquipeAdapter extends BaseAdapter {
                 SharedPreferences.Editor edit = userDetails.edit();
                 edit.clear();
                 edit.putInt("idEquipePreferences", equipeModel.getEquipe().getId());
-                edit.commit();
+                edit.apply(); // trocado de commite para apply
                 Intent intent = new Intent(activity, EditarEquipeActivity.class);
                 activity.startActivity(intent);
                 activity.finish();

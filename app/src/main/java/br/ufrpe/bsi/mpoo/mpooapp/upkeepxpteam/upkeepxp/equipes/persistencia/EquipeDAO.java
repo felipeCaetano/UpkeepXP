@@ -27,8 +27,7 @@ public class EquipeDAO {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + UpKeepDataBaseContract.EquipesTable.TABLE_NAME;
-    private final SQLiteDatabase dbWriter;
-    private final SQLiteDatabase dbReader;
+    private final UpkeepDbHelper upkeepDbHelper;
 
     /**
      * Instancia os objetos que serão utilizados para leitura e gravação no banco de dados, receben-
@@ -36,20 +35,7 @@ public class EquipeDAO {
      * @param ctx
      */
     public EquipeDAO(Context ctx) {
-        UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
-        dbWriter = upkeepDbHelper.getWritableDatabase();
-        dbReader = upkeepDbHelper.getReadableDatabase();
-    }
-
-    /**
-     * Instancia os objetos que serão utilizados para leitura e gravação no banco de dados, rece-
-     * bendo a activity cadastraEquipeActivity como parâmetro
-     * @param cadastraEquipeActivity
-     */
-    public EquipeDAO(CadastraEquipeActivity cadastraEquipeActivity) {
-        UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(cadastraEquipeActivity);
-        dbWriter = upkeepDbHelper.getWritableDatabase();
-        dbReader = upkeepDbHelper.getReadableDatabase();
+        this.upkeepDbHelper = new UpkeepDbHelper(ctx);
     }
 
     /**
@@ -67,6 +53,8 @@ public class EquipeDAO {
      */
 
     public void equipeSave(Equipe equipe) {
+
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("Nome", equipe.getNome());
         dbWriter.insert(UpKeepDataBaseContract.EquipesTable.TABLE_NAME, null, cv);
@@ -88,6 +76,7 @@ public class EquipeDAO {
      */
 
     public void equipeEditar(Equipe equipe, int idEquipeEdit){
+        SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         dbWriter.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME,
                 "idEquipe = ?", new String[]{String.valueOf(idEquipeEdit)});
         ContentValues cv = new ContentValues();
@@ -110,8 +99,8 @@ public class EquipeDAO {
 
     public List<Equipe> buscarTodasEquipes() {
         String sql = "SELECT * FROM equipe";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql, null);
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+        Cursor cursor = dbReader.rawQuery(sql, null);
         return listarEquipe(cursor);
     }
 
@@ -140,10 +129,10 @@ public class EquipeDAO {
      */
     public void excluirEquipe(String nome) {
 
-        SQLiteDatabase db = dbReader;
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         int id = getIdEquipe(nome);
-        db.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(id)});
-        db.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME, "Nome = ?", new String[]{nome});
+        dbReader.delete(UpKeepDataBaseContract.EquipesTableID.TABLE_NAME, "idEquipe = ?", new String[]{String.valueOf(id)});
+        dbReader.delete(UpKeepDataBaseContract.EquipesTable.TABLE_NAME, "Nome = ?", new String[]{nome});
 
     }
 
@@ -154,8 +143,8 @@ public class EquipeDAO {
      */
     public int getIdEquipe(String nomeEquipe) {
         String sql = "SELECT * FROM equipe WHERE Nome = '" + nomeEquipe + "'";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql, null);
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+        Cursor cursor = dbReader.rawQuery(sql, null);
         return listarIdEquipe(cursor);
     }
 

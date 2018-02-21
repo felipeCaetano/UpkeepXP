@@ -36,10 +36,7 @@ public class EquipeNegocio {
      */
 
     public boolean existeEquipe(String nomeEquipe){
-        if (equipeDAO.getIdEquipe(nomeEquipe) == -1){
-            return false;
-        }
-        return true;
+        return equipeDAO.getIdEquipe(nomeEquipe) != -1;
     }
 
     /**

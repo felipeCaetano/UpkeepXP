@@ -14,8 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.ui.EditarCadastroEquipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio.CorEnum;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio.ElementEnum;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio.Unicornio;
@@ -38,7 +36,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
     private EditText edtUnicornioNome;
     private EditText edtUnicornioPeso;
     private EditText edtUnicornioAltura;
-    private RadioGroup rdgUnicornioSexo;
     private RadioButton femRadioButton;
     private RadioButton mascRadioButton;
     private Spinner spnUnicornioElemento;
@@ -55,7 +52,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
         edtUnicornioNome = findViewById(R.id.unicornioNomeEditText);
         edtUnicornioPeso = findViewById(R.id.pesoEditText);
         edtUnicornioAltura = findViewById(R.id.alturaEditText);
-        rdgUnicornioSexo = findViewById(R.id.sexoRadioGroup);
         femRadioButton = findViewById(R.id.femRadioButton);
         mascRadioButton = findViewById(R.id.mascRadioButton);
         spnUnicornioElemento = findViewById(R.id.spn_elemento);
@@ -76,7 +72,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             Double unicornioAltura = unicornio.getAltura();
             edtUnicornioAltura.setText(unicornioAltura.toString());
             String unicornioSexo = unicornio.getGenero();
-
             //Setar Spinners
             //Spiner Elementos:
             String unicornioElemento = unicornio.getElemento();
@@ -90,7 +85,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             }else{
                 spnUnicornioElemento.setSelection(spinnerPosition);
             }
-
             //Spinner COR:
             String unicornioCor = unicornio.getCor();
             ArrayAdapter<CorEnum> corEnumArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, CorEnum.values());
@@ -103,8 +97,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             }else{
                 spnUnicornioElemento.setSelection(corSpinnerPosition);
             }
-
-
         }
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +147,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             edtUnicornioAltura.setText("1");
         }
         unicornio.setAltura(Double.parseDouble(edtUnicornioAltura.getText().toString()));
-
         //checagem do RadioGroup:
         CharSequence sexo = null;
         if(femRadioButton.isChecked()){
@@ -170,7 +161,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
         unicornio.setElemento(elemento);
         String cor = spnUnicornioCor.getSelectedItem().toString();
         unicornio.setCor(cor);
-
         UnicornioDAO unicornioDAO = new UnicornioDAO(this);
         Boolean actionResult = unicornioDAO.salva(unicornio);
         if (actionResult){

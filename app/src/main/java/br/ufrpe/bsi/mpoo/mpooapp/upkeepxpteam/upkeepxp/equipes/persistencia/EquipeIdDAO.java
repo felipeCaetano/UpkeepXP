@@ -27,17 +27,14 @@ public class EquipeIdDAO {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + UpKeepDataBaseContract.EquipesTableID.TABLE_NAME;
-    private final SQLiteDatabase dbWriter;
-    private final SQLiteDatabase dbReader;
+    private final UpkeepDbHelper upkeepDbHelper;
 
     /**
      * Instancia os objetos necessários para realizar leitura e escrita no banco de dados.
      * @param ctx
      */
     public EquipeIdDAO(Context ctx){
-        UpkeepDbHelper upkeepDbHelper = new UpkeepDbHelper(ctx);
-        dbWriter = upkeepDbHelper.getWritableDatabase();
-        dbReader = upkeepDbHelper.getReadableDatabase();
+        this.upkeepDbHelper = new UpkeepDbHelper(ctx);
         this.context = ctx;
     }
 
@@ -56,8 +53,8 @@ public class EquipeIdDAO {
      */
     public List<EquipeId> buscarTodasEquipesId(int idBusca) {
         String sql = "SELECT * FROM equipeid WHERE idEquipe = '" + idBusca + "'";
-        SQLiteDatabase db = dbReader;
-        Cursor cursor = db.rawQuery(sql, null);
+        SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
+        Cursor cursor = dbReader.rawQuery(sql, null);
         return listarEquipeId(cursor);
     }
 
@@ -95,5 +92,4 @@ public class EquipeIdDAO {
         }
         return operario;
     }
-
 }
