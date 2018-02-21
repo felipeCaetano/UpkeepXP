@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.persistencia.EquipamentoDAO;
 import upkeepxpteam.upkeepxp.R;
@@ -24,8 +23,6 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
     private EditText edtfalha;
     private EditText edttipo;
     private EditText edtobservacao;
-    private EditText spstatus;
-
     private Equipamento equip;
     private static final String TAG = "sql";
     private EditarCadastroEquipamento activity;
@@ -111,7 +108,7 @@ public class EditarCadastroEquipamento extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.deseja_Del).setTitle(R.string.delete_title);
         builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-            EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastroEquipamento.this);
+            final EquipamentoDAO equipamentoDAO = new EquipamentoDAO(EditarCadastroEquipamento.this);
             public void onClick(DialogInterface dialog, int id) {
                 equipamentoDAO.delete(equip);
                 Toast.makeText(EditarCadastroEquipamento.this,R.string.delete_sucess, Toast.LENGTH_SHORT).show();

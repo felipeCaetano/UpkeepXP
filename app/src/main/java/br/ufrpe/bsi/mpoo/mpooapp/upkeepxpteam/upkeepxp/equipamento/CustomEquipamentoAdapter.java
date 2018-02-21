@@ -21,10 +21,10 @@ import upkeepxpteam.upkeepxp.R;
 
 public class CustomEquipamentoAdapter extends BaseAdapter {
 
-    Activity activity;
-    List<EquipamentoModel> equipamentoModels;
-    LayoutInflater inflater;
-    ArrayAdapter<CharSequence> ligacaoAdapter;
+    private Activity activity;
+    private List<EquipamentoModel> equipamentoModels;
+    private LayoutInflater inflater;
+    private ArrayAdapter<CharSequence> ligacaoAdapter;
 
     /**
      * Construtor para classe
@@ -70,8 +70,8 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.rowequipamento, viewGroup, false);
             holder = new CustomEquipamentoAdapter.ViewHolder();
             holder.tvEquipamentoAtual = view.findViewById(R.id.textView_Equipamento_Atual);
-            holder.spinnerAtual = view.findViewById(R.id.spinner2);
-            holder.spinnerProx = view.findViewById(R.id.spinner3);
+            ViewHolder.spinnerAtual = view.findViewById(R.id.spinner2);
+            ViewHolder.spinnerProx = view.findViewById(R.id.spinner3);
             holder.ligacao = view.findViewById(R.id.spinner4);
             view.setTag(holder);
         } else {
@@ -83,18 +83,19 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
         List<String> lista = new ArrayList<>();
         addItensListaModeloEquipamento(lista);
 
-        final ArrayAdapter<String> equipamentoModelArrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, lista);
+        final ArrayAdapter<String> equipamentoModelArrayAdapter =
+                new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, lista);
         equipamentoModelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        ligacaoAdapter = ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item); // USAR ENUM
+        ligacaoAdapter =
+                ArrayAdapter.createFromResource(activity, R.array.ligacao, android.R.layout.simple_spinner_item); // USAR ENUM
         ligacaoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        holder.spinnerAtual.setAdapter(equipamentoModelArrayAdapter);
+        ViewHolder.spinnerAtual.setAdapter(equipamentoModelArrayAdapter);
         // melhorar equipamentoModelArrayAdapter para retirar um item selecionado
-        holder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
+        ViewHolder.spinnerProx.setAdapter(equipamentoModelArrayAdapter);
         holder.ligacao.setAdapter(ligacaoAdapter);
 
-        holder.spinnerAtual.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ViewHolder.spinnerAtual.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(activity, String.valueOf(equipamentoModelArrayAdapter.getItem(i)), Toast.LENGTH_SHORT).show();
@@ -106,7 +107,7 @@ public class CustomEquipamentoAdapter extends BaseAdapter {
             }
         });
 
-        holder.spinnerProx.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ViewHolder.spinnerProx.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(activity, String.valueOf(equipamentoModelArrayAdapter.getItem(i)), Toast.LENGTH_SHORT).show();

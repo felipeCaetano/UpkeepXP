@@ -10,11 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.dominio.AtividadeDiaria;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.atividadediaria.persistencia.AtividadeDiariaDAO;
 import upkeepxpteam.upkeepxp.R;
@@ -23,7 +21,6 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
 
     private EditText edtEquipeNome;
     private EditText edtLocal;
-    private EditText edtHora;
     private EditText descricao;
     private Spinner spnEquipe;
     private EditText edtData;
@@ -46,13 +43,11 @@ public class CadastraAtividadeActivity extends AppCompatActivity {
         Button btnClear = findViewById(R.id.btn_limpar);
         edtEquipeNome = findViewById(R.id.edt_atv_name);
         edtLocal = findViewById(R.id.edt_local);
-        EditText edtHora = findViewById(R.id.edt_horario);
         descricao = findViewById(R.id.edt_descricao);
         spnEquipe = findViewById(R.id.spn_equipes);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(context,R.array.Equipes, android.R.layout.simple_spinner_item);
         spnEquipe.setAdapter(adapter);
         edtData = findViewById(R.id.edt_data);
-
         Date today = new Date();
         edtData.setText(dateFormat.format(today));
 

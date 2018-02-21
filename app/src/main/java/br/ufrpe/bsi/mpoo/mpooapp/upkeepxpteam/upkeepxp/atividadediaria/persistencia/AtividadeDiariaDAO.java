@@ -65,15 +65,12 @@ public class AtividadeDiariaDAO {
      * @param atividadeDiaria
      */
 
-    public void buscarAtividade(AtividadeDiaria atividadeDiaria){
-
-    }
+    public void buscarAtividade(AtividadeDiaria atividadeDiaria){    }
 
     /**
      * Retorna uma lista com todas as atividades diárias
      * @return
      */
-
     public List<AtividadeDiaria> buscarTodasAtividades(){
         dbReader = upkeepDbHelper.getReadableDatabase();
         try{
@@ -91,16 +88,13 @@ public class AtividadeDiariaDAO {
      * Atualiza uma atividade diária específica
      * @param atividadeDiaria
      */
-    public void atualizaAtividade(AtividadeDiaria atividadeDiaria){
-
-    }
+    public void atualizaAtividade(AtividadeDiaria atividadeDiaria){    }
 
     /**
      * Exclui uma atividade diaária específica
      * @param atividadeDiaria
      * @return
      */
-
     public Boolean destroiAtividade(AtividadeDiaria atividadeDiaria){
         dbWriter = upkeepDbHelper.getWritableDatabase();
         try{
@@ -127,7 +121,6 @@ public class AtividadeDiariaDAO {
      * @param c
      * @return
      */
-
     private List<AtividadeDiaria> toList(Cursor c){
         List<AtividadeDiaria> atividadeDiarias = new ArrayList<>();
         if(c.moveToFirst()){
@@ -152,7 +145,6 @@ public class AtividadeDiariaDAO {
      * @param date
      * @return
      */
-
     public List<AtividadeDiaria> selecionaAtividaPorDia(String date){
             dbReader = upkeepDbHelper.getReadableDatabase();
         try{
@@ -163,5 +155,4 @@ public class AtividadeDiariaDAO {
             dbReader.close();
         }
     }   //em criação
-
 }

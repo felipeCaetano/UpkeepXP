@@ -53,7 +53,6 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         compactCalendarView = findViewById(R.id.compactcalendar_view);
         compactCalendarView.shouldDrawIndicatorsBelowSelectedDays(true);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
-
         Date today = new Date();
         compactCalendarView.setCurrentDate(today);
 
@@ -75,26 +74,20 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
         for (Event ev: events) {
             AtividadeDiaria atividadeDiaria = (AtividadeDiaria) ev.getData();
             dadosAtividade.add(""+atividadeDiaria.getEquipeNome()+"\n"+atividadeDiaria.getDescricao());
-
         }
         Log.d("Hoje tem: ", ""+events);
 
         eventos = findViewById(R.id.lista_eventos);
         //final ArrayAdapter<Event> adaptadorEvents = new ArrayAdapter<>(BuscarEquipamentosActivity.this,android.R.layout.simple_list_item_1,events);
         final ArrayAdapter<String> adaptadorEvents = new ArrayAdapter<>(AtividadeDiariaActivity.this,android.R.layout.simple_list_item_1,dadosAtividade);
-
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_date_range);
         actionBar.setDisplayHomeAsUpEnabled(true);
         // Setting default toolbar title to empty
         actionBar.setTitle("Atividades Diárias");
-
-
         eventos.setAdapter(adaptadorEvents);
-
         //set initial title
         actionBar.setTitle(dateFormatForMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
-
         //set title on calendar scroll
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -111,16 +104,12 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
                 currentCalender.setTime(dateClicked);
                 addEvents(compactCalendarView, currentCalender.get(Calendar.MONTH));
                 Log.d("Eventos:", ""+ events);
-
             }
-
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 // Changes toolbar title on monthChange
                 actionBar.setTitle(dateFormatForMonth.format(firstDayOfNewMonth));
-
             }
-
         });
 
         FloatingActionButton fab = findViewById(R.id.fab_atividade);
@@ -131,16 +120,9 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
-
-        //addDummyEvents();
-
-        //  gotoToday();
-
     }
 
-    private void criaListaEventos(Date dateClicked) {
-
-    }
+    private void criaListaEventos(Date dateClicked) {    }
 
     /**
      * adiciona atividades aos dias da semana no calendário
@@ -176,10 +158,10 @@ public class AtividadeDiariaActivity extends AppCompatActivity {
 
     /**
      * Seta data atual
-     */
+     *//*
     public void gotoToday() {
         // Set any date to navigate to particular date
         compactCalendarView.setCurrentDate(Calendar.getInstance(Locale.getDefault()).getTime());
 
-    }
+    }*/
 }

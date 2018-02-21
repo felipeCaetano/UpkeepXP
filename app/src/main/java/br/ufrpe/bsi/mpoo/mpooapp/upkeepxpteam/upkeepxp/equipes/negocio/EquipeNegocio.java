@@ -9,7 +9,7 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipes.persistencia.Equi
 
 public class EquipeNegocio {
 
-    EquipeDAO equipeDAO;
+    private EquipeDAO equipeDAO;
 
     /**
      * Cria um novo objeto equipeDAO

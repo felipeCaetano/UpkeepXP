@@ -23,13 +23,13 @@ import upkeepxpteam.upkeepxp.R;
 
 /**
  * Created by herma on 18/12/2017.
+ * para o cadastro os usuários no crud
  */
 
 public class CadastraUsuarioFragment extends Fragment {
 
     private static final int REQUEST_DATE = 0;
     private static final String DIALOG_DATE = "DialogDate";
-
     private EditText emailEditText;
     private EditText nomeEditText;
     private EditText sobrenomeEditText;
@@ -142,7 +142,6 @@ public class CadastraUsuarioFragment extends Fragment {
                 }
             }
         });
-
         return view;
     }
 }

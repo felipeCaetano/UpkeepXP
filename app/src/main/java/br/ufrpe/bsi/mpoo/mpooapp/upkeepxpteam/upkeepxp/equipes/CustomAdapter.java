@@ -12,10 +12,9 @@ import java.util.List;
 import upkeepxpteam.upkeepxp.R;
 
 public class CustomAdapter extends BaseAdapter {
-
-    Activity activity;
-    List<UserModel> users;
-    LayoutInflater inflater;
+    private Activity activity;
+    private List<UserModel> users;
+    private LayoutInflater inflater;
 
     /**
      * Construtor para classe
@@ -69,9 +68,7 @@ public class CustomAdapter extends BaseAdapter {
             view.setTag(holder);
         } else
             holder = (ViewHolder) view.getTag();
-
             UserModel model = users.get(i);
-
             holder.tvUserName.setText("" + model.getUsuario().getNome() + " " + model.getUsuario().getSobrenome());
 
         if (model.isSelected()){
@@ -82,8 +79,6 @@ public class CustomAdapter extends BaseAdapter {
     }
 
     public void  updateRecords(List<UserModel> users){
-        this.users = users;
-
         notifyDataSetChanged();
     }
 

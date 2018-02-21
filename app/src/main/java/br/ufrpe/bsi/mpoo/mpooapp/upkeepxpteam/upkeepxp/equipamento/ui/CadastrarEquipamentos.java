@@ -91,7 +91,7 @@ public class CadastrarEquipamentos extends AppCompatActivity {
         equipamento.setDisponibilidade(Integer.valueOf(disponibilidade.getText().toString()));
 
         spinner = findViewById(R.id.spn_status);
-        ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        ArrayAdapter<String> spinadapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinadapter.add("opção");
         spinner.setAdapter(spinadapter);

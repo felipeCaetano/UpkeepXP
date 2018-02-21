@@ -33,8 +33,6 @@ import upkeepxpteam.upkeepxp.R;
 public class BuscarUnicorniosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    private static final String TAG = "sql";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +44,10 @@ public class BuscarUnicorniosActivity extends AppCompatActivity
         UnicornioDAO unicornioDAO = new UnicornioDAO(this);
         final ArrayList<Unicornio> lista;
         lista = (ArrayList<Unicornio>)unicornioDAO.findAll();
-
         EditText pesquisar = findViewById(R.id.busca);
-
         ListView listaequip = findViewById(R.id.lvequip);
         final ArrayAdapter<Unicornio> adaptadorUnicornio;
-        adaptadorUnicornio = new ArrayAdapter<Unicornio>
-                (BuscarUnicorniosActivity.this,android.R.layout.simple_list_item_1,lista);
+        adaptadorUnicornio = new ArrayAdapter<>(BuscarUnicorniosActivity.this,android.R.layout.simple_list_item_1,lista);
 
         //ativa a pesquisa no campo de texto pesquisar:
         pesquisar.addTextChangedListener(new TextWatcher() {
@@ -71,20 +66,17 @@ public class BuscarUnicorniosActivity extends AppCompatActivity
         });
 
         listaequip.setAdapter(adaptadorUnicornio);
-
         listaequip.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Unicornio uni = adaptadorUnicornio.getItem(position);
-
                 Intent intent = new Intent(BuscarUnicorniosActivity.this, EditarCadastroUnicornioActivity.class);
                 intent.putExtra("Unicornio", uni);
                 startActivity(intent);
                 finish();
             }
         });
-
 
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +93,6 @@ public class BuscarUnicorniosActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -143,7 +134,6 @@ public class BuscarUnicorniosActivity extends AppCompatActivity
      * @param  item
      * @return true
      */
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -179,7 +169,6 @@ public class BuscarUnicorniosActivity extends AppCompatActivity
             intent = new Intent(BuscarUnicorniosActivity.this, BuscarUnicorniosActivity.class);
             startActivity(intent);
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

@@ -21,9 +21,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class CustomEquipeAdapter extends BaseAdapter {
 
-    Activity activity;
-    List<EquipeModel> equipeModels;
-    LayoutInflater inflater;
+    private Activity activity;
+    private List<EquipeModel> equipeModels;
+    private LayoutInflater inflater;
 
     /**
      * Construtor para classe

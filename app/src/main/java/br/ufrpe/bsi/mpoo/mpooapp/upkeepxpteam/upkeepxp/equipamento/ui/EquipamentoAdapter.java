@@ -16,6 +16,7 @@ import upkeepxpteam.upkeepxp.R;
 
 /**
  * Created by Felipe on 05/02/2018.
+ * para personalizar a visualização de um equipamento
  */
 
 public class EquipamentoAdapter extends ArrayAdapter {
@@ -47,7 +48,6 @@ public class EquipamentoAdapter extends ArrayAdapter {
         TextView codigo = rowView.findViewById(R.id.txt_codigolist);
         TextView defeito = rowView.findViewById(R.id.txt_defeitolist);
         TextView status = rowView.findViewById(R.id.txt_statuslist);
-
         equipamento.setText(elementos.get(position).getNome());
         codigo.setText(elementos.get(position).getCodigo());
         defeito.setText(elementos.get(position).getDefeito());

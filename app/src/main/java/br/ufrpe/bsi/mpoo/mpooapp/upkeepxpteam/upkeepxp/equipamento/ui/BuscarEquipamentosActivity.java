@@ -32,8 +32,6 @@ import upkeepxpteam.upkeepxp.R;
 public class BuscarEquipamentosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    private static final String TAG = "sql";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +44,7 @@ public class BuscarEquipamentosActivity extends AppCompatActivity
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this);
         final ArrayList<Equipamento> lista;
         lista = (ArrayList<Equipamento>)equipamentoDAO.findAll();
-
         EditText pesquisar = findViewById(R.id.busca);
-
         ListView listaequip = findViewById(R.id.lvequip);
         final ArrayAdapter<Equipamento> adaptadorEquip =
                 new EquipamentoAdapter(BuscarEquipamentosActivity.this,lista);
@@ -132,7 +128,6 @@ public class BuscarEquipamentosActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -141,7 +136,6 @@ public class BuscarEquipamentosActivity extends AppCompatActivity
      * @param item
      * @return
      */
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -177,7 +171,6 @@ public class BuscarEquipamentosActivity extends AppCompatActivity
             intent = new Intent(BuscarEquipamentosActivity.this, br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.ui.BuscarUnicorniosActivity.class);
             startActivity(intent);
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

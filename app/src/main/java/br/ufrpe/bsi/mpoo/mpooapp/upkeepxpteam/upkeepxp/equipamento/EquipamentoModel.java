@@ -51,12 +51,7 @@ public class EquipamentoModel {
     }
 
     public boolean isSelected() {
-        if (isSelected){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return isSelected;
     }
 
     public Equipamento getProxEquipamento() {

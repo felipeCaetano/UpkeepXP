@@ -117,7 +117,10 @@ public class EquipamentoDAO {
         try{
             return dbWriter.delete(UpKeepDataBaseContract.EquipamentosTable.TABLE_NAME,
                     "_id=?", new String[]{String.valueOf(equipamento.getId())})>0;
-        }finally {
+        }catch (Exception e){
+            return false;
+        }
+        finally {
             dbWriter.close();
         }
     }
@@ -126,7 +129,6 @@ public class EquipamentoDAO {
      * Busca todos os equipamentos registrados
      * @return
      */
-
     public List<Equipamento> findAll(){
         SQLiteDatabase dbReader = upkeepDbHelper.getReadableDatabase();
         try{
@@ -210,14 +212,13 @@ public class EquipamentoDAO {
         }
     }
 
-    public boolean salvaDisponibilidade(EquipamentoModel equipamentoModel){
+    public void salvaDisponibilidade(EquipamentoModel equipamentoModel){
         SQLiteDatabase dbWriter = upkeepDbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("idEquipamentoAtual", equipamentoModel.getEquipamento().getNome());
         cv.put("idEquipamentoProximo", equipamentoModel.getProxEquipamento().getNome());
         cv.put("tipoAssociacao", equipamentoModel.getLigacao());
         dbWriter.insert(UpKeepDataBaseContract.RelacaoEquipFalhasTable.TABLE_NAME,null,cv);
-        return true;
     }
 
     public List<EquipamentoModel> getRelacaoFalhas() {

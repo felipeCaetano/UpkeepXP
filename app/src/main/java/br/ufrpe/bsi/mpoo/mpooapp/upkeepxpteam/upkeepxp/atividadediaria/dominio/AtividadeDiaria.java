@@ -19,7 +19,6 @@ public class AtividadeDiaria implements Serializable {
     private String local;
     private String descricao;
     private String situacao;
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     public String getSituacao() {
         return situacao;

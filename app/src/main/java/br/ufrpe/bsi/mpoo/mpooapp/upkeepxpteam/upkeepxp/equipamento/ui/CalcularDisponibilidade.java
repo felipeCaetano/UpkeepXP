@@ -20,10 +20,6 @@ import upkeepxpteam.upkeepxp.R;
 
 public class CalcularDisponibilidade extends AppCompatActivity {
 
-    private EditText equipamentoAtual;
-    private EditText getEquipamentoNovo;
-    private Button btnCalcularDisponibilidade;
-    private Button btnEditarSistema;
     private Spinner spinnerLigacao;
     private Spinner spinnerAtual;
     private Spinner spinnerProx;
@@ -38,20 +34,20 @@ public class CalcularDisponibilidade extends AppCompatActivity {
         spinnerAtual = findViewById(R.id.spinnerAtual);
         spinnerProx = findViewById(R.id.spinnerProx);
         spinnerLigacao = findViewById(R.id.spinnerLigacao);
-        TextView tvValorDisponibilidade = (TextView) findViewById(R.id.textView_valor_disponibilidade);
+        TextView tvValorDisponibilidade = findViewById(R.id.textView_valor_disponibilidade);
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO(this); // Ajeitar, por no DAO relação disponibilidade
         // Chamar spinner pra pegar o valor
         final List<EquipamentoModel> equipamentoList = new ArrayList<>();
         addItensListaModeloEquipamento(equipamentoList);
 
-        ArrayAdapter<EquipamentoModel> adapter = new ArrayAdapter<EquipamentoModel>(this, android.R.layout.simple_spinner_item, equipamentoList);
+        ArrayAdapter<EquipamentoModel> adapter =
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, equipamentoList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter adapterLigacao = ArrayAdapter.createFromResource(this, R.array.ligacao, android.R.layout.simple_spinner_item);
+        ArrayAdapter adapterLigacao =
+                ArrayAdapter.createFromResource(this, R.array.ligacao, android.R.layout.simple_spinner_item);
         spinnerAtual.setAdapter(adapter);
         spinnerProx.setAdapter(adapter);
         spinnerLigacao.setAdapter(adapterLigacao);
-        //final CustomEquipamentoAdapter adapter = new CustomEquipamentoAdapter(this, equipamentoList);
-        //listView.setAdapter(adapter);
 
         tvValorDisponibilidade.setText("0%");
         equipamentoDAO.execSQL(EquipamentoDAO.deleteMyTable2());

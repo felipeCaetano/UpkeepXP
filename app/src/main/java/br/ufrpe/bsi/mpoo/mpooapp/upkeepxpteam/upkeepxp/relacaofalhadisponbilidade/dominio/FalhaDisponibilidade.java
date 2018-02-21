@@ -3,7 +3,9 @@ package br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.relacaofalhadisponbilida
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.equipamento.dominio.Equipamento;
 
 /**
- * Created by anton on 16/02/2018.
+ * Created by felipe on 16/02/2018.
+ * classe para cadastrar disponibilidades
+ * ainda não utilizada.
  */
 
 public class FalhaDisponibilidade {

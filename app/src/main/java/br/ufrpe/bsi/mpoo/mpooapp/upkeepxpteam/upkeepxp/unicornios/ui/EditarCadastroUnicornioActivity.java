@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.unicornios.dominio.CorEnum;
@@ -71,7 +70,6 @@ public class EditarCadastroUnicornioActivity extends AppCompatActivity{
             edtUnicornioPeso.setText(unicornioPeso.toString());
             Double unicornioAltura = unicornio.getAltura();
             edtUnicornioAltura.setText(unicornioAltura.toString());
-            String unicornioSexo = unicornio.getGenero();
             //Setar Spinners
             //Spiner Elementos:
             String unicornioElemento = unicornio.getElemento();

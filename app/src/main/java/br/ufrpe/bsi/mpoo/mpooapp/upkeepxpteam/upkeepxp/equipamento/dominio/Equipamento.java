@@ -8,8 +8,6 @@ import android.os.Parcelable;
  * classe de dominio: Equipamento
  */
 public class Equipamento implements Parcelable {
-
-    private static final long serialVersionUID = 6601006766832473959L;
     private long id;
     private String nome;
     private String codigo;

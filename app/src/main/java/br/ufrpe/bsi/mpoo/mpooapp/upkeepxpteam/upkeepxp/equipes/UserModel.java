@@ -4,8 +4,8 @@ import br.ufrpe.bsi.mpoo.mpooapp.upkeepxpteam.upkeepxp.usuario.dominio.Usuario;
 
 public class UserModel {
 
-    boolean isSelected;
-    Usuario usuario;
+    private boolean isSelected;
+    private Usuario usuario;
 
     /**
      * Construtor para classe

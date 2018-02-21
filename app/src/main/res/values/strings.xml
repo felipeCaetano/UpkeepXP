@@ -57,7 +57,6 @@
     <string name="exemplo_horario">00:00:00</string>
     <string name="exemplo_cep">55555–555</string>
     <string name="equipe_nome">Nome da Equipe</string>
-    <string name="btn_editar">Editar</string>
     <string name="btn_excluir">Excluir</string>
     <string name="usuario_nome">Nome de Usuário</string>
     <string name="nome_proprio">%1$s %2$s</string>
@@ -99,6 +98,7 @@
     <string name="proximo_equipamento">Próximo Equipamento</string>
     <string name="associacao">Associação</string>
     <string name="btn_editar">Editar</string>
+    <string name="Equipes_title">Equipes</string>
     <string-array name="ligacao">
         <item>Série</item>
         <item>Paralelo</item>

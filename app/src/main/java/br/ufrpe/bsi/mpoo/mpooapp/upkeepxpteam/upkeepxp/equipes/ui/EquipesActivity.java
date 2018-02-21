@@ -23,8 +23,8 @@ public class EquipesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_equipes);
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.bringToFront();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_equipes);
-        toolbar.setTitle("Equipes");
+        Toolbar toolbar = findViewById(R.id.tb_equipes);
+        toolbar.setTitle(R.string.Equipes_title);
 
         ListView lista = findViewById(R.id.listview_Equipes);
 
